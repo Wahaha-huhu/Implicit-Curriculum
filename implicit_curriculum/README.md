@@ -323,3 +323,22 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h2_predictor_ladd
 ```
 
 This writes the predictor ladder, selected atomic parallel-null model, composite residuals, and pair-selection candidates for later H3 interventions.
+
+### v1.0 H3 pair-specific interventions
+
+After running H2 and obtaining `h2_pair_selection.csv`, run the first H3 pilot on the top selected pair:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h3_interventions \
+  --output-dir results/b1_h3_c06_v10 \
+  --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --pair-selection results/b1_h1_shared_sweep_v08/h2_pair_selection.csv \
+  --seeds 0 1 2 3 4 5 6 7 8 9 \
+  --conditions baseline upweight_component upweight_unrelated_matched upweight_fake_component upweight_surface_control delay_component delay_unrelated_matched corrupt_component corrupt_unrelated_matched \
+  --max-data-seen 250000 --batch-size 256 --n-checkpoints 100 \
+  --eval-examples-per-task 512 --d-model 128 --n-layers 2 --n-heads 4 --d-mlp 512 \
+  --vocab-content 32 --input-len 6 --device cuda
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_interventions \
+  --result-dir results/b1_h3_c06_v10 --metric-family token_accuracy --threshold 0.7
+```
