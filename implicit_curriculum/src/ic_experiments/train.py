@@ -108,6 +108,8 @@ def run_single_training(
                 next_grad_checkpoint += config.grad_stats_every
 
     eval_df = pd.DataFrame(eval_records)
+    if not eval_df.empty and "data_seen" in eval_df.columns:
+        eval_df["checkpoint_fraction"] = eval_df["data_seen"] / max(1, config.max_data_seen)
     acquisition_df = acquisition_times(
         eval_df,
         threshold=config.acquisition_threshold,
@@ -116,6 +118,9 @@ def run_single_training(
     )
     grad_task_df = pd.concat(grad_task_frames, ignore_index=True) if grad_task_frames else pd.DataFrame()
     grad_cross_df = pd.concat(grad_cross_frames, ignore_index=True) if grad_cross_frames else pd.DataFrame()
+    for _df in (grad_task_df, grad_cross_df):
+        if not _df.empty and "data_seen" in _df.columns:
+            _df["checkpoint_fraction"] = _df["data_seen"] / max(1, config.max_data_seen)
     cka_df = representation_cka(
         model=model,
         tasks=tasks,
@@ -126,6 +131,8 @@ def run_single_training(
         seed=config.seed,
         device=device,
     )
+    if not cka_df.empty and "data_seen" in cka_df.columns:
+        cka_df["checkpoint_fraction"] = cka_df["data_seen"] / max(1, config.max_data_seen)
 
     metadata = {
         "config": config.to_dict(),

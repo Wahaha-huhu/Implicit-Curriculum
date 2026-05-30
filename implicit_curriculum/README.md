@@ -217,3 +217,67 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
 ```
 
 New analysis columns in `intervention_pair_tests.csv` include strict threshold-crossing deltas and right-censored deltas for non-acquired paired seeds.
+
+## v0.5 backend commands
+
+### B2 sparse parity design
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sparse_parity_design \
+  --output-dir results/sparse_parity_design \
+  --seed 0 \
+  --n-bits 40 \
+  --n-tasks 24 \
+  --degrees 3 5 \
+  --frequency-mode zipf
+```
+
+Train the sparse-parity baseline through the existing MLP runner:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_h1_ordering_pilot \
+  --output-dir results/sparse_parity_pilot \
+  --structure-table results/sparse_parity_design/structure_table.csv \
+  --seeds 0 1 2 \
+  --conditions baseline \
+  --n-bits 40 \
+  --max-data-seen 100000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 512 \
+  --depth 2 \
+  --grad-stats-every 20000 \
+  --device cuda
+```
+
+### B1 sequence DSL design and smoke pilot
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sequence_dsl_design \
+  --output-dir results/sequence_dsl_design \
+  --seed 0 \
+  --vocab-content 64 \
+  --input-len 8 \
+  --n-atomic 8 \
+  --n-composite 6
+```
+
+Small smoke pilot:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sequence_dsl_pilot \
+  --output-dir results/sequence_dsl_pilot_smoke \
+  --structure-table results/sequence_dsl_design/structure_table.csv \
+  --seeds 0 \
+  --max-data-seen 20000 \
+  --batch-size 128 \
+  --n-checkpoints 30 \
+  --eval-examples-per-task 256 \
+  --d-model 128 \
+  --n-layers 2 \
+  --n-heads 4 \
+  --d-mlp 512 \
+  --device cuda
+```
+
+The sequence DSL path is currently a smoke/pilot substrate, not the full Exp 1 shared sweep.

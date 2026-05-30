@@ -158,7 +158,21 @@ def _load_chosen_component(path: Path | None, structure_table: Path | None, task
                 return json.loads(candidate.read_text(encoding="utf-8"))
             except Exception:
                 pass
-    return choose_default_component_and_controls(tasks)
+    try:
+        return choose_default_component_and_controls(tasks)
+    except Exception:
+        # Baseline-only backends such as B2 sparse parity have no composites or
+        # controls. Provide a harmless placeholder so the baseline registry can
+        # still be constructed. Non-baseline intervention conditions should not
+        # be used with this fallback.
+        first = tasks[0].name if tasks else ""
+        return {
+            "component": first,
+            "composites": [],
+            "unrelated_control": first,
+            "fake_component_control": first,
+            "surface_control": first,
+        }
 
 
 if __name__ == "__main__":

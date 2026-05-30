@@ -200,3 +200,26 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
 ```
 
 v0.4 analysis reports both strict threshold-crossing contrasts and right-censored contrasts for non-acquired paired seeds.
+
+## v0.5 — backend realignment toward the operational design
+
+This version starts the refactor from a Boolean-only sandbox toward the stronger experiment spine.
+
+### Backends
+
+- **B0 Boolean sandbox**: existing `TaskSpec`/MLP path. Use this for fast debugging only.
+- **B2 sparse parity**: quanta-comparable baseline. Generate with `run_sparse_parity_design`, then train with the existing `run_h1_ordering_pilot --model mlp` path.
+- **B1 sequence DSL**: smoke-testable sequence/decoder-only-transformer substrate. Generate with `run_sequence_dsl_design`, train a small pilot with `run_sequence_dsl_pilot`.
+
+### New outputs
+
+- `generic_structure_table.csv`: backend-agnostic structure metadata.
+- `backend_manifest.json` or `summary.json`: backend/config metadata.
+- `checkpoint_fraction`: added to Boolean/MLP eval/gradient/CKA outputs where relevant, so later Exp 2 mediation can enforce the leading-indicator rule.
+
+### What remains to implement before the full shared sweep
+
+- Full B1 calibration with richer operations and mandatory control packets per composite.
+- Shared-sweep directory layout for Exp 1/2/3.
+- Leading-indicator mediation analysis tables.
+- Model-state interventions for Exp 4.

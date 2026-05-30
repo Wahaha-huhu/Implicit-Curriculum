@@ -86,6 +86,11 @@ def labels_for_task(
         return 1.0 - bits[:, task.bits[0]].float()
     if op == "xor2":
         return _xor_float(bits[:, task.bits[0]], bits[:, task.bits[1]])
+    if op == "parity_bits":
+        if not task.bits:
+            raise ValueError(f"parity_bits task {task.name} has no bits")
+        vals = bits[:, list(task.bits)].long()
+        return (vals.sum(dim=1) % 2).float()
     if op == "eq2":
         return _eq_float(bits[:, task.bits[0]], bits[:, task.bits[1]])
     if op == "and_bits":
@@ -237,6 +242,9 @@ def task_table(tasks: list[TaskSpec]) -> pd.DataFrame:
                 "reference_learnability": t.reference_learnability,
                 "formal_utility": t.formal_utility,
                 "description": t.description,
+                "backend": "B0_boolean",
+                "structure_id": t.name,
+                "operation": t.op,
             }
             for t in tasks
         ]
