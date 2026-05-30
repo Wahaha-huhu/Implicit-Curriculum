@@ -318,61 +318,61 @@ Key outputs:
 
 True sequence composites are now actual compositions of their listed component operations. Shortcut controls still list a component but bypass it by returning an identity target, preserving the formal-dependency/no-reuse negative control.
 
-## v0.8 — B1 shared H1 sweep runner
+## v0.9 — Run archival + H2 predictor ladder
 
-Added the first shared-sweep object for the B1 sequence-DSL transformer substrate.
-This is the first implementation layer intended to support the H1 ordering/sign-stability experiment.
+This version adds two thesis-readiness pieces:
 
-New commands:
+1. **Run management / archival**
+   - `ic_experiments.run_management`
+   - `python -m ic_experiments.experiments.archive_result`
+   - Writes `run_manifest.json`, `command.txt`, and `git_commit.txt`.
+   - Supports archiving result directories into `results/archive/<version>/<experiment>/<run_id>/`.
 
-```bash
-PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h1_shared_sweep \
-  --output-dir results/b1_h1_shared_sweep_v08 \
-  --structure-table results/sequence_dsl_calibration_v07/structure_table.csv \
-  --seeds 0 1 2 3 4 5 6 7 8 9 \
-  --configs base lr_low lr_high wd_zero batch_small batch_large \
-  --max-data-seen 250000 \
-  --n-checkpoints 100 \
-  --batch-size 256 \
-  --learning-rate 5e-4 \
-  --weight-decay 0.1 \
-  --eval-examples-per-task 512 \
-  --d-model 128 \
-  --n-layers 2 \
-  --n-heads 4 \
-  --d-mlp 512 \
-  --vocab-content 32 \
-  --input-len 6 \
-  --device cuda
-```
-
-```bash
-PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h1_shared_sweep \
-  --result-dir results/b1_h1_shared_sweep_v08
-```
+2. **B1 H2 predictor ladder + atomic parallel-null residual analysis**
+   - `python -m ic_experiments.experiments.analyze_b1_h2_predictor_ladder`
+   - Reuses B1 H1 shared-sweep outputs.
+   - Fits predictor ladders on atomic structures only.
+   - Selects a simplest sufficient predictor by leave-one-structure-out CV and a one-standard-error rule.
+   - Predicts composite acquisition under the atomic parallel-rate null.
+   - Writes residuals and pair-selection tables for future H3 intervention candidates.
 
 Main outputs:
 
-- `b1_h1_shared_sweep_report.md`
-- `b1_h1_analysis_report.md`
-- `config_table.csv`
-- `checkpoint_table.csv`
-- `eval_curves.csv`
-- `h1_acquisition_times_multi_metric.csv`
-- `h1_threshold_sensitivity.csv`
-- `h1_sign_stability.csv`
-- `h1_config_summary.csv`
-- `h1_seed_summary.csv`
-- `h1_stratified_ordering_summary.csv`
-- `h1_bootstrap_sign_ci.csv`
-- `frequency_realization.csv`
-- `frequency_realization_summary.csv`
-- `sequence_difficulty_table.csv`
+```text
+h2_analysis_report.md
+h2_acquisition_table.csv
+h2_predictor_ladder_cv.csv
+h2_selected_models.csv
+h2_model_coefficients.csv
+h2_atomic_parallel_predictions.csv
+h2_composite_residuals.csv
+h2_composite_residual_summary_by_task.csv
+h2_pair_selection.csv
+h2_permutation_null.csv
+run_manifest.json
+```
 
-Decision gate:
+Recommended next command:
 
-- GREEN: nonzero/non-saturated acquisition across configs; learnability positive across true-task/atomic strata; frequency negative at least in atomic or matched strata; realized frequency tracks intended frequency.
-- YELLOW: acquisition is usable but signs are unstable; tune task-family generation or frequency range before H2.
-- RED: acquisition collapses or sampling/frequency realization fails.
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h2_predictor_ladder \
+  --result-dir results/b1_h1_shared_sweep_v08 \
+  --metric-family token_accuracy \
+  --threshold 0.7 \
+  --n-permutations 100 \
+  --code-version v0.9 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
 
-v0.8 is H1-only. It does not yet implement H2 mediation or H3 causal interventions.
+Archive an existing thesis-candidate run:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.archive_result \
+  --source-dir results/b1_h1_shared_sweep_v08 \
+  --archive-root results/archive \
+  --experiment B1_H1_shared_sweep \
+  --code-version v0.8.1 \
+  --run-id b1_h1_seed0-9_base-grid \
+  --thesis-use candidate
+```

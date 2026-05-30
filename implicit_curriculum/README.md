@@ -291,34 +291,35 @@ v0.6 separates backend analyses:
 
 Do not interpret B1 exact-match 0.90 as the only acquisition observable during calibration. Use token accuracy, exact match, loss/AUC, and right-censored acquisition together.
 
-### v0.8 B1 shared H1 sweep
+## Result archival convention
 
-The B1 sequence-DSL transformer substrate now has a shared H1 sweep runner. This is the first training object intended to be reused by later H1/H2/H3 analyses.
-
-```bash
-PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h1_shared_sweep \
-  --output-dir results/b1_h1_shared_sweep_v08 \
-  --structure-table results/sequence_dsl_calibration_v07/structure_table.csv \
-  --seeds 0 1 2 3 4 5 6 7 8 9 \
-  --configs base lr_low lr_high wd_zero batch_small batch_large \
-  --max-data-seen 250000 \
-  --n-checkpoints 100 \
-  --batch-size 256 \
-  --learning-rate 5e-4 \
-  --weight-decay 0.1 \
-  --eval-examples-per-task 512 \
-  --d-model 128 \
-  --n-layers 2 \
-  --n-heads 4 \
-  --d-mlp 512 \
-  --vocab-content 32 \
-  --input-len 6 \
-  --device cuda
-```
+From v0.9 onward, potential thesis-source results should be archived rather than overwritten.
 
 ```bash
-PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h1_shared_sweep \
-  --result-dir results/b1_h1_shared_sweep_v08
+PYTHONPATH=src python -m ic_experiments.experiments.archive_result \
+  --source-dir results/b1_h1_shared_sweep_v08 \
+  --archive-root results/archive \
+  --experiment B1_H1_shared_sweep \
+  --code-version v0.8.1 \
+  --run-id b1_h1_seed0-9_base-grid \
+  --thesis-use candidate
 ```
 
-Send back `b1_h1_analysis_report.md`, `h1_sign_stability.csv`, `h1_config_summary.csv`, `h1_stratified_ordering_summary.csv`, `h1_threshold_sensitivity.csv`, and `frequency_realization_summary.csv` for the next gate decision.
+Each archive writes `run_manifest.json`, `command.txt`, `git_commit.txt`, and updates `results/archive/results_registry.csv`.
+
+## B1 H2 predictor ladder
+
+After a B1 H1 shared sweep has run, reuse its outputs for H2:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h2_predictor_ladder \
+  --result-dir results/b1_h1_shared_sweep_v08 \
+  --metric-family token_accuracy \
+  --threshold 0.7 \
+  --n-permutations 100 \
+  --code-version v0.9 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+This writes the predictor ladder, selected atomic parallel-null model, composite residuals, and pair-selection candidates for later H3 interventions.
