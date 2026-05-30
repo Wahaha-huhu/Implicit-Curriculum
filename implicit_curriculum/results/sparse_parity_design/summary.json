@@ -1,0 +1,42 @@
+{
+  "backend": "B2_sparse_parity",
+  "config": {
+    "n_bits": 40,
+    "n_tasks": 24,
+    "degrees": [
+      3,
+      5
+    ],
+    "frequency_mode": "zipf",
+    "zipf_alpha": 1.1,
+    "seed": 0,
+    "criteria": {
+      "max_vif": 5.0,
+      "max_abs_pearson": 0.75,
+      "max_abs_spearman": 0.8,
+      "max_condition_number": 50.0,
+      "min_rows": 16
+    }
+  },
+  "diagnostics": {
+    "n_rows": 24.0,
+    "design_condition_number": 1.0542548938143053,
+    "vif_frequency": 1.0027940569475295,
+    "vif_reference_learnability": 1.00279405694753,
+    "pearson_frequency__reference_learnability": -0.05278514890614824,
+    "spearman_frequency__reference_learnability": 0.10834726777719227,
+    "binned_mi_frequency__reference_learnability": 0.02831650613256631,
+    "formal_utility_identifiable": false,
+    "vif_formal_utility": NaN,
+    "passed": true,
+    "n_tasks": 24.0
+  },
+  "passed": true,
+  "paths": {
+    "structure_table": "results/sparse_parity_design/structure_table.csv",
+    "generic_structure_table": "results/sparse_parity_design/generic_structure_table.csv",
+    "design_diagnostics": "results/sparse_parity_design/design_diagnostics.csv",
+    "summary": "results/sparse_parity_design/summary.json",
+    "report": "results/sparse_parity_design/sparse_parity_report.md"
+  }
+}
