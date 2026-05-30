@@ -1,0 +1,9 @@
+[project]
+name = "ic-experiments"
+version = "0.1.0"
+description = "Controlled pilot experiments for gradient-mediated implicit curriculum research"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.0", "numpy>=1.24", "pandas>=2.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
