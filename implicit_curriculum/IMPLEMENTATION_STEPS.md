@@ -47,27 +47,30 @@ Gate decision: passed as a recovery/infrastructure gate. The next step is to map
 
 ## Step 2 — VIF-targeted neural task generator
 
-Next to implement.
+Status: implemented in v0.3.
 
 Goal:
 
 Construct actual trainable task families whose realized `frequency`, `reference_learnability`, and `formal_utility` pass the same diagnostics as the synthetic design.
 
-Required outputs:
+Implemented components:
 
-- generated task family metadata;
-- frozen property table;
-- diagnostics report;
-- baseline trainability smoke run.
+- `ic_experiments.neural_design`: generated Boolean task families with atomics, composites, shortcut/no-reuse controls, surface controls, and unrelated controls;
+- VIF/correlation/condition-number diagnostics on realized neural task properties;
+- component/control selection for intervention pilots;
+- CLIs: `run_neural_design_gate`, `run_h1_ordering_pilot`, and `analyze_h1_pilot`;
+- stronger diagnostics comparing component→composite gradient/CKA against fake, surface, and unrelated controls.
 
 Gate to proceed:
 
-- labels correct;
-- frequencies match target mixture;
-- property diagnostics pass or failed factors are declared non-identifiable;
-- atomics and composites are learnable in isolation.
+- design diagnostics pass;
+- generated-family baseline has nontrivial acquisition coverage;
+- ordering summary has interpretable signs or final-metric fallback;
+- intervention contrasts beat fake/surface/unrelated controls before scaling.
 
 ## Step 3 — H1 pilot: ordering and sign-stability
+
+Status: partially implemented in v0.3 via the generated-family pilot runner. Full sign-stability across configurations is not implemented yet.
 
 Goal:
 

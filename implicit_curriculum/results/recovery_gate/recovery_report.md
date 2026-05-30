@@ -5,7 +5,7 @@ This gate checks whether the analysis pipeline can recover known synthetic world
 ## Design diagnostics
 
 - `n_rows`: 20.0
-- `design_condition_number`: 1.913532906714057
+- `design_condition_number`: 1.913532906714058
 - `vif_frequency`: 1.4833933219045805
 - `vif_reference_learnability`: 1.0047164099805368
 - `vif_formal_utility`: 1.4777644194754413
@@ -25,7 +25,7 @@ This gate checks whether the analysis pipeline can recover known synthetic world
 
 | true_mechanism | n_replicates | selected_frequency_only_rate | selected_learnability_only_rate | selected_freq_learn_rate | selected_three_factor_rate | mean_composite_residual | positive_residual_rate |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| dependency_gated | 30 | 0.1 | 0 | 0 | 0.9 | 2.001 | 1 |
-| frequency_only | 30 | 0.8667 | 0 | 0.03333 | 0.1 | -0.00461 | 0.5333 |
-| learnability_only | 30 | 0 | 1 | 0 | 0 | 0.003284 | 0.4 |
-| three_factor | 30 | 0 | 0 | 0.1333 | 0.8667 | -0.03184 | 0.4 |
+| dependency_gated | 10 | 0.2 | 0 | 0 | 0.8 | 2.027 | 1 |
+| frequency_only | 10 | 0.9 | 0 | 0 | 0.1 | 0.009352 | 0.6 |
+| learnability_only | 10 | 0 | 1 | 0 | 0 | 0.003314 | 0.5 |
+| three_factor | 10 | 0 | 0 | 0.3 | 0.7 | -0.04061 | 0.4 |

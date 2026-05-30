@@ -1,0 +1,54 @@
+{
+  "config": {
+    "n_atomic": 12,
+    "n_composite": 8,
+    "n_shortcut_controls": 4,
+    "n_surface_controls": 4,
+    "n_unrelated_controls": 4,
+    "n_bits": 48,
+    "frequency_low": 0.01,
+    "frequency_high": 0.12,
+    "seed": 0,
+    "max_attempts": 10000,
+    "include_xor_composites": false,
+    "criteria": {
+      "max_vif": 5.0,
+      "max_abs_pearson": 0.7,
+      "max_abs_spearman": 0.75,
+      "max_condition_number": 50.0,
+      "min_rows": 32
+    }
+  },
+  "diagnostics": {
+    "n_rows": 32.0,
+    "design_condition_number": 1.2168826002741093,
+    "vif_frequency": 1.0176594164231891,
+    "vif_reference_learnability": 1.038881085498461,
+    "vif_formal_utility": 1.0231623939490275,
+    "pearson_frequency__reference_learnability": 0.1250725762907094,
+    "spearman_frequency__reference_learnability": 0.1605717857824988,
+    "binned_mi_frequency__reference_learnability": 0.12206911075449892,
+    "pearson_frequency__formal_utility": 0.022817133375717637,
+    "spearman_frequency__formal_utility": 0.12565083937321014,
+    "binned_mi_frequency__formal_utility": 0.0,
+    "pearson_reference_learnability__formal_utility": -0.14469766790600727,
+    "spearman_reference_learnability__formal_utility": -0.25379008771672384,
+    "binned_mi_reference_learnability__formal_utility": 0.0,
+    "n_tasks": 32.0,
+    "n_atomic": 12.0,
+    "n_composite": 8.0,
+    "n_controls": 12.0,
+    "frequency_sum": 1.0,
+    "utility_nonzero_rate": 0.21875,
+    "attempts_used": 1.0,
+    "passed": true
+  },
+  "attempts_used": 1,
+  "passed": true,
+  "paths": {
+    "structure_table": "results/neural_design_gate_smoke/structure_table.csv",
+    "design_diagnostics": "results/neural_design_gate_smoke/design_diagnostics.csv",
+    "summary": "results/neural_design_gate_smoke/summary.json",
+    "report": "results/neural_design_gate_smoke/neural_design_report.md"
+  }
+}

@@ -1,6 +1,6 @@
 # Pilot analysis summary
 
-Primary final metric: `balanced_accuracy`
+Primary final metric: `accuracy`
 
 This script computes descriptive deltas only. It does not perform the mixed-effects inference needed for the full experiment.
 

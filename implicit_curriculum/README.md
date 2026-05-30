@@ -88,3 +88,79 @@ This writes:
 - `recovery_report.md`: human-readable report.
 
 This gate should pass before H1/H2 scaling. If the analysis cannot recover frequency-only, three-factor, and dependency-gated synthetic worlds, the neural experiments should not be interpreted mechanistically.
+
+## v0.3 generated neural design gate
+
+Generate a concrete trainable task family whose realized properties are decorrelated:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_neural_design_gate \
+  --output-dir results/neural_design_gate \
+  --seed 0 \
+  --n-atomic 12 \
+  --n-composite 8 \
+  --n-shortcut-controls 4 \
+  --n-surface-controls 4 \
+  --n-unrelated-controls 4 \
+  --n-bits 48 \
+  --max-attempts 10000
+```
+
+Expected outputs:
+
+- `structure_table.csv`
+- `design_diagnostics.csv`
+- `summary.json`
+- `neural_design_report.md`
+
+## v0.3 generated-family H1/intervention pilot
+
+Run a baseline-only generated-family pilot:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_h1_ordering_pilot \
+  --output-dir results/h1_generated_baseline \
+  --structure-table results/neural_design_gate/structure_table.csv \
+  --seeds 0 1 2 3 4 \
+  --conditions baseline \
+  --n-bits 48 \
+  --max-data-seen 100000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --grad-stats-every 20000 \
+  --device cuda
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
+  --result-dir results/h1_generated_baseline
+```
+
+Run the generated-family intervention pilot:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_h1_ordering_pilot \
+  --output-dir results/h1_generated_interventions \
+  --structure-table results/neural_design_gate/structure_table.csv \
+  --seeds 0 1 2 3 4 \
+  --conditions baseline upweight_component upweight_unrelated_matched upweight_fake_component upweight_surface_control corrupt_component corrupt_unrelated_matched delay_component delay_unrelated_matched \
+  --n-bits 48 \
+  --max-data-seen 100000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --grad-stats-every 20000 \
+  --device cuda
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
+  --result-dir results/h1_generated_interventions
+```
+
+Key analysis outputs:
+
+- `h1_analysis_report.md`
+- `acquisition_summary_by_task.csv`
+- `ordering_summary.csv`
+- `intervention_pair_tests.csv`
+- `component_control_diagnostics.csv`

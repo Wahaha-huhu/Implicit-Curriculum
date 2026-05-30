@@ -96,6 +96,10 @@ def labels_for_task(
         a = labels_for_task(tasks_by_name[task.components[0]], bits, tasks_by_name, _stack + (task.name,))
         b = labels_for_task(tasks_by_name[task.components[1]], bits, tasks_by_name, _stack + (task.name,))
         return (a.long() & b.long()).float()
+    if op == "or_components":
+        a = labels_for_task(tasks_by_name[task.components[0]], bits, tasks_by_name, _stack + (task.name,))
+        b = labels_for_task(tasks_by_name[task.components[1]], bits, tasks_by_name, _stack + (task.name,))
+        return (a.long() | b.long()).float()
     if op == "xor_components":
         a = labels_for_task(tasks_by_name[task.components[0]], bits, tasks_by_name, _stack + (task.name,))
         b = labels_for_task(tasks_by_name[task.components[1]], bits, tasks_by_name, _stack + (task.name,))

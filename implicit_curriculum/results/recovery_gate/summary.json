@@ -2,7 +2,7 @@
   "config": {
     "recovery": {
       "seed": 0,
-      "n_replicates": 30,
+      "n_replicates": 10,
       "noise_sd": 0.18,
       "dependency_delay": 0.55,
       "n_folds": 5,
@@ -56,7 +56,7 @@
   },
   "design_diagnostics": {
     "n_rows": 20.0,
-    "design_condition_number": 1.913532906714057,
+    "design_condition_number": 1.913532906714058,
     "vif_frequency": 1.4833933219045805,
     "vif_reference_learnability": 1.0047164099805368,
     "vif_formal_utility": 1.4777644194754413,

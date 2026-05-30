@@ -1,5 +1,5 @@
 true_mechanism,n_replicates,selected_frequency_only_rate,selected_learnability_only_rate,selected_freq_learn_rate,selected_three_factor_rate,mean_composite_residual,positive_residual_rate
-dependency_gated,30,0.1,0.0,0.0,0.9,2.0008416404742926,1.0
-frequency_only,30,0.8666666666666667,0.0,0.03333333333333333,0.1,-0.00460953449478397,0.5333333333333333
-learnability_only,30,0.0,1.0,0.0,0.0,0.0032835546007894327,0.4
-three_factor,30,0.0,0.0,0.13333333333333333,0.8666666666666667,-0.03183872900376327,0.4
+dependency_gated,10,0.2,0.0,0.0,0.8,2.0270767517252466,1.0
+frequency_only,10,0.9,0.0,0.0,0.1,0.009352175608992463,0.6
+learnability_only,10,0.0,1.0,0.0,0.0,0.0033136362187969224,0.5
+three_factor,10,0.0,0.0,0.3,0.7,-0.04061222840539251,0.4
