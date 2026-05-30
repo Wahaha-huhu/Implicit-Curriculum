@@ -1,2 +1,0 @@
-output_dir,structure_table,family_seed,seeds,max_data_seen,batch_size,learning_rate,weight_decay,warmup_frac,n_checkpoints,eval_examples_per_task,d_model,n_layers,n_heads,d_mlp,dropout,vocab_content,input_len,acquisition_threshold,acquisition_patience,device,backend,n_parameters
-results/sequence_dsl_pilot_v07,results/sequence_dsl_calibration_v07/structure_table.csv,0,"0,1,2,3,4",250000,256,0.0003,0.1,0.05,100,512,128,2,4,512,0.0,32,6,0.9,2,cuda,B1_sequence_dsl,407808
