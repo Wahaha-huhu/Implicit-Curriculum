@@ -1,0 +1,26 @@
+structure_id,backend,kind,frequency,reference_learnability,formal_utility,components,control_for,control_type,operation,meta_offset,meta_description
+A00_copy,B1_sequence_dsl,atomic,0.011452110971760807,1.0,0.0,,,,copy,5,Atomic sequence DSL task: copy.
+A01_reverse,B1_sequence_dsl,atomic,0.03154796285739972,2.0,0.02495834635039281,,,,reverse,6,Atomic sequence DSL task: reverse.
+A02_substitute,B1_sequence_dsl,atomic,0.00953627569478159,1.5,0.020609881694466755,,,,substitute,6,Atomic sequence DSL task: substitute.
+A03_copy,B1_sequence_dsl,atomic,0.010408821942085906,1.0,0.06798197035789956,,,,copy,4,Atomic sequence DSL task: copy.
+A04_reverse,B1_sequence_dsl,atomic,0.012721095886983993,2.0,0.10014119464382124,,,,reverse,6,Atomic sequence DSL task: reverse.
+A05_substitute,B1_sequence_dsl,atomic,0.01894851968571104,1.5,0.13524907755056667,,,,substitute,6,Atomic sequence DSL task: substitute.
+A06_copy,B1_sequence_dsl,atomic,0.28003725194000795,1.0,0.15322825527571723,,,,copy,6,Atomic sequence DSL task: copy.
+A07_reverse,B1_sequence_dsl,atomic,0.06532099872983306,2.0,0.19853233445063728,,,,reverse,1,Atomic sequence DSL task: reverse.
+C00_reverse_then_substitute_04_03,B1_sequence_dsl,composite,0.016304969290607294,3.0,0.0,"A04_reverse,A03_copy",,,reverse_then_substitute,3,Composite sequence DSL task: reverse_then_substitute.
+C01_substitute_then_reverse_04_06,B1_sequence_dsl,composite,0.03629634256664032,3.0,0.0,"A04_reverse,A06_copy",,,substitute_then_reverse,2,Composite sequence DSL task: substitute_then_reverse.
+C02_copy_then_substitute_06_04,B1_sequence_dsl,composite,0.022581536436180792,3.0,0.0,"A06_copy,A04_reverse",,,copy_then_substitute,4,Composite sequence DSL task: copy_then_substitute.
+C03_reverse_then_substitute_07_02,B1_sequence_dsl,composite,0.020609881694466755,3.0,0.0,"A07_reverse,A02_substitute",,,reverse_then_substitute,3,Composite sequence DSL task: reverse_then_substitute.
+C04_substitute_then_reverse_03_06,B1_sequence_dsl,composite,0.05167700106729226,3.0,0.0,"A03_copy,A06_copy",,,substitute_then_reverse,5,Composite sequence DSL task: substitute_then_reverse.
+C05_copy_then_substitute_06_07,B1_sequence_dsl,composite,0.04267337520560385,3.0,0.0,"A06_copy,A07_reverse",,,copy_then_substitute,3,Composite sequence DSL task: copy_then_substitute.
+C06_reverse_then_substitute_05_07,B1_sequence_dsl,composite,0.13524907755056667,3.0,0.0,"A05_substitute,A07_reverse",,,reverse_then_substitute,6,Composite sequence DSL task: reverse_then_substitute.
+C07_substitute_then_reverse_01_04,B1_sequence_dsl,composite,0.02495834635039281,3.0,0.0,"A01_reverse,A04_reverse",,,substitute_then_reverse,4,Composite sequence DSL task: substitute_then_reverse.
+K00_shortcut_for_A02_substitute,B1_sequence_dsl,shortcut,0.017529977946109578,1.0,0.0,A02_substitute,A02_substitute,shortcut_no_reuse,shortcut_identity,1,"Formal component listed, but output is direct identity shortcut."
+K01_shortcut_for_A05_substitute,B1_sequence_dsl,shortcut,0.01523666171376703,1.0,0.0,A05_substitute,A05_substitute,shortcut_no_reuse,shortcut_identity,1,"Formal component listed, but output is direct identity shortcut."
+K02_shortcut_for_A03_copy,B1_sequence_dsl,shortcut,0.027877971660689886,1.0,0.0,A03_copy,A03_copy,shortcut_no_reuse,shortcut_identity,1,"Formal component listed, but output is direct identity shortcut."
+S00_surface_rotate,B1_sequence_dsl,surface_control,0.088356497064568,2.0,0.0,,,surface_overlap_no_dependency,surface_rotate,5,Shares sequence surface but target is unrelated rotation.
+S01_surface_rotate,B1_sequence_dsl,surface_control,0.013464172801898834,2.0,0.0,,,surface_overlap_no_dependency,surface_rotate,2,Shares sequence surface but target is unrelated rotation.
+S02_surface_rotate,B1_sequence_dsl,surface_control,0.014296984282697387,2.0,0.0,,,surface_overlap_no_dependency,surface_rotate,4,Shares sequence surface but target is unrelated rotation.
+U00_unrelated_substitute,B1_sequence_dsl,unrelated,0.009953916731764295,1.5,0.0,,,unrelated_matched,substitute,1,Unrelated matched-control pool.
+U01_unrelated_substitute,B1_sequence_dsl,unrelated,0.012054086724866622,1.5,0.0,,,unrelated_matched,substitute,1,Unrelated matched-control pool.
+U02_unrelated_substitute,B1_sequence_dsl,unrelated,0.010906163203323556,1.5,0.0,,,unrelated_matched,substitute,4,Unrelated matched-control pool.

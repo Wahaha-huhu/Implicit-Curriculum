@@ -1,0 +1,78 @@
+{
+  "backend": "B1_sequence_dsl",
+  "family": {
+    "backend": "B1_sequence_dsl",
+    "config": {
+      "vocab_content": 32,
+      "input_len": 6,
+      "n_atomic": 8,
+      "n_composite": 6,
+      "n_shortcut_controls": 2,
+      "n_surface_controls": 2,
+      "n_unrelated_controls": 2,
+      "frequency_mode": "zipf",
+      "zipf_alpha": 1.05,
+      "seed": 0,
+      "criteria": {
+        "max_vif": 5.0,
+        "max_abs_pearson": 0.75,
+        "max_abs_spearman": 0.8,
+        "max_condition_number": 50.0,
+        "min_rows": 12
+      },
+      "vocab_size": 36
+    },
+    "diagnostics": {
+      "n_rows": 25.0,
+      "design_condition_number": 1.7187444620378698,
+      "vif_frequency": 1.2320931148093903,
+      "vif_reference_learnability": 1.0858674730516837,
+      "vif_formal_utility": 1.3229256007279282,
+      "pearson_frequency__reference_learnability": -0.02068918757221088,
+      "spearman_frequency__reference_learnability": 0.42405045694005994,
+      "binned_mi_frequency__reference_learnability": 0.25983654786880306,
+      "pearson_frequency__formal_utility": 0.4237259441429006,
+      "spearman_frequency__formal_utility": 0.0602154630888172,
+      "binned_mi_frequency__formal_utility": 0.014531662636519333,
+      "pearson_reference_learnability__formal_utility": -0.26279072667191583,
+      "spearman_reference_learnability__formal_utility": -0.28278094924725683,
+      "binned_mi_reference_learnability__formal_utility": 0.12690545269902354
+    },
+    "passed": true
+  },
+  "training": {
+    "output_dir": "results/sequence_dsl_pilot_v06",
+    "structure_table": "results/sequence_dsl_calibration_v06/structure_table.csv",
+    "family_seed": 0,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "max_data_seen": 200000,
+    "batch_size": 256,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.1,
+    "warmup_frac": 0.05,
+    "n_checkpoints": 80,
+    "eval_examples_per_task": 512,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "d_mlp": 512,
+    "dropout": 0.0,
+    "vocab_content": 32,
+    "input_len": 6,
+    "acquisition_threshold": 0.9,
+    "acquisition_patience": 2,
+    "device": "cuda"
+  },
+  "n_parameters": 407808,
+  "paths": {
+    "structure_table": "results/sequence_dsl_pilot_v06/structure_table.csv",
+    "eval_curves": "results/sequence_dsl_pilot_v06/eval_curves.csv",
+    "acquisition_times": "results/sequence_dsl_pilot_v06/acquisition_times.csv"
+  }
+}

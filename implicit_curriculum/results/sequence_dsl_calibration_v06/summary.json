@@ -1,0 +1,63 @@
+{
+  "config": {
+    "output_dir": "results/sequence_dsl_calibration_v06",
+    "candidate_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "calibration_seeds": [
+      0,
+      1
+    ],
+    "vocab_content": 32,
+    "input_len": 6,
+    "n_atomic": 8,
+    "n_composite": 8,
+    "n_shortcut_controls": 3,
+    "n_surface_controls": 3,
+    "n_unrelated_controls": 3,
+    "max_data_seen": 120000,
+    "batch_size": 256,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.05,
+    "warmup_frac": 0.05,
+    "n_checkpoints": 50,
+    "eval_examples_per_task": 512,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "d_mlp": 512,
+    "dropout": 0.0,
+    "token_threshold": 0.7,
+    "exact_threshold": 0.3,
+    "target_min_acq": 0.3,
+    "target_max_acq": 0.85,
+    "min_composite_acq": 0.2,
+    "device": "cuda"
+  },
+  "selected": {
+    "candidate_seed": 4,
+    "passed": true,
+    "family_design_passed": true,
+    "token_acquisition_rate": 0.6,
+    "composite_token_acquisition_rate": 0.75,
+    "atomic_token_acquisition_rate": 0.75,
+    "mean_final_token_accuracy": 0.5944921998307109,
+    "mean_final_exact_match": 0.256875,
+    "n_tasks": 25,
+    "n_composites": 8,
+    "design_condition_number": 1.7187444620378693,
+    "calibration_passed": true,
+    "paths": {
+      "structure_table": "results/sequence_dsl_calibration_v06/structure_table.csv",
+      "candidate_calibration_summary": "results/sequence_dsl_calibration_v06/candidate_calibration_summary.csv",
+      "calibration_eval_curves": "results/sequence_dsl_calibration_v06/calibration_eval_curves.csv",
+      "calibration_acquisition_times": "results/sequence_dsl_calibration_v06/calibration_acquisition_times.csv",
+      "selected_eval_curves": "results/sequence_dsl_calibration_v06/selected_eval_curves.csv",
+      "selected_acquisition_times": "results/sequence_dsl_calibration_v06/selected_acquisition_times.csv"
+    }
+  }
+}

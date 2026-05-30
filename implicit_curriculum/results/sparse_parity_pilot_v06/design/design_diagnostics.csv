@@ -1,0 +1,2 @@
+n_rows,design_condition_number,vif_frequency,vif_reference_learnability,pearson_frequency__reference_learnability,spearman_frequency__reference_learnability,binned_mi_frequency__reference_learnability,formal_utility_identifiable,vif_formal_utility,passed,n_tasks
+24.0,1.292633514513551,1.0673451903822029,1.0673451903822029,-0.2511891311784701,-0.10834726777719227,0.02831650613256631,False,,True,24.0
