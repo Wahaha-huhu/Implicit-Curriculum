@@ -1,0 +1,217 @@
+{
+  "n_runs": 5,
+  "runs": [
+    {
+      "config": {
+        "seed": 0,
+        "n_bits": 12,
+        "batch_size": 128,
+        "max_data_seen": 20000,
+        "checkpoint_every": 1000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 128,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 5000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cpu",
+        "output_dir": "results/baseline_only"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 19457,
+      "final_data_seen": 20096
+    },
+    {
+      "config": {
+        "seed": 1,
+        "n_bits": 12,
+        "batch_size": 128,
+        "max_data_seen": 20000,
+        "checkpoint_every": 1000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 128,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 5000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cpu",
+        "output_dir": "results/baseline_only"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 19457,
+      "final_data_seen": 20096
+    },
+    {
+      "config": {
+        "seed": 2,
+        "n_bits": 12,
+        "batch_size": 128,
+        "max_data_seen": 20000,
+        "checkpoint_every": 1000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 128,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 5000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cpu",
+        "output_dir": "results/baseline_only"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 19457,
+      "final_data_seen": 20096
+    },
+    {
+      "config": {
+        "seed": 3,
+        "n_bits": 12,
+        "batch_size": 128,
+        "max_data_seen": 20000,
+        "checkpoint_every": 1000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 128,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 5000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cpu",
+        "output_dir": "results/baseline_only"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 19457,
+      "final_data_seen": 20096
+    },
+    {
+      "config": {
+        "seed": 4,
+        "n_bits": 12,
+        "batch_size": 128,
+        "max_data_seen": 20000,
+        "checkpoint_every": 1000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 128,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 5000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cpu",
+        "output_dir": "results/baseline_only"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 19457,
+      "final_data_seen": 20096
+    }
+  ],
+  "structural_design_diagnostics": {
+    "design_condition_number": 113.77152871502979,
+    "pearson_frequency__reference_learnability": -0.44320263021395906,
+    "pearson_frequency__formal_utility": 0.8604076517663418,
+    "pearson_reference_learnability__formal_utility": -0.5709221325428403,
+    "vif_frequency": 3.902024510799646,
+    "vif_reference_learnability": 1.503380633179536,
+    "vif_formal_utility": 4.651828637203407
+  },
+  "paths": {
+    "eval_curves": "results/baseline_only/eval_curves.csv",
+    "acquisition_times": "results/baseline_only/acquisition_times.csv",
+    "grad_stats": "results/baseline_only/grad_stats.csv",
+    "grad_cross_task": "results/baseline_only/grad_cross_task.csv",
+    "representation_cka": "results/baseline_only/representation_cka.csv",
+    "structure_table": "results/baseline_only/structure_table.csv"
+  },
+  "conditions": [
+    "baseline"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}

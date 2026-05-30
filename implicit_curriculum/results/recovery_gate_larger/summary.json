@@ -1,0 +1,83 @@
+{
+  "config": {
+    "recovery": {
+      "seed": 0,
+      "n_replicates": 100,
+      "noise_sd": 0.18,
+      "dependency_delay": 0.55,
+      "n_folds": 5,
+      "one_standard_error": true,
+      "property_design": {
+        "n_atomic": 20,
+        "n_composite": 12,
+        "frequency_low": 0.02,
+        "frequency_high": 0.3,
+        "learnability_low": 1.0,
+        "learnability_high": 5.0,
+        "utility_low": 0.0,
+        "utility_high": 1.0,
+        "seed": 0,
+        "max_attempts": 20000,
+        "criteria": {
+          "max_vif": 5.0,
+          "max_abs_pearson": 0.65,
+          "max_abs_spearman": 0.7,
+          "max_condition_number": 50.0,
+          "min_rows": 32
+        }
+      }
+    },
+    "property_design": {
+      "n_atomic": 20,
+      "n_composite": 12,
+      "frequency_low": 0.02,
+      "frequency_high": 0.3,
+      "learnability_low": 1.0,
+      "learnability_high": 5.0,
+      "utility_low": 0.0,
+      "utility_high": 1.0,
+      "seed": 0,
+      "max_attempts": 20000,
+      "criteria": {
+        "max_vif": 5.0,
+        "max_abs_pearson": 0.65,
+        "max_abs_spearman": 0.7,
+        "max_condition_number": 50.0,
+        "min_rows": 32
+      }
+    },
+    "criteria": {
+      "max_vif": 5.0,
+      "max_abs_pearson": 0.65,
+      "max_abs_spearman": 0.7,
+      "max_condition_number": 50.0,
+      "min_rows": 32
+    }
+  },
+  "design_diagnostics": {
+    "n_rows": 32.0,
+    "design_condition_number": 1.4306720446004844,
+    "vif_frequency": 1.1327234757689515,
+    "vif_reference_learnability": 1.1338413344193539,
+    "vif_formal_utility": 1.0011787708369944,
+    "pearson_frequency__reference_learnability": -0.3420622958177775,
+    "spearman_frequency__reference_learnability": -0.36180351906158353,
+    "binned_mi_frequency__reference_learnability": 0.2572074885107579,
+    "pearson_frequency__formal_utility": -0.002089706519837345,
+    "spearman_frequency__formal_utility": 0.014662756598240468,
+    "binned_mi_frequency__formal_utility": 0.22234130861791268,
+    "pearson_reference_learnability__formal_utility": -0.031468500411231295,
+    "spearman_reference_learnability__formal_utility": 0.006964809384164223,
+    "binned_mi_reference_learnability__formal_utility": 0.3168806917883967,
+    "attempts_used": 1.0,
+    "passed": true
+  },
+  "paths": {
+    "design": "results/recovery_gate_larger/design.csv",
+    "synthetic_worlds": "results/recovery_gate_larger/synthetic_worlds.csv",
+    "cv_folds": "results/recovery_gate_larger/cv_folds.csv",
+    "cv_summary": "results/recovery_gate_larger/cv_summary.csv",
+    "dependency_residuals": "results/recovery_gate_larger/dependency_residuals.csv",
+    "verdict": "results/recovery_gate_larger/verdict.csv"
+  }
+}
