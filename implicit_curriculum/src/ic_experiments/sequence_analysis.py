@@ -167,6 +167,46 @@ def realization_summary(realized: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+
+def _merge_missing_metadata(df: pd.DataFrame, meta: pd.DataFrame) -> pd.DataFrame:
+    """Attach task metadata without creating duplicate *_meta columns.
+
+    Some analyzers enrich acquisition/final tables before calling the shared
+    stratified summary. Re-merging the full metadata table can trigger pandas
+    MergeError when columns such as ``kind`` and ``kind_meta`` already coexist.
+    This helper only merges metadata columns that are absent from ``df`` and
+    fills missing values in existing columns from temporary metadata columns.
+    """
+    if df.empty or meta.empty or "task_name" not in df.columns or "task_name" not in meta.columns:
+        return df
+
+    out = df.copy()
+    # Remove stale helper columns from previous merges. They are never used as
+    # authoritative metadata and can collide with pandas suffix generation.
+    stale_cols = [c for c in out.columns if c.endswith("_meta")]
+    if stale_cols:
+        out = out.drop(columns=stale_cols)
+
+    wanted_cols = [c for c in meta.columns if c != "task_name"]
+    missing_cols = [c for c in wanted_cols if c not in out.columns]
+
+    # For existing metadata columns, fill nulls from the authoritative table.
+    existing_cols = [c for c in wanted_cols if c in out.columns]
+    if existing_cols:
+        fill = meta[["task_name"] + existing_cols].drop_duplicates("task_name")
+        tmp = out.merge(fill, on="task_name", how="left", suffixes=("", "__fill"))
+        for c in existing_cols:
+            fc = f"{c}__fill"
+            if fc in tmp.columns:
+                tmp[c] = tmp[c].where(tmp[c].notna(), tmp[fc])
+                tmp = tmp.drop(columns=[fc])
+        out = tmp
+
+    if missing_cols:
+        out = out.merge(meta[["task_name"] + missing_cols].drop_duplicates("task_name"), on="task_name", how="left")
+    return out
+
+
 def stratified_ordering_summary(
     acq_df: pd.DataFrame,
     final_df: pd.DataFrame,
@@ -181,10 +221,8 @@ def stratified_ordering_summary(
     acq = acq_df[(acq_df.get("metric_family") == metric_family) & (acq_df.get("analysis_threshold") == threshold)].copy()
     if acq.empty:
         return pd.DataFrame()
-    acq = acq.merge(meta, on="task_name", how="left", suffixes=("", "_meta"))
-    final = final_df.copy()
-    if "frequency" not in final.columns:
-        final = final.merge(meta, on="task_name", how="left", suffixes=("", "_meta"))
+    acq = _merge_missing_metadata(acq, meta)
+    final = _merge_missing_metadata(final_df.copy(), meta)
     metric_col = metric_family if metric_family in final.columns else ("token_accuracy" if metric_family == "token_accuracy" else "exact_match")
     strata: list[tuple[str, pd.DataFrame, pd.DataFrame]] = []
     base_acq = acq[acq["condition"] == "baseline"].copy()
