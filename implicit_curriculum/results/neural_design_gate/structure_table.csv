@@ -1,0 +1,33 @@
+task_name,kind,op,bits,components,frequency,reference_learnability,formal_utility,description
+A00_not_bit_26,atomic,not_bit,26,,0.037052541189570486,1.0,0.05169061670061044,"Generated atomic task 0: not_bit on bits (26,)."
+A01_xor2_40_1,atomic,xor2,"40,1",,0.051631415292042196,2.5,0.009924322081077049,"Generated atomic task 1: xor2 on bits (40, 1)."
+A02_bit_1,atomic,bit,1,,0.012730075410991307,1.0,0.007856625498314005,"Generated atomic task 2: bit on bits (1,)."
+A03_and_bits_23_25,atomic,and_bits,"23,25",,0.006485591381114262,2.0,0.0,"Generated atomic task 3: and_bits on bits (23, 25)."
+A04_not_bit_0,atomic,not_bit,0,,0.031997261921867255,1.0,0.11932930228353834,"Generated atomic task 4: not_bit on bits (0,)."
+A05_and_bits_5_25,atomic,and_bits,"5,25",,0.027893280633576736,2.0,0.1734519764464213,"Generated atomic task 5: and_bits on bits (5, 25)."
+A06_and_bits_18_35,atomic,and_bits,"18,35",,0.06916503928297452,2.0,0.0,"Generated atomic task 6: and_bits on bits (18, 35)."
+A07_and_bits_46_18,atomic,and_bits,"46,18",,0.030433435245490935,2.0,0.016938554314483285,"Generated atomic task 7: and_bits on bits (46, 18)."
+A08_not_bit_40,atomic,not_bit,40,,0.015889280497336792,1.0,0.0,"Generated atomic task 8: not_bit on bits (40,)."
+A09_xor2_42_32,atomic,xor2,"42,32",,0.036308157513275846,2.5,0.18214557605815712,"Generated atomic task 9: xor2 on bits (42, 32)."
+A10_xor2_25_39,atomic,xor2,"25,39",,0.02021584656907017,2.5,0.0,"Generated atomic task 10: xor2 on bits (25, 39)."
+A11_xor2_14_34,atomic,xor2,"14,34",,0.061572922900882815,2.5,0.0,"Generated atomic task 11: xor2 on bits (14, 34)."
+C00_or_04_01,composite,or_components,,"A04_not_bit_0,A01_xor2_40_1",0.009924322081077049,3.5,0.0,Generated composite task 0: or_components over atomics 4 and 1.
+C01_or_09_02,composite,or_components,,"A09_xor2_42_32,A02_bit_1",0.007856625498314005,3.5,0.0,Generated composite task 1: or_components over atomics 9 and 2.
+C02_and_05_09,composite,and_components,,"A05_and_bits_5_25,A09_xor2_42_32",0.06479831061170288,3.5,0.0,Generated composite task 2: and_components over atomics 5 and 9.
+C03_and_04_05,composite,and_components,,"A04_not_bit_0,A05_and_bits_5_25",0.07166003423758333,3.0,0.0,Generated composite task 3: and_components over atomics 4 and 5.
+C04_or_09_04,composite,or_components,,"A09_xor2_42_32,A04_not_bit_0",0.020806391650394686,3.5,0.0,Generated composite task 4: or_components over atomics 9 and 4.
+C05_or_04_07,composite,or_components,,"A04_not_bit_0,A07_and_bits_46_18",0.016938554314483285,3.0,0.0,Generated composite task 5: or_components over atomics 4 and 7.
+C06_and_05_09,composite,and_components,,"A05_and_bits_5_25,A09_xor2_42_32",0.036993631597135083,3.5,0.0,Generated composite task 6: and_components over atomics 5 and 9.
+C07_and_09_00,composite,and_components,,"A09_xor2_42_32,A00_not_bit_26",0.05169061670061044,3.5,0.0,Generated composite task 7: and_components over atomics 9 and 0.
+K00_shortcut_for_10_bit39,shortcut,shortcut_bit,39,A10_xor2_25_39,0.008748444821266873,1.0,0.0,Symbolic-dependency/no-reuse negative control: formal component but direct shortcut label.
+K01_shortcut_for_09_bit45,shortcut,shortcut_bit,45,A09_xor2_42_32,0.05518096445099967,1.0,0.0,Symbolic-dependency/no-reuse negative control: formal component but direct shortcut label.
+K02_shortcut_for_07_bit11,shortcut,shortcut_bit,11,A07_and_bits_46_18,0.010768619252694674,1.0,0.0,Symbolic-dependency/no-reuse negative control: formal component but direct shortcut label.
+K03_shortcut_for_07_bit23,shortcut,shortcut_bit,23,A07_and_bits_46_18,0.05998517821411787,1.0,0.0,Symbolic-dependency/no-reuse negative control: formal component but direct shortcut label.
+S00_surface_xor_12_45,surface_control,surface_control,"12,45",,0.018163438783035585,2.0,0.0,Surface-overlap/no-dependency control.
+S01_surface_xor_25_7,surface_control,surface_control,"25,7",,0.006685069468746282,2.0,0.0,Surface-overlap/no-dependency control.
+S02_surface_xor_35_38,surface_control,surface_control,"35,38",,0.006486327830986537,2.0,0.0,Surface-overlap/no-dependency control.
+S03_surface_xor_28_44,surface_control,surface_control,"28,44",,0.006289925469836476,2.0,0.0,Surface-overlap/no-dependency control.
+U00_xor2_35_7,unrelated,xor2,"35,7",,0.06082181495488518,2.5,0.0,Unrelated frequency/learnability-matched control pool.
+U01_eq2_3_23,unrelated,eq2,"3,23",,0.007134411115286267,2.0,0.0,Unrelated frequency/learnability-matched control pool.
+U02_and_bits_10_16,unrelated,and_bits,"10,16",,0.06667201870703728,2.0,0.0,Unrelated frequency/learnability-matched control pool.
+U03_xor2_36_26,unrelated,xor2,"36,26",,0.011020452401613314,2.5,0.0,Unrelated frequency/learnability-matched control pool.

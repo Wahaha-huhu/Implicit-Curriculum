@@ -1,0 +1,231 @@
+{
+  "n_runs": 5,
+  "runs": [
+    {
+      "config": {
+        "seed": 0,
+        "n_bits": 48,
+        "batch_size": 512,
+        "max_data_seen": 100000,
+        "checkpoint_every": 2000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 256,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 20000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cuda",
+        "output_dir": "results/h1_generated_baseline"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 86785,
+      "final_data_seen": 100352
+    },
+    {
+      "config": {
+        "seed": 1,
+        "n_bits": 48,
+        "batch_size": 512,
+        "max_data_seen": 100000,
+        "checkpoint_every": 2000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 256,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 20000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cuda",
+        "output_dir": "results/h1_generated_baseline"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 86785,
+      "final_data_seen": 100352
+    },
+    {
+      "config": {
+        "seed": 2,
+        "n_bits": 48,
+        "batch_size": 512,
+        "max_data_seen": 100000,
+        "checkpoint_every": 2000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 256,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 20000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cuda",
+        "output_dir": "results/h1_generated_baseline"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 86785,
+      "final_data_seen": 100352
+    },
+    {
+      "config": {
+        "seed": 3,
+        "n_bits": 48,
+        "batch_size": 512,
+        "max_data_seen": 100000,
+        "checkpoint_every": 2000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 256,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 20000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cuda",
+        "output_dir": "results/h1_generated_baseline"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 86785,
+      "final_data_seen": 100352
+    },
+    {
+      "config": {
+        "seed": 4,
+        "n_bits": 48,
+        "batch_size": 512,
+        "max_data_seen": 100000,
+        "checkpoint_every": 2000,
+        "learning_rate": 0.002,
+        "weight_decay": 0.0,
+        "hidden_dim": 256,
+        "depth": 2,
+        "dropout": 0.0,
+        "eval_examples_per_task": 2048,
+        "acquisition_threshold": 0.9,
+        "acquisition_patience": 2,
+        "acquisition_metric": "balanced_accuracy",
+        "grad_stats_every": 20000,
+        "grad_stat_batches": 4,
+        "grad_stat_batch_size": 128,
+        "cka_examples": 512,
+        "device": "cuda",
+        "output_dir": "results/h1_generated_baseline"
+      },
+      "intervention": {
+        "name": "baseline",
+        "kind": "none",
+        "task_name": null,
+        "matched_control_for": null,
+        "start_data_seen": 0,
+        "end_data_seen": null,
+        "multiplier": 2.0,
+        "corrupt_prob": 0.25
+      },
+      "model_name": "mlp",
+      "n_parameters": 86785,
+      "final_data_seen": 100352
+    }
+  ],
+  "structural_design_diagnostics": {
+    "design_condition_number": 113.84451703911627,
+    "pearson_frequency__reference_learnability": 0.12507257629070945,
+    "pearson_frequency__formal_utility": 0.022817133375717724,
+    "pearson_reference_learnability__formal_utility": -0.14469766790600716,
+    "vif_frequency": 1.0176594164231894,
+    "vif_reference_learnability": 1.038881085498461,
+    "vif_formal_utility": 1.0231623939490275
+  },
+  "paths": {
+    "eval_curves": "results/h1_generated_baseline/eval_curves.csv",
+    "acquisition_times": "results/h1_generated_baseline/acquisition_times.csv",
+    "grad_stats": "results/h1_generated_baseline/grad_stats.csv",
+    "grad_cross_task": "results/h1_generated_baseline/grad_cross_task.csv",
+    "representation_cka": "results/h1_generated_baseline/representation_cka.csv",
+    "structure_table": "results/h1_generated_baseline/structure_table.csv"
+  },
+  "family": {
+    "loaded_structure_table": "results/neural_design_gate/structure_table.csv"
+  },
+  "chosen_component_and_controls": {
+    "component": "A05_and_bits_5_25",
+    "composites": [
+      "C02_and_05_09",
+      "C03_and_04_05",
+      "C06_and_05_09"
+    ],
+    "unrelated_control": "U02_and_bits_10_16",
+    "fake_component_control": "K01_shortcut_for_09_bit45",
+    "surface_control": "S00_surface_xor_12_45"
+  },
+  "conditions": [
+    "baseline"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}
