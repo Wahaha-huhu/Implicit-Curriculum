@@ -19,6 +19,14 @@ from ic_experiments.backends.sequence_dsl import (
     save_sequence_dsl_family,
 )
 from ic_experiments.metrics import acquisition_times
+from ic_experiments.sequence_analysis import (
+    final_metrics,
+    frequency_realization_table,
+    make_checkpoint_table,
+    make_config_table,
+    realization_summary,
+    sequence_difficulty_table,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -63,6 +71,7 @@ def main() -> None:
         save_sequence_dsl_family(family, output / "generated_family")
     all_eval = []
     all_acq = []
+    count_rows = []
     checkpoints = _log_checkpoints(args.max_data_seen, args.n_checkpoints)
     for seed in args.seeds:
         torch.manual_seed(seed)
@@ -84,10 +93,13 @@ def main() -> None:
         weights = weights / weights.sum()
         data_seen = 0
         ckpt_idx = 0
+        task_sample_counts = np.zeros(len(family.tasks), dtype=np.int64)
         eval_rows = evaluate_sequence_per_task(model, family.tasks, cfg, args.eval_examples_per_task, data_seen, "baseline", seed, device)
         all_eval.extend(_add_fraction(eval_rows, args.max_data_seen))
         while data_seen < args.max_data_seen:
-            tokens, labels, _ = make_lm_batch(family.tasks, cfg, args.batch_size, device, weights)
+            tokens, labels, task_ids = make_lm_batch(family.tasks, cfg, args.batch_size, device, weights)
+            batch_counts = torch.bincount(task_ids.detach().cpu(), minlength=len(family.tasks)).numpy()
+            task_sample_counts += batch_counts.astype(np.int64)
             opt.zero_grad(set_to_none=True)
             logits = model(tokens)
             loss = criterion(logits.reshape(-1, logits.size(-1)), labels.reshape(-1))
@@ -104,26 +116,64 @@ def main() -> None:
         eval_df = pd.DataFrame(all_eval)
         seed_acq = acquisition_times(eval_df[eval_df["seed"] == seed], threshold=args.acquisition_threshold, patience=args.acquisition_patience, metric="exact_match")
         all_acq.append(seed_acq)
+        for task, count in zip(family.tasks, task_sample_counts):
+            count_rows.append({
+                "condition": "baseline",
+                "seed": int(seed),
+                "task_name": task.structure_id,
+                "realized_sample_count": int(count),
+            })
     eval_df = pd.DataFrame(all_eval)
     acq_df = pd.concat(all_acq, ignore_index=True) if all_acq else pd.DataFrame()
-    family.structure_table().to_csv(output / "structure_table.csv", index=False)
+    structure_df = family.structure_table()
+    structure_df.to_csv(output / "structure_table.csv", index=False)
+    try:
+        family.generic_structure_table().to_csv(output / "generic_structure_table.csv", index=False)
+    except Exception:
+        pass
     eval_df.to_csv(output / "eval_curves.csv", index=False)
     acq_df.to_csv(output / "acquisition_times.csv", index=False)
+
+    # Shared-sweep-style auxiliary tables. These make B1 pilots analyzable as
+    # the same expensive object for ordering, mediation, and residual analyses.
+    n_parameters = sum(p.numel() for p in model.parameters())
+    make_config_table(args, backend=family.name, n_parameters=n_parameters).to_csv(output / "config_table.csv", index=False)
+    make_checkpoint_table(checkpoints, args.max_data_seen, args.seeds).to_csv(output / "checkpoint_table.csv", index=False)
+    final_metrics(eval_df).to_csv(output / "final_metrics.csv", index=False)
+    sequence_difficulty_table(family, n_probe_examples=2048, seed=args.family_seed).to_csv(output / "sequence_difficulty_table.csv", index=False)
+    if count_rows:
+        realized = frequency_realization_table(count_rows, structure_df, args.max_data_seen, cfg.input_len)
+        realized.to_csv(output / "frequency_realization.csv", index=False)
+        realization_summary(realized).to_csv(output / "frequency_realization_summary.csv", index=False)
+    else:
+        pd.DataFrame().to_csv(output / "frequency_realization.csv", index=False)
+        pd.DataFrame().to_csv(output / "frequency_realization_summary.csv", index=False)
+
     summary = {
         "backend": family.name,
         "family": family.metadata(),
         "training": vars(args) | {"output_dir": str(args.output_dir), "structure_table": str(args.structure_table) if args.structure_table else None},
-        "n_parameters": sum(p.numel() for p in model.parameters()),
+        "n_parameters": n_parameters,
         "paths": {
             "structure_table": str(output / "structure_table.csv"),
+            "generic_structure_table": str(output / "generic_structure_table.csv"),
+            "config_table": str(output / "config_table.csv"),
+            "checkpoint_table": str(output / "checkpoint_table.csv"),
             "eval_curves": str(output / "eval_curves.csv"),
             "acquisition_times": str(output / "acquisition_times.csv"),
+            "final_metrics": str(output / "final_metrics.csv"),
+            "frequency_realization": str(output / "frequency_realization.csv"),
+            "sequence_difficulty_table": str(output / "sequence_difficulty_table.csv"),
         },
     }
     (output / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     (output / "sequence_dsl_pilot_report.md").write_text(_report(eval_df, acq_df, family.passed), encoding="utf-8")
     print("Saved sequence DSL pilot outputs:")
-    for name in ["sequence_dsl_pilot_report.md", "structure_table.csv", "eval_curves.csv", "acquisition_times.csv", "summary.json"]:
+    for name in [
+        "sequence_dsl_pilot_report.md", "structure_table.csv", "generic_structure_table.csv", "config_table.csv",
+        "checkpoint_table.csv", "eval_curves.csv", "acquisition_times.csv", "final_metrics.csv",
+        "frequency_realization.csv", "frequency_realization_summary.csv", "sequence_difficulty_table.csv", "summary.json"
+    ]:
         print(f"  {output / name}")
 
 

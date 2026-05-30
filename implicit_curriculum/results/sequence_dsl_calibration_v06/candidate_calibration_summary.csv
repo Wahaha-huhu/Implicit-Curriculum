@@ -1,6 +1,0 @@
-candidate_seed,passed,family_design_passed,token_acquisition_rate,composite_token_acquisition_rate,atomic_token_acquisition_rate,mean_final_token_accuracy,mean_final_exact_match,n_tasks,n_composites,design_condition_number
-0,True,True,0.32,0.25,0.375,0.6152213669195771,0.2969140625,25,8,1.438135652815094
-1,True,True,0.42,0.5625,0.5625,0.4914323047548532,0.189609375,25,8,1.238246106484303
-2,False,True,0.28,0.25,0.375,0.42593100883066654,0.05,25,8,1.488729209998883
-3,True,True,0.48,0.375,0.75,0.49769532708451153,0.2030859375,25,8,1.603236426893455
-4,True,True,0.6,0.75,0.75,0.5944921998307109,0.256875,25,8,1.7187444620378693

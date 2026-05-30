@@ -290,3 +290,25 @@ v0.6 separates backend analyses:
 - **B1 sequence DSL**: use `run_sequence_dsl_calibration` before larger transformer pilots. Analyze with `analyze_sequence_dsl_pilot`, which reports token-accuracy, exact-match, AUC, and threshold sensitivity.
 
 Do not interpret B1 exact-match 0.90 as the only acquisition observable during calibration. Use token accuracy, exact match, loss/AUC, and right-censored acquisition together.
+
+### v0.7 B1 diagnostics
+
+After running a B1 sequence DSL pilot, analyze it with:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_sequence_dsl_pilot \
+  --result-dir results/sequence_dsl_pilot_v07
+```
+
+Key files for the next decision:
+
+```text
+results/sequence_dsl_pilot_v07/sequence_dsl_analysis_report.md
+results/sequence_dsl_pilot_v07/sequence_stratified_ordering_summary.csv
+results/sequence_dsl_pilot_v07/frequency_realization_summary.csv
+results/sequence_dsl_pilot_v07/frequency_realization.csv
+results/sequence_dsl_pilot_v07/sequence_difficulty_table.csv
+results/sequence_dsl_pilot_v07/sequence_ordering_summary.csv
+```
+
+Use the stratified summary rather than pooled correlations when deciding whether B1 is ready for the full H1 shared sweep.

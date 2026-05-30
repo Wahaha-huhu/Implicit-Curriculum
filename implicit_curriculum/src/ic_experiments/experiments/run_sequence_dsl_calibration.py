@@ -21,6 +21,7 @@ from ic_experiments.backends.sequence_dsl import (
 )
 from ic_experiments.metrics import acquisition_times
 from ic_experiments.experiments.run_sequence_dsl_pilot import _log_checkpoints, _lr_scale, _add_fraction
+from ic_experiments.sequence_analysis import sequence_difficulty_table, spearman
 
 
 def parse_args() -> argparse.Namespace:
@@ -109,6 +110,7 @@ def main() -> None:
     assert best is not None
     _, selected_family, selected_eval, selected_acq, selected_summary = best
     save_sequence_dsl_family(selected_family, out)
+    sequence_difficulty_table(selected_family, n_probe_examples=2048, seed=selected_summary["candidate_seed"]).to_csv(out / "sequence_difficulty_table.csv", index=False)
     selected_eval.to_csv(out / "selected_eval_curves.csv", index=False)
     selected_acq.to_csv(out / "selected_acquisition_times.csv", index=False)
     selected_summary = dict(selected_summary)
@@ -120,6 +122,7 @@ def main() -> None:
         "calibration_acquisition_times": str(out / "calibration_acquisition_times.csv"),
         "selected_eval_curves": str(out / "selected_eval_curves.csv"),
         "selected_acquisition_times": str(out / "selected_acquisition_times.csv"),
+        "sequence_difficulty_table": str(out / "sequence_difficulty_table.csv"),
     }
     (out / "summary.json").write_text(json.dumps({"config": vars(args) | {"output_dir": str(args.output_dir)}, "selected": selected_summary}, indent=2), encoding="utf-8")
     (out / "sequence_dsl_calibration_report.md").write_text(_report(cand_df, selected_summary), encoding="utf-8")
@@ -131,6 +134,7 @@ def main() -> None:
         "design_diagnostics.csv",
         "selected_eval_curves.csv",
         "selected_acquisition_times.csv",
+        "sequence_difficulty_table.csv",
         "summary.json",
     ]:
         print(f"  {out / name}")
@@ -189,6 +193,19 @@ def _candidate_summary(candidate_seed: int, family: SequenceDSLFamily, eval_df: 
     atomic_rate = float(atomic["acquired_at"].notna().mean()) if len(atomic) else 0.0
     mean_final_token = float(final["token_accuracy"].mean()) if len(final) else np.nan
     mean_final_exact = float(final["exact_match"].mean()) if len(final) else np.nan
+
+    structure = family.structure_table()[["task_name", "kind", "frequency", "reference_learnability", "formal_utility", "op"]]
+    acq_meta = acq_token.merge(structure, on=["task_name", "kind"], how="left", suffixes=("", "_meta"))
+    true_tasks = acq_meta[acq_meta["kind"].isin(["atomic", "composite"])]
+    atomic_tasks = acq_meta[acq_meta["kind"] == "atomic"]
+    freq_s_all = spearman(acq_meta["frequency"], acq_meta["acquired_at"])
+    learn_s_all = spearman(acq_meta["reference_learnability"], acq_meta["acquired_at"])
+    util_s_all = spearman(acq_meta["formal_utility"], acq_meta["acquired_at"])
+    freq_s_true = spearman(true_tasks["frequency"], true_tasks["acquired_at"])
+    learn_s_true = spearman(true_tasks["reference_learnability"], true_tasks["acquired_at"])
+    freq_s_atomic = spearman(atomic_tasks["frequency"], atomic_tasks["acquired_at"])
+    learn_s_atomic = spearman(atomic_tasks["reference_learnability"], atomic_tasks["acquired_at"])
+
     passed = bool(
         family.passed
         and token_rate >= args.target_min_acq
@@ -204,6 +221,15 @@ def _candidate_summary(candidate_seed: int, family: SequenceDSLFamily, eval_df: 
         "atomic_token_acquisition_rate": atomic_rate,
         "mean_final_token_accuracy": mean_final_token,
         "mean_final_exact_match": mean_final_exact,
+        "time_spearman_frequency_all": freq_s_all,
+        "time_spearman_learnability_all": learn_s_all,
+        "time_spearman_utility_all": util_s_all,
+        "time_spearman_frequency_true_tasks": freq_s_true,
+        "time_spearman_learnability_true_tasks": learn_s_true,
+        "time_spearman_frequency_atomic": freq_s_atomic,
+        "time_spearman_learnability_atomic": learn_s_atomic,
+        "expected_frequency_sign_true_tasks": bool(pd.notna(freq_s_true) and freq_s_true < 0),
+        "expected_learnability_sign_true_tasks": bool(pd.notna(learn_s_true) and learn_s_true > 0),
         "n_tasks": len(family.tasks),
         "n_composites": sum(t.kind == "composite" for t in family.tasks),
         "design_condition_number": float(family.diagnostics.get("design_condition_number", np.nan)),
@@ -211,11 +237,19 @@ def _candidate_summary(candidate_seed: int, family: SequenceDSLFamily, eval_df: 
 
 
 def _score_candidate(summary: dict, args: argparse.Namespace) -> float:
-    # Prefer nontrivial coverage around the middle of the target interval, then composite coverage.
+    # Prefer nontrivial coverage around the middle of the target interval, then composite coverage,
+    # then interpretable signs within true tasks. This is still a calibration heuristic;
+    # the real H1 verdict remains held out for the shared sweep.
     target_mid = 0.5 * (args.target_min_acq + args.target_max_acq)
     token_rate = float(summary["token_acquisition_rate"])
     comp_rate = float(summary["composite_token_acquisition_rate"])
     score = -abs(token_rate - target_mid) + 0.75 * comp_rate + 0.25 * float(summary["mean_final_token_accuracy"])
+    freq_true = summary.get("time_spearman_frequency_true_tasks", np.nan)
+    learn_true = summary.get("time_spearman_learnability_true_tasks", np.nan)
+    if pd.notna(freq_true):
+        score += 0.25 * max(0.0, -float(freq_true))
+    if pd.notna(learn_true):
+        score += 0.25 * max(0.0, float(learn_true))
     if summary["family_design_passed"]:
         score += 0.25
     if summary["passed"]:
@@ -244,6 +278,8 @@ def _report(cand_df: pd.DataFrame, selected: dict) -> str:
         f"- atomic_token_acquisition_rate: `{_fmt(selected['atomic_token_acquisition_rate'])}`",
         f"- mean_final_token_accuracy: `{_fmt(selected['mean_final_token_accuracy'])}`",
         f"- mean_final_exact_match: `{_fmt(selected['mean_final_exact_match'])}`",
+        f"- time_spearman_frequency_true_tasks: `{_fmt(selected.get('time_spearman_frequency_true_tasks', np.nan))}`",
+        f"- time_spearman_learnability_true_tasks: `{_fmt(selected.get('time_spearman_learnability_true_tasks', np.nan))}`",
         "",
         "## Candidate summary",
         "",

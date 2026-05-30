@@ -317,3 +317,36 @@ Key outputs:
 ### Implementation note
 
 True sequence composites are now actual compositions of their listed component operations. Shortcut controls still list a component but bypass it by returning an identity target, preserving the formal-dependency/no-reuse negative control.
+
+## v0.7 — Shared-sweep scaffold and B1 predictor diagnostics
+
+This version keeps B0/B2/B1 commands from v0.6, but improves B1 measurement so we can diagnose why structural ordering signs are or are not clean before running the full shared sweep.
+
+New/changed B1 outputs from `run_sequence_dsl_pilot`:
+
+- `config_table.csv` — one-row training/model config table.
+- `checkpoint_table.csv` — log-spaced checkpoint schedule with data-seen units and checkpoint fractions.
+- `final_metrics.csv` — final per-task metrics by seed.
+- `frequency_realization.csv` — intended frequency, realized sample fraction, target-token count, and effective loss weight.
+- `frequency_realization_summary.csv` — per-seed intended-vs-realized frequency diagnostics.
+- `sequence_difficulty_table.csv` — pre-training task descriptors such as operation type, composition depth, target length, output entropy, copy fraction, and random token baseline.
+- `generic_structure_table.csv` — backend-generic structure metadata.
+
+Changed B1 analysis outputs from `analyze_sequence_dsl_pilot`:
+
+- `sequence_stratified_ordering_summary.csv` — ordering signs for all tasks, true tasks, each kind, each operation, and target-length strata.
+- `frequency_realization_summary.csv` — regenerated/checked if `frequency_realization.csv` exists.
+
+Changed B1 calibration:
+
+- Candidate summaries now include frequency/learnability ordering signs on true tasks and atomics.
+- Candidate scoring still prioritizes acquisition coverage, but mildly prefers interpretable expected signs within true tasks.
+- The selected family now also writes `sequence_difficulty_table.csv`.
+
+Decision gate before full H1:
+
+- B1 token-acquisition rate remains nonzero and non-saturated.
+- Realized frequency closely tracks intended frequency.
+- Frequency effect is negative within at least atomics or same-operation strata.
+- Reference-learnability effect is positive within true-task strata.
+- Controls are diagnosed separately rather than pooled into the headline ordering.

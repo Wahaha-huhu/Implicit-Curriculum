@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 from ic_experiments.metrics import acquisition_times
+from ic_experiments.sequence_analysis import final_metrics, realization_summary, stratified_ordering_summary
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,6 +44,13 @@ def _load_structure(result_dir: Path) -> pd.DataFrame:
     df = pd.read_csv(path)
     if "task_name" not in df.columns and "structure_id" in df.columns:
         df["task_name"] = df["structure_id"]
+    diff_path = result_dir / "sequence_difficulty_table.csv"
+    if diff_path.exists():
+        diff = pd.read_csv(diff_path)
+        if "task_name" not in diff.columns and "structure_id" in diff.columns:
+            diff["task_name"] = diff["structure_id"]
+        add_cols = [c for c in diff.columns if c not in df.columns or c == "task_name"]
+        df = df.merge(diff[add_cols].drop_duplicates("task_name"), on="task_name", how="left")
     return df
 
 
@@ -51,7 +59,7 @@ def main() -> None:
     result_dir = args.result_dir
     eval_df = pd.read_csv(result_dir / "eval_curves.csv")
     structure = _load_structure(result_dir)
-    meta_cols = [c for c in ["task_name", "frequency", "reference_learnability", "formal_utility", "components", "control_type"] if c in structure.columns]
+    meta_cols = [c for c in ["task_name", "frequency", "reference_learnability", "formal_utility", "components", "control_type", "op", "operation_type", "target_length", "output_entropy", "random_baseline_token_accuracy", "copy_fraction", "composition_depth"] if c in structure.columns]
     meta = structure[meta_cols].drop_duplicates("task_name") if meta_cols else pd.DataFrame()
 
     acq_tables = []
@@ -101,6 +109,10 @@ def main() -> None:
     summary = pd.DataFrame(rows)
     summary.to_csv(result_dir / "sequence_ordering_summary.csv", index=False)
 
+    final_out = final_metrics(eval_df)
+    if not final_out.empty:
+        final_out.to_csv(result_dir / "final_metrics.csv", index=False)
+
     by_kind = final[final["condition"] == "baseline"].groupby("kind").agg(
         n=("task_name", "size"),
         mean_final_exact_match=("exact_match", "mean"),
@@ -109,13 +121,30 @@ def main() -> None:
     ).reset_index()
     by_kind.to_csv(result_dir / "sequence_final_by_kind.csv", index=False)
 
-    (result_dir / "sequence_dsl_analysis_report.md").write_text(_report(summary, by_kind), encoding="utf-8")
+    stratified_parts = []
+    for threshold in args.token_thresholds:
+        stratified_parts.append(stratified_ordering_summary(acq_all, final, structure, "token_accuracy", threshold))
+    for threshold in args.exact_thresholds:
+        stratified_parts.append(stratified_ordering_summary(acq_all, final, structure, "exact_match", threshold))
+    stratified = pd.concat([p for p in stratified_parts if not p.empty], ignore_index=True) if stratified_parts else pd.DataFrame()
+    stratified.to_csv(result_dir / "sequence_stratified_ordering_summary.csv", index=False)
+
+    freq_summary = pd.DataFrame()
+    freq_path = result_dir / "frequency_realization.csv"
+    if freq_path.exists():
+        realized = pd.read_csv(freq_path)
+        freq_summary = realization_summary(realized)
+        freq_summary.to_csv(result_dir / "frequency_realization_summary.csv", index=False)
+
+    (result_dir / "sequence_dsl_analysis_report.md").write_text(_report(summary, by_kind, stratified, freq_summary), encoding="utf-8")
     print("Saved sequence DSL analysis outputs:")
     for name in [
         "sequence_dsl_analysis_report.md",
         "sequence_acquisition_times_multi_metric.csv",
         "sequence_ordering_summary.csv",
         "sequence_final_by_kind.csv",
+        "sequence_stratified_ordering_summary.csv",
+        "frequency_realization_summary.csv",
         "sequence_auc.csv",
     ]:
         print(f"  {result_dir / name}")
@@ -127,7 +156,7 @@ def _fmt(x) -> str:
     return f"{float(x):.3f}"
 
 
-def _report(summary: pd.DataFrame, by_kind: pd.DataFrame) -> str:
+def _report(summary: pd.DataFrame, by_kind: pd.DataFrame, stratified: pd.DataFrame | None = None, freq_summary: pd.DataFrame | None = None) -> str:
     lines = [
         "# Sequence DSL analysis report",
         "",
@@ -149,11 +178,34 @@ def _report(summary: pd.DataFrame, by_kind: pd.DataFrame) -> str:
             f"- {row['kind']}: n={int(row['n'])}, exact={_fmt(row['mean_final_exact_match'])}, "
             f"token={_fmt(row['mean_final_token_accuracy'])}, loss={_fmt(row['mean_final_loss'])}"
         )
+    if freq_summary is not None and not freq_summary.empty:
+        lines += ["", "## Frequency realization", ""]
+        for row in freq_summary.to_dict(orient="records"):
+            lines.append(
+                f"- seed `{int(row['seed'])}`: Spearman(intended,realized)={_fmt(row['spearman_intended_realized'])}, "
+                f"MAE={_fmt(row['mae_frequency'])}, max_abs_error={_fmt(row['max_abs_frequency_error'])}"
+            )
+    if stratified is not None and not stratified.empty:
+        lines += ["", "## Stratified ordering highlights", ""]
+        # Show the most interpretable token-accuracy 0.7 strata first when available.
+        view = stratified.copy()
+        pref = view[(view["metric_family"] == "token_accuracy") & (np.isclose(view["threshold"], 0.70))]
+        if pref.empty:
+            pref = view.head(12)
+        else:
+            pref = pref.head(12)
+        for row in pref.to_dict(orient="records"):
+            lines.append(
+                f"- {row['stratum']}: n_tasks={int(row['n_tasks'])}, acq={_fmt(row['acquisition_rate'])}, "
+                f"time-Spearman(freq)={_fmt(row['time_spearman_frequency'])}, "
+                f"learn={_fmt(row['time_spearman_reference_learnability'])}, "
+                f"utility={_fmt(row['time_spearman_formal_utility'])}"
+            )
     lines += [
         "",
         "## Calibration decision rule",
         "",
-        "GREEN requires nonzero and non-saturated token-accuracy acquisition, improving exact match or loss, and at least moderate composite/control coverage. Exact-match 0.90 is intentionally not required at this stage.",
+        "GREEN requires nonzero and non-saturated token-accuracy acquisition, improving exact match or loss, at least moderate composite/control coverage, and interpretable within-stratum predictor signs. Exact-match 0.90 is intentionally not required at this stage.",
     ]
     return "\n".join(lines)
 
