@@ -164,3 +164,56 @@ Key analysis outputs:
 - `ordering_summary.csv`
 - `intervention_pair_tests.csv`
 - `component_control_diagnostics.csv`
+
+## v0.4 calibrated neural design workflow
+
+v0.4 adds a calibration gate. The old v0.3 `run_neural_design_gate` only checked whether structural properties were identifiable. The new `run_calibrated_neural_design` also runs short baseline neural training on multiple candidate families and selects one with usable acquisition coverage and multiple measurable composites for the focal component.
+
+Run calibration:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_calibrated_neural_design \
+  --output-dir results/calibrated_neural_design \
+  --candidate-seeds 0 1 2 3 4 \
+  --calibration-seeds 0 1 \
+  --n-atomic 12 \
+  --n-composite 10 \
+  --n-shortcut-controls 4 \
+  --n-surface-controls 4 \
+  --n-unrelated-controls 4 \
+  --n-bits 48 \
+  --max-data-seen 120000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --device cuda
+```
+
+Then use the selected family and chosen focal component/control set:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_h1_ordering_pilot \
+  --output-dir results/h1_calibrated_interventions \
+  --structure-table results/calibrated_neural_design/structure_table.csv \
+  --chosen-component-file results/calibrated_neural_design/chosen_component_and_controls.json \
+  --seeds 0 1 2 3 4 \
+  --conditions baseline upweight_component upweight_unrelated_matched upweight_fake_component upweight_surface_control corrupt_component corrupt_unrelated_matched delay_component delay_unrelated_matched \
+  --n-bits 48 \
+  --max-data-seen 120000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --grad-stats-every 20000 \
+  --device cuda
+```
+
+Analyze:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
+  --result-dir results/h1_calibrated_interventions
+```
+
+New analysis columns in `intervention_pair_tests.csv` include strict threshold-crossing deltas and right-censored deltas for non-acquired paired seeds.

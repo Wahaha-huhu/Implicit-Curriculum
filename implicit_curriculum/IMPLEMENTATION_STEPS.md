@@ -139,3 +139,64 @@ Run only after controlled signatures survive relevant regime shifts.
 Allowed claim:
 
 Observational consistency or inconsistency with the controlled account, not causality.
+
+## v0.4 — calibrated neural family gate
+
+v0.4 adds a calibration layer between design-identifiable generated families and GPU-heavy H1/H2/H3 runs.
+
+New commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_calibrated_neural_design \
+  --output-dir results/calibrated_neural_design \
+  --candidate-seeds 0 1 2 3 4 \
+  --calibration-seeds 0 1 \
+  --n-atomic 12 \
+  --n-composite 10 \
+  --n-shortcut-controls 4 \
+  --n-surface-controls 4 \
+  --n-unrelated-controls 4 \
+  --n-bits 48 \
+  --max-data-seen 120000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --device cuda
+```
+
+Key outputs:
+
+- `results/calibrated_neural_design/calibrated_neural_design_report.md`
+- `results/calibrated_neural_design/candidate_calibration_summary.csv`
+- `results/calibrated_neural_design/structure_table.csv`
+- `results/calibrated_neural_design/chosen_component_and_controls.json`
+- `results/calibrated_neural_design/calibration_acquisition_summary.csv`
+
+Use the calibrated family in the H1 pilot:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_h1_ordering_pilot \
+  --output-dir results/h1_calibrated_interventions \
+  --structure-table results/calibrated_neural_design/structure_table.csv \
+  --chosen-component-file results/calibrated_neural_design/chosen_component_and_controls.json \
+  --seeds 0 1 2 3 4 \
+  --conditions baseline upweight_component upweight_unrelated_matched upweight_fake_component upweight_surface_control corrupt_component corrupt_unrelated_matched delay_component delay_unrelated_matched \
+  --n-bits 48 \
+  --max-data-seen 120000 \
+  --checkpoint-every 2000 \
+  --batch-size 512 \
+  --hidden-dim 256 \
+  --depth 2 \
+  --grad-stats-every 20000 \
+  --device cuda
+```
+
+Then analyze:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_h1_pilot \
+  --result-dir results/h1_calibrated_interventions
+```
+
+v0.4 analysis reports both strict threshold-crossing contrasts and right-censored contrasts for non-acquired paired seeds.

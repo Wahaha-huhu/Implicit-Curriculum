@@ -62,10 +62,21 @@ def main() -> None:
 
 
 def _read_optional(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+    if not path.exists():
+        return pd.DataFrame()
+    try:
+        return pd.read_csv(path)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame()
 
 
 def _load_or_choose(result_dir: Path, tasks) -> dict:
+    chosen_path = result_dir / "chosen_component_and_controls.json"
+    if chosen_path.exists():
+        try:
+            return json.loads(chosen_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
     summary_path = result_dir / "summary.json"
     if summary_path.exists():
         try:
@@ -139,6 +150,15 @@ def ordering_summary(acq: pd.DataFrame, structure: pd.DataFrame) -> pd.DataFrame
 
 
 def intervention_pair_tests(acq: pd.DataFrame, eval_df: pd.DataFrame, composites: list[str]) -> pd.DataFrame:
+    """Paired intervention tests with both threshold and censored timing.
+
+    v0.3 reported NaN when either side of a paired contrast failed to cross the
+    threshold. v0.4 keeps the strict both-acquired estimate but also reports a
+    right-censored estimate using each condition/seed's final data_seen. This is
+    essential during calibration because hard tasks can still carry directional
+    information through censoring and final metrics.
+    """
+
     pairs = [
         ("upweight_component", "upweight_unrelated_matched", "earlier"),
         ("upweight_component", "upweight_fake_component", "earlier"),
@@ -146,30 +166,42 @@ def intervention_pair_tests(acq: pd.DataFrame, eval_df: pd.DataFrame, composites
         ("corrupt_component", "corrupt_unrelated_matched", "later"),
         ("delay_component", "delay_unrelated_matched", "later"),
     ]
-    final_idx = eval_df.groupby(["condition", "seed"]) ["data_seen"].transform("max") == eval_df["data_seen"]
+    final_idx = eval_df.groupby(["condition", "seed"])["data_seen"].transform("max") == eval_df["data_seen"]
     final_eval = eval_df.loc[final_idx].copy()
     rows = []
     for task in composites:
         for focal, matched, expected in pairs:
             if focal not in set(acq["condition"]) or matched not in set(acq["condition"]):
                 continue
-            for_metric = _paired_metric(acq, final_eval, task, focal, matched)
-            delta = for_metric["delta_acquired_at_focal_minus_matched"].dropna().to_numpy(dtype=float)
+            paired = _paired_metric(acq, final_eval, task, focal, matched)
+            strict_delta = paired.loc[paired["both_acquired"], "delta_acquired_at_focal_minus_matched"].to_numpy(dtype=float)
+            censored = paired.loc[paired["censored_informative"], "delta_censored_acquired_at_focal_minus_matched"].to_numpy(dtype=float)
             if expected == "earlier":
-                expected_flags = delta < 0
+                strict_flags = strict_delta < 0
+                censored_flags = censored < 0
             else:
-                expected_flags = delta > 0
+                strict_flags = strict_delta > 0
+                censored_flags = censored > 0
             rows.append(
                 {
                     "target_task": task,
                     "focal_condition": focal,
                     "matched_condition": matched,
                     "expected_focal_effect": expected,
-                    "n_paired_acq": int(len(delta)),
-                    "mean_delta_acquired_at_focal_minus_matched": float(np.mean(delta)) if len(delta) else float("nan"),
-                    "median_delta_acquired_at_focal_minus_matched": float(np.median(delta)) if len(delta) else float("nan"),
-                    "expected_direction_rate": float(np.mean(expected_flags)) if len(delta) else float("nan"),
-                    "mean_delta_final_metric_focal_minus_matched": float(for_metric["delta_final_metric_focal_minus_matched"].mean()),
+                    "n_paired_total": int(len(paired)),
+                    "n_both_acquired": int(paired["both_acquired"].sum()) if not paired.empty else 0,
+                    "n_focal_only_acquired": int(paired["focal_only_acquired"].sum()) if not paired.empty else 0,
+                    "n_matched_only_acquired": int(paired["matched_only_acquired"].sum()) if not paired.empty else 0,
+                    "n_neither_acquired": int(paired["neither_acquired"].sum()) if not paired.empty else 0,
+                    "n_censored_informative": int(paired["censored_informative"].sum()) if not paired.empty else 0,
+                    "mean_delta_acquired_at_focal_minus_matched": float(np.mean(strict_delta)) if len(strict_delta) else float("nan"),
+                    "median_delta_acquired_at_focal_minus_matched": float(np.median(strict_delta)) if len(strict_delta) else float("nan"),
+                    "expected_direction_rate": float(np.mean(strict_flags)) if len(strict_delta) else float("nan"),
+                    "mean_censored_delta_acquired_at_focal_minus_matched": float(np.mean(censored)) if len(censored) else float("nan"),
+                    "median_censored_delta_acquired_at_focal_minus_matched": float(np.median(censored)) if len(censored) else float("nan"),
+                    "expected_direction_rate_censored": float(np.mean(censored_flags)) if len(censored) else float("nan"),
+                    "mean_delta_final_metric_focal_minus_matched": float(paired["delta_final_metric_focal_minus_matched"].mean()) if not paired.empty else float("nan"),
+                    "median_delta_final_metric_focal_minus_matched": float(paired["delta_final_metric_focal_minus_matched"].median()) if not paired.empty else float("nan"),
                 }
             )
     return pd.DataFrame(rows)
@@ -178,11 +210,23 @@ def intervention_pair_tests(acq: pd.DataFrame, eval_df: pd.DataFrame, composites
 def _paired_metric(acq: pd.DataFrame, final_eval: pd.DataFrame, task: str, focal: str, matched: str) -> pd.DataFrame:
     a = acq[(acq["task_name"] == task) & (acq["condition"] == focal)][["seed", "acquired_at"]].rename(columns={"acquired_at": "focal_acq"})
     b = acq[(acq["task_name"] == task) & (acq["condition"] == matched)][["seed", "acquired_at"]].rename(columns={"acquired_at": "matched_acq"})
-    fa = final_eval[(final_eval["task_name"] == task) & (final_eval["condition"] == focal)][["seed", "balanced_accuracy"]].rename(columns={"balanced_accuracy": "focal_final"})
-    fb = final_eval[(final_eval["task_name"] == task) & (final_eval["condition"] == matched)][["seed", "balanced_accuracy"]].rename(columns={"balanced_accuracy": "matched_final"})
-    out = a.merge(b, on="seed", how="inner").merge(fa, on="seed", how="left").merge(fb, on="seed", how="left")
+    fa = final_eval[(final_eval["task_name"] == task) & (final_eval["condition"] == focal)][["seed", "balanced_accuracy", "data_seen"]].rename(columns={"balanced_accuracy": "focal_final", "data_seen": "focal_max_data_seen"})
+    fb = final_eval[(final_eval["task_name"] == task) & (final_eval["condition"] == matched)][["seed", "balanced_accuracy", "data_seen"]].rename(columns={"balanced_accuracy": "matched_final", "data_seen": "matched_max_data_seen"})
+    out = a.merge(b, on="seed", how="outer").merge(fa, on="seed", how="outer").merge(fb, on="seed", how="outer")
+    out["focal_acquired"] = out["focal_acq"].notna()
+    out["matched_acquired"] = out["matched_acq"].notna()
+    out["both_acquired"] = out["focal_acquired"] & out["matched_acquired"]
+    out["focal_only_acquired"] = out["focal_acquired"] & ~out["matched_acquired"]
+    out["matched_only_acquired"] = ~out["focal_acquired"] & out["matched_acquired"]
+    out["neither_acquired"] = ~out["focal_acquired"] & ~out["matched_acquired"]
+    out["focal_censored_time"] = out["focal_acq"].fillna(out["focal_max_data_seen"])
+    out["matched_censored_time"] = out["matched_acq"].fillna(out["matched_max_data_seen"])
     out["delta_acquired_at_focal_minus_matched"] = out["focal_acq"] - out["matched_acq"]
+    out["delta_censored_acquired_at_focal_minus_matched"] = out["focal_censored_time"] - out["matched_censored_time"]
     out["delta_final_metric_focal_minus_matched"] = out["focal_final"] - out["matched_final"]
+    # Both-nonacquired pairs are not timing-informative unless final metrics differ;
+    # final metric differences are reported separately.
+    out["censored_informative"] = ~out["neither_acquired"]
     return out
 
 
@@ -339,9 +383,16 @@ def render_report(acq_summary: pd.DataFrame, ordering: pd.DataFrame, interventio
         lines.append("No intervention contrasts were available. Run with intervention conditions to populate this section.")
     else:
         for row in intervention.to_dict(orient="records"):
+            strict = row.get('mean_delta_acquired_at_focal_minus_matched', float('nan'))
+            cens = row.get('mean_censored_delta_acquired_at_focal_minus_matched', float('nan'))
+            strict_rate = row.get('expected_direction_rate', float('nan'))
+            cens_rate = row.get('expected_direction_rate_censored', float('nan'))
             lines.append(
                 f"- {row['target_task']}: {row['focal_condition']} vs {row['matched_condition']} "
-                f"mean Δacq={row['mean_delta_acquired_at_focal_minus_matched']:.1f}, expected-direction-rate={row['expected_direction_rate']:.2f}"
+                f"strict Δacq={strict:.1f} (n={int(row.get('n_both_acquired', 0))}), "
+                f"censored Δacq={cens:.1f} (n={int(row.get('n_censored_informative', 0))}), "
+                f"strict-rate={strict_rate:.2f}, censored-rate={cens_rate:.2f}, "
+                f"Δfinal={row.get('mean_delta_final_metric_focal_minus_matched', float('nan')):.3f}"
             )
     lines.extend(["", "## Component-vs-control diagnostics", ""])
     if diag.empty:

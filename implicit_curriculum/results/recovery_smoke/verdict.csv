@@ -1,5 +1,0 @@
-true_mechanism,n_replicates,selected_frequency_only_rate,selected_learnability_only_rate,selected_freq_learn_rate,selected_three_factor_rate,mean_composite_residual,positive_residual_rate
-dependency_gated,3,0.0,1.0,0.0,0.0,1.0594786483597336,1.0
-frequency_only,3,1.0,0.0,0.0,0.0,0.03957497936868126,0.6666666666666666
-learnability_only,3,0.0,0.6666666666666666,0.3333333333333333,0.0,0.016601276516006624,0.6666666666666666
-three_factor,3,0.0,0.0,0.0,1.0,0.06897136584471664,0.6666666666666666

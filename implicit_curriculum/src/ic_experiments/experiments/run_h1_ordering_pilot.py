@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from ic_experiments.configs import InterventionConfig, TrainingConfig
@@ -17,7 +18,8 @@ from ic_experiments.train import run_single_training, save_pilot_outputs
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run a first H1-style ordering pilot on a generated neural task family.")
     p.add_argument("--output-dir", type=Path, default=Path("results/h1_ordering_pilot"))
-    p.add_argument("--structure-table", type=Path, default=None, help="Optional structure_table.csv from run_neural_design_gate.")
+    p.add_argument("--structure-table", type=Path, default=None, help="Optional structure_table.csv from run_neural_design_gate or run_calibrated_neural_design.")
+    p.add_argument("--chosen-component-file", type=Path, default=None, help="Optional chosen_component_and_controls.json from run_calibrated_neural_design.")
     p.add_argument("--family-seed", type=int, default=0)
     p.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     p.add_argument("--conditions", type=str, nargs="+", default=["baseline"])
@@ -86,7 +88,7 @@ def main() -> None:
         if not family.passed:
             raise SystemExit("Generated neural family did not pass design criteria; run run_neural_design_gate for diagnostics.")
 
-    chosen = choose_default_component_and_controls(tasks)
+    chosen = _load_chosen_component(args.chosen_component_file, args.structure_table, tasks)
     registry = generated_conditions(
         component=str(chosen["component"]),
         unrelated=str(chosen["unrelated_control"]),
@@ -142,6 +144,21 @@ def main() -> None:
         print(f"  {k}: {v}")
     print("Chosen component/control set:")
     print(chosen)
+
+
+def _load_chosen_component(path: Path | None, structure_table: Path | None, tasks) -> dict:
+    candidates = []
+    if path is not None:
+        candidates.append(path)
+    if structure_table is not None:
+        candidates.append(structure_table.parent / "chosen_component_and_controls.json")
+    for candidate in candidates:
+        if candidate.exists():
+            try:
+                return json.loads(candidate.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+    return choose_default_component_and_controls(tasks)
 
 
 if __name__ == "__main__":
