@@ -1,0 +1,11 @@
+condition,component_id,composite_id,mean_residual_log_time,positive_residual_rate,acquisition_rate,mean_observed_time,mean_predicted_time,composite_op,frequency,reference_learnability,formal_utility
+batch_small,A02_substitute,C06_reverse_then_substitute_02_00,1.8579469085236915,1.0,0.8,176691.2,26580.159152225162,reverse_then_substitute,0.0426733752056038,3.0,0.0
+batch_small,A00_copy,C06_reverse_then_substitute_02_00,1.8579469085236915,1.0,0.8,176691.2,26580.159152225162,reverse_then_substitute,0.0426733752056038,3.0,0.0
+wd_zero,A02_substitute,C06_reverse_then_substitute_02_00,1.7429717935259723,1.0,0.5,213734.4,36767.52657269417,reverse_then_substitute,0.0426733752056038,3.0,0.0
+wd_zero,A00_copy,C06_reverse_then_substitute_02_00,1.7429717935259723,1.0,0.5,213734.4,36767.52657269417,reverse_then_substitute,0.0426733752056038,3.0,0.0
+lr_high,A02_substitute,C06_reverse_then_substitute_02_00,1.7373362280766387,1.0,1.0,153292.8,25907.392013920584,reverse_then_substitute,0.0426733752056038,3.0,0.0
+lr_high,A00_copy,C06_reverse_then_substitute_02_00,1.7373362280766387,1.0,1.0,153292.8,25907.392013920584,reverse_then_substitute,0.0426733752056038,3.0,0.0
+base,A02_substitute,C06_reverse_then_substitute_02_00,1.7268617033730045,1.0,0.6,212044.8,37104.231360656,reverse_then_substitute,0.0426733752056038,3.0,0.0
+base,A00_copy,C06_reverse_then_substitute_02_00,1.7268617033730045,1.0,0.6,212044.8,37104.231360656,reverse_then_substitute,0.0426733752056038,3.0,0.0
+base,A04_reverse,C07_substitute_then_reverse_04_03,0.9522928421562803,1.0,1.0,64332.8,24782.233077644534,substitute_then_reverse,0.088356497064568,3.0,0.0
+base,A03_copy,C07_substitute_then_reverse_04_03,0.9522928421562803,1.0,1.0,64332.8,24782.233077644534,substitute_then_reverse,0.088356497064568,3.0,0.0

@@ -1,0 +1,2 @@
+run_id,code_version,git_sha,experiment,backend,output_path,status,thesis_use,created_at_utc
+h2_from_b1_h1_shared_sweep_v08,v0.9,8b87d4a5ec05d0b5477143f54f7e3ab32b34d89a,B1_H2_predictor_ladder_atomic_parallel_null,B1_sequence_dsl,results/b1_h1_shared_sweep_v08,analyzed,candidate,2026-05-30T21:28:43+00:00
