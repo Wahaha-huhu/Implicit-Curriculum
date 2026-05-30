@@ -1,0 +1,6 @@
+target_task,focal_condition,matched_condition,expected_focal_effect,n_paired_total,n_both_acquired,n_focal_only_acquired,n_matched_only_acquired,n_neither_acquired,n_censored_informative,mean_delta_acquired_at_focal_minus_matched,median_delta_acquired_at_focal_minus_matched,expected_direction_rate,mean_censored_delta_acquired_at_focal_minus_matched,median_censored_delta_acquired_at_focal_minus_matched,expected_direction_rate_censored,mean_delta_final_metric_focal_minus_matched,median_delta_final_metric_focal_minus_matched
+C05_and_07_05,upweight_component,upweight_unrelated_matched,earlier,5,4,1,0,0,5,-27904.0,-27904.0,1.0,-29491.2,-29696.0,1.0,0.0384977519512177,0.022390931844711193
+C05_and_07_05,upweight_component,upweight_fake_component,earlier,5,4,1,0,0,5,-24960.0,-23040.0,1.0,-27545.6,-26112.0,1.0,0.08189003467559816,0.09775018692016613
+C05_and_07_05,upweight_component,upweight_surface_control,earlier,5,2,3,0,0,5,-25856.0,-25856.0,1.0,-33177.6,-34304.0,1.0,0.051055860519409114,0.0571419298648832
+C05_and_07_05,corrupt_component,corrupt_unrelated_matched,later,5,0,0,5,0,5,,,,12902.4,12288.0,1.0,-0.18788714408874513,-0.19744455814361572
+C05_and_07_05,delay_component,delay_unrelated_matched,later,5,1,0,4,0,5,0.0,0.0,0.0,6041.6,4096.0,0.8,-0.031788033246994044,-0.03187251091003418

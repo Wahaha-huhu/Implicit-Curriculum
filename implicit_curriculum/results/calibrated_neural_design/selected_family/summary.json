@@ -1,0 +1,54 @@
+{
+  "config": {
+    "n_atomic": 12,
+    "n_composite": 10,
+    "n_shortcut_controls": 4,
+    "n_surface_controls": 4,
+    "n_unrelated_controls": 4,
+    "n_bits": 48,
+    "frequency_low": 0.01,
+    "frequency_high": 0.18,
+    "seed": 2,
+    "max_attempts": 10000,
+    "include_xor_composites": false,
+    "criteria": {
+      "max_vif": 5.0,
+      "max_abs_pearson": 0.65,
+      "max_abs_spearman": 0.7,
+      "max_condition_number": 50.0,
+      "min_rows": 34
+    }
+  },
+  "diagnostics": {
+    "n_rows": 34.0,
+    "design_condition_number": 1.384717567143058,
+    "vif_frequency": 1.1013511021932707,
+    "vif_reference_learnability": 1.0513692493785514,
+    "vif_formal_utility": 1.0852089457550247,
+    "pearson_frequency__reference_learnability": -0.19401448646683042,
+    "spearman_frequency__reference_learnability": -0.17307935502657695,
+    "binned_mi_frequency__reference_learnability": 0.24584741529714663,
+    "pearson_frequency__formal_utility": 0.2600971173857493,
+    "spearman_frequency__formal_utility": 0.2816185801424057,
+    "binned_mi_frequency__formal_utility": 0.18478069073610082,
+    "pearson_reference_learnability__formal_utility": -0.15273123362506363,
+    "spearman_reference_learnability__formal_utility": -0.1618201394526421,
+    "binned_mi_reference_learnability__formal_utility": 0.14352669359033435,
+    "n_tasks": 34.0,
+    "n_atomic": 12.0,
+    "n_composite": 10.0,
+    "n_controls": 12.0,
+    "frequency_sum": 1.0,
+    "utility_nonzero_rate": 0.2647058823529412,
+    "attempts_used": 1.0,
+    "passed": true
+  },
+  "attempts_used": 1,
+  "passed": true,
+  "paths": {
+    "structure_table": "results/calibrated_neural_design/selected_family/structure_table.csv",
+    "design_diagnostics": "results/calibrated_neural_design/selected_family/design_diagnostics.csv",
+    "summary": "results/calibrated_neural_design/selected_family/summary.json",
+    "report": "results/calibrated_neural_design/selected_family/neural_design_report.md"
+  }
+}
