@@ -223,3 +223,97 @@ This version starts the refactor from a Boolean-only sandbox toward the stronger
 - Shared-sweep directory layout for Exp 1/2/3.
 - Leading-indicator mediation analysis tables.
 - Model-state interventions for Exp 4.
+
+## v0.6 — Backend-specific calibration and analysis
+
+This version adds the first calibration layer for the stronger operational design.
+
+### New B2 sparse-parity commands
+
+Generate/train/analyze with B2-appropriate assumptions. B2 has no composites and no formal utility by default, so do not use component/control diagnostics for this backend.
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sparse_parity_pilot \
+  --output-dir results/sparse_parity_pilot_v06 \
+  --seeds 0 1 2 3 4 \
+  --n-bits 40 \
+  --n-tasks 24 \
+  --degrees 2 3 \
+  --max-data-seen 500000 \
+  --checkpoint-every 5000 \
+  --batch-size 1024 \
+  --hidden-dim 512 \
+  --depth 3 \
+  --device cuda
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_sparse_parity_pilot \
+  --result-dir results/sparse_parity_pilot_v06
+```
+
+Key outputs:
+
+- `sparse_parity_analysis_report.md`
+- `sparse_parity_ordering_summary.csv`
+- `sparse_parity_acquisition_times.csv`
+- `sparse_parity_degree_summary.csv`
+- `sparse_parity_auc.csv`
+
+### New B1 sequence-DSL calibration commands
+
+Calibrate several sequence-DSL families before running larger transformer pilots.
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sequence_dsl_calibration \
+  --output-dir results/sequence_dsl_calibration_v06 \
+  --candidate-seeds 0 1 2 3 4 \
+  --calibration-seeds 0 1 \
+  --vocab-content 32 \
+  --input-len 6 \
+  --max-data-seen 120000 \
+  --batch-size 256 \
+  --learning-rate 5e-4 \
+  --device cuda
+```
+
+Key outputs:
+
+- `sequence_dsl_calibration_report.md`
+- `candidate_calibration_summary.csv`
+- `structure_table.csv` for the selected family
+- `selected_eval_curves.csv`
+- `selected_acquisition_times.csv`
+
+Then run a larger pilot on the selected family:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_sequence_dsl_pilot \
+  --output-dir results/sequence_dsl_pilot_v06 \
+  --structure-table results/sequence_dsl_calibration_v06/structure_table.csv \
+  --seeds 0 1 2 3 4 \
+  --max-data-seen 200000 \
+  --batch-size 256 \
+  --n-checkpoints 80 \
+  --eval-examples-per-task 512 \
+  --d-model 128 \
+  --n-layers 2 \
+  --n-heads 4 \
+  --d-mlp 512 \
+  --vocab-content 32 \
+  --input-len 6 \
+  --device cuda
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_sequence_dsl_pilot \
+  --result-dir results/sequence_dsl_pilot_v06
+```
+
+Key outputs:
+
+- `sequence_dsl_analysis_report.md`
+- `sequence_ordering_summary.csv`
+- `sequence_acquisition_times_multi_metric.csv`
+- `sequence_final_by_kind.csv`
+- `sequence_auc.csv`
+
+### Implementation note
+
+True sequence composites are now actual compositions of their listed component operations. Shortcut controls still list a component but bypass it by returning an identity target, preserving the formal-dependency/no-reuse negative control.

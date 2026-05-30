@@ -281,3 +281,12 @@ PYTHONPATH=src python -m ic_experiments.experiments.run_sequence_dsl_pilot \
 ```
 
 The sequence DSL path is currently a smoke/pilot substrate, not the full Exp 1 shared sweep.
+
+## v0.6 backend-specific calibration
+
+v0.6 separates backend analyses:
+
+- **B2 sparse parity**: use `run_sparse_parity_pilot` and `analyze_sparse_parity_pilot`. This backend tests frequency/degree ordering only and intentionally has no component/control dependency logic.
+- **B1 sequence DSL**: use `run_sequence_dsl_calibration` before larger transformer pilots. Analyze with `analyze_sequence_dsl_pilot`, which reports token-accuracy, exact-match, AUC, and threshold sensitivity.
+
+Do not interpret B1 exact-match 0.90 as the only acquisition observable during calibration. Use token accuracy, exact match, loss/AUC, and right-censored acquisition together.

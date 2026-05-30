@@ -268,9 +268,31 @@ def load_sequence_family(path: str | Path, config: SequenceDSLConfig | None = No
     return SequenceDSLFamily(tasks=tasks, diagnostics=diag, passed=passes_design_criteria(diag, cfg.criteria), config=cfg)
 
 
-def target_for_task(task: SequenceTaskSpec, x: torch.Tensor, vocab_content: int, tasks_by_id: dict[str, SequenceTaskSpec]) -> torch.Tensor:
-    """Return target tokens for input content-token tensor x [batch, input_len]."""
+def target_for_task(
+    task: SequenceTaskSpec,
+    x: torch.Tensor,
+    vocab_content: int,
+    tasks_by_id: dict[str, SequenceTaskSpec],
+    _stack: tuple[str, ...] = (),
+) -> torch.Tensor:
+    """Return target tokens for input content-token tensor x [batch, input_len].
+
+    True composites are implemented as actual function composition over their
+    listed components, not merely as surface templates. This matters: formal
+    utility should correspond to a computation that could in principle reuse a
+    component representation. Shortcut controls still list a component but bypass
+    it by design.
+    """
+    if task.structure_id in _stack:
+        raise ValueError(f"Cycle detected in sequence task graph: {_stack + (task.structure_id,)}")
     op = task.op
+    if task.kind == "composite" and task.components:
+        # Apply listed components in order. The composite op string remains a
+        # descriptive family label; the actual dependency is the component chain.
+        y = x
+        for component_id in task.components:
+            y = target_for_task(tasks_by_id[component_id], y, vocab_content, tasks_by_id, _stack + (task.structure_id,))
+        return y
     if op == "copy" or op == "shortcut_identity":
         return x.clone()
     if op == "reverse":

@@ -8,3 +8,5 @@ __all__ = [
     "metrics",
     "train",
 ]
+
+__version__ = "0.6"

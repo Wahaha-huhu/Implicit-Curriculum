@@ -1,0 +1,8 @@
+from ic_experiments.experiments import analyze_sparse_parity_pilot, analyze_sequence_dsl_pilot
+from ic_experiments.experiments import run_sparse_parity_pilot, run_sequence_dsl_calibration
+
+assert callable(analyze_sparse_parity_pilot.parse_args)
+assert callable(analyze_sequence_dsl_pilot.parse_args)
+assert callable(run_sparse_parity_pilot.parse_args)
+assert callable(run_sequence_dsl_calibration.parse_args)
+print("backend analysis import test passed")

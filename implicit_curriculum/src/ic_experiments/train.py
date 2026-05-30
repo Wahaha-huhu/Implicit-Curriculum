@@ -121,16 +121,19 @@ def run_single_training(
     for _df in (grad_task_df, grad_cross_df):
         if not _df.empty and "data_seen" in _df.columns:
             _df["checkpoint_fraction"] = _df["data_seen"] / max(1, config.max_data_seen)
-    cka_df = representation_cka(
-        model=model,
-        tasks=tasks,
-        n_bits=config.n_bits,
-        examples=config.cka_examples,
-        data_seen=data_seen,
-        condition=intervention.name,
-        seed=config.seed,
-        device=device,
-    )
+    if config.cka_examples > 0:
+        cka_df = representation_cka(
+            model=model,
+            tasks=tasks,
+            n_bits=config.n_bits,
+            examples=config.cka_examples,
+            data_seen=data_seen,
+            condition=intervention.name,
+            seed=config.seed,
+            device=device,
+        )
+    else:
+        cka_df = pd.DataFrame()
     if not cka_df.empty and "data_seen" in cka_df.columns:
         cka_df["checkpoint_fraction"] = cka_df["data_seen"] / max(1, config.max_data_seen)
 
