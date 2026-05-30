@@ -1,0 +1,118 @@
+{
+  "backend": "B1_sequence_dsl",
+  "version": "v0.8",
+  "purpose": "B1 H1 shared sweep: ordering and sign-stability across configs/seeds.",
+  "structure_table": "results/sequence_dsl_calibration_v07/structure_table.csv",
+  "configs": [
+    "base",
+    "lr_low",
+    "lr_high",
+    "wd_zero",
+    "batch_small",
+    "batch_large"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "base_args": {
+    "output_dir": "results/b1_h1_shared_sweep_v08",
+    "structure_table": "results/sequence_dsl_calibration_v07/structure_table.csv",
+    "configs": [
+      "base",
+      "lr_low",
+      "lr_high",
+      "wd_zero",
+      "batch_small",
+      "batch_large"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "max_data_seen": 250000,
+    "batch_size": 256,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.1,
+    "warmup_frac": 0.05,
+    "n_checkpoints": 100,
+    "eval_examples_per_task": 512,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "d_mlp": 512,
+    "dropout": 0.0,
+    "vocab_content": 32,
+    "input_len": 6,
+    "acquisition_threshold": 0.7,
+    "acquisition_patience": 2,
+    "device": "cuda",
+    "skip_existing": false
+  },
+  "family": {
+    "backend": "B1_sequence_dsl",
+    "config": {
+      "vocab_content": 32,
+      "input_len": 6,
+      "n_atomic": 8,
+      "n_composite": 6,
+      "n_shortcut_controls": 2,
+      "n_surface_controls": 2,
+      "n_unrelated_controls": 2,
+      "frequency_mode": "zipf",
+      "zipf_alpha": 1.05,
+      "seed": 0,
+      "criteria": {
+        "max_vif": 5.0,
+        "max_abs_pearson": 0.75,
+        "max_abs_spearman": 0.8,
+        "max_condition_number": 50.0,
+        "min_rows": 12
+      },
+      "vocab_size": 36
+    },
+    "diagnostics": {
+      "n_rows": 25.0,
+      "design_condition_number": 1.808704480629983,
+      "vif_frequency": 1.2690946801517184,
+      "vif_reference_learnability": 1.1304660337241732,
+      "vif_formal_utility": 1.3786810058067833,
+      "pearson_frequency__reference_learnability": -0.19248421331166166,
+      "spearman_frequency__reference_learnability": -0.04180779152930169,
+      "binned_mi_frequency__reference_learnability": 0.22531469917458918,
+      "pearson_frequency__formal_utility": 0.4587131284909238,
+      "spearman_frequency__formal_utility": 0.014568257198907388,
+      "binned_mi_frequency__formal_utility": 0.07803764250159059,
+      "pearson_reference_learnability__formal_utility": -0.33703344445393946,
+      "spearman_reference_learnability__formal_utility": -0.3629650584115901,
+      "binned_mi_reference_learnability__formal_utility": 0.1099045471796049
+    },
+    "passed": true
+  },
+  "paths": {
+    "structure_table": "results/b1_h1_shared_sweep_v08/structure_table.csv",
+    "config_table": "results/b1_h1_shared_sweep_v08/config_table.csv",
+    "checkpoint_table": "results/b1_h1_shared_sweep_v08/checkpoint_table.csv",
+    "eval_curves": "results/b1_h1_shared_sweep_v08/eval_curves.csv",
+    "acquisition_times": "results/b1_h1_shared_sweep_v08/acquisition_times.csv",
+    "final_metrics": "results/b1_h1_shared_sweep_v08/final_metrics.csv",
+    "frequency_realization": "results/b1_h1_shared_sweep_v08/frequency_realization.csv",
+    "sequence_difficulty_table": "results/b1_h1_shared_sweep_v08/sequence_difficulty_table.csv"
+  }
+}
