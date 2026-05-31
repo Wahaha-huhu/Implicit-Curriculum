@@ -1,0 +1,53 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_threshold_sensitivity.py",
+    "--result-dir",
+    "results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong",
+    "--metric-family",
+    "token_accuracy",
+    "--thresholds",
+    "0.3",
+    "0.4",
+    "0.5",
+    "0.6",
+    "0.7",
+    "--code-version",
+    "v2.2",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v2.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_threshold_sensitivity.py --result-dir results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong --metric-family token_accuracy --thresholds 0.3 0.4 0.5 0.6 0.7 --code-version v2.2 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T19:23:07+00:00",
+  "experiment": "B1_H3_threshold_sensitivity_analysis",
+  "git_sha": "da45f9c233734ca2eb5df20a86933a17ad783504",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong/\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h3_interventions.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h3_threshold_sensitivity.cpython-311.pyc",
+  "input_paths": {
+    "result_dir": "results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong",
+  "pair": {
+    "component": "A01_reverse",
+    "composite": "C06_reverse_then_substitute_01_05",
+    "different_operation_control": "U00_unrelated_substitute",
+    "fake_component_control": "K01_shortcut_for_A03_copy",
+    "same_operation_control": "A07_reverse",
+    "surface_control": "S00_surface_rotate",
+    "unrelated_control": "A07_reverse"
+  },
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h3_threshold_sensitivity_A01_reverse_to_C06_reverse_then_substitute_01_05",
+  "thesis_use": "diagnostic",
+  "thresholds": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7
+  ]
+}
