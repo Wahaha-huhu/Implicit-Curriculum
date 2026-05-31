@@ -1,0 +1,44 @@
+{
+  "backend": "B1_sequence_dsl",
+  "version": "v1.2",
+  "purpose": "B1 H3 pair-specific intervention training with operation-family controls.",
+  "pair": {
+    "component": "A05_substitute",
+    "composite": "C06_reverse_then_substitute_01_05",
+    "unrelated_control": "U01_unrelated_substitute",
+    "fake_component_control": "K02_shortcut_for_A00_copy",
+    "surface_control": "S01_surface_rotate",
+    "same_operation_control": "U01_unrelated_substitute",
+    "different_operation_control": "A03_copy"
+  },
+  "conditions": [
+    "baseline",
+    "pretrain_component",
+    "pretrain_same_operation_unrelated",
+    "pretrain_different_operation_matched",
+    "corrupt_component_strong",
+    "corrupt_same_operation_unrelated_strong",
+    "corrupt_different_operation_matched_strong",
+    "delay_component_strong",
+    "delay_same_operation_unrelated_strong",
+    "delay_different_operation_matched_strong"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "paths": {
+    "eval_curves": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong/eval_curves.csv",
+    "acquisition_times": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong/acquisition_times.csv",
+    "final_metrics": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong/final_metrics.csv",
+    "pair_config": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong/h3_pair_config.csv"
+  }
+}

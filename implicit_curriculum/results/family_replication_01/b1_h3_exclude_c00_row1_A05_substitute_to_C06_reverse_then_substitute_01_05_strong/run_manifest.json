@@ -1,0 +1,43 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py",
+    "--result-dir",
+    "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong",
+    "--metric-family",
+    "token_accuracy",
+    "--threshold",
+    "0.7",
+    "--code-version",
+    "v2.0",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v2.0",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py --result-dir results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong --metric-family token_accuracy --threshold 0.7 --code-version v2.0 --archive-root results/archive --thesis-use candidate",
+  "created_at_utc": "2026-05-31T18:23:40+00:00",
+  "experiment": "B1_H3_pair_specific_intervention_analysis",
+  "git_sha": "890be9aba3d34bb6a7f45034e705d82cddb34661",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong/",
+  "input_paths": {
+    "result_dir": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong",
+  "pair": {
+    "component": "A05_substitute",
+    "composite": "C06_reverse_then_substitute_01_05",
+    "different_operation_control": "A03_copy",
+    "fake_component_control": "K02_shortcut_for_A00_copy",
+    "same_operation_control": "U01_unrelated_substitute",
+    "surface_control": "S01_surface_rotate",
+    "unrelated_control": "U01_unrelated_substitute"
+  },
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h3_analysis_A05_substitute_to_C06_reverse_then_substitute_01_05",
+  "thesis_use": "candidate",
+  "threshold": 0.7
+}
