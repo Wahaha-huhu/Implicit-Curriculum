@@ -412,3 +412,40 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_b1_comprehensive_experi
 ```
 
 The current thesis-safe conclusion is scoped: B1 H1/H2 are promising controlled-pilot results; H3 provides pair-specific evidence for `A02_substitute → C06`, but not a universal dependency mechanism.
+
+## v1.5: targeted H3 follow-up planning
+
+v1.5 extends the H3 operation-family planner so follow-up experiments can target secondary composites or exclude already-tested composites without editing CSVs by hand.
+
+New planner options:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_operation_family_plan \
+  --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --pair-selection results/b1_h1_shared_sweep_v08/h2_pair_selection.csv \
+  --output-dir results/b1_h3_secondary_plan_v15 \
+  --exclude-composites C06_reverse_then_substitute_02_00 \
+  --top-composites 1 \
+  --components-per-composite 2 \
+  --write-run-script \
+  --condition-set strong \
+  --run-output-prefix results/b1_h3_secondary_v15 \
+  --code-version v1.5 \
+  --thesis-use candidate
+```
+
+This writes:
+
+```text
+h3_operation_family_plan.csv
+h3_operation_family_plan_report.md
+recommended_h3_commands.sh
+```
+
+Run the generated script to execute and analyze the selected secondary H3 rows:
+
+```bash
+bash results/b1_h3_secondary_plan_v15/recommended_h3_commands.sh
+```
+
+Use this for the next comprehensive test: whether the pair-specific `A02_substitute -> C06` causal signal generalizes to another delayed composite, rather than only one C06 component.

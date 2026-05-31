@@ -516,3 +516,46 @@ Main outputs:
 - `results/comprehensive_experiment_plan_v14/recommended_commands.sh`
 
 Current claim boundary: H1/H2 are strong controlled-pilot results; H3 is pair-specific positive for `A02_substitute → C06`, mixed for `A00_copy → C06`, and should be replicated before broad dependency claims.
+
+## v1.5 — Targeted H3 follow-up planning
+
+Status: implemented.
+
+Purpose: after the strong 10-seed row-0 result, the next evidence need is replication/generalization. v1.5 extends the H3 operation-family planner so we can target secondary composites, exclude already-tested composites, and generate ready-to-run strong-intervention commands.
+
+New planner features:
+
+- `--include-composites`: explicitly target one or more composites.
+- `--exclude-composites`: exclude already-tested composites such as `C06_reverse_then_substitute_02_00`.
+- `--min-positive-rate` and `--min-residual`: filter H2-selected pairs.
+- `--write-run-script`: emit `recommended_h3_commands.sh`.
+- `--condition-set {standard,strong}`: choose standard upweight/delay/corrupt or strong pretrain/corrupt/delay interventions.
+
+Recommended next command:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_operation_family_plan \
+  --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --pair-selection results/b1_h1_shared_sweep_v08/h2_pair_selection.csv \
+  --output-dir results/b1_h3_secondary_plan_v15 \
+  --exclude-composites C06_reverse_then_substitute_02_00 \
+  --top-composites 1 \
+  --components-per-composite 2 \
+  --write-run-script \
+  --condition-set strong \
+  --run-output-prefix results/b1_h3_secondary_v15 \
+  --code-version v1.5 \
+  --thesis-use candidate
+```
+
+Then run:
+
+```bash
+bash results/b1_h3_secondary_plan_v15/recommended_h3_commands.sh
+```
+
+Decision rule:
+
+- If a secondary composite shows exact-component effects under pretraining and strong corruption, the H3 result becomes a replicated controlled phenomenon.
+- If only C06/A02 works, the thesis claim remains localized/pair-specific.
+- If the secondary composite is negative, use it as evidence that H2 residuals are candidate selectors, not sufficient evidence of dependency.

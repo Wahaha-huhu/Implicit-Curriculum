@@ -68,3 +68,7 @@ The next experiments should widen the evidence base:
 2. replicate A02→C06 on another B1 family;
 3. add gradient/representation/probe mediators for A02→C06;
 4. improve B2 sparse-parity acquisition coverage for a cleaner baseline.
+
+## v1.5 planning update
+
+The strong 10-seed `A02_substitute -> C06_reverse_then_substitute_02_00` result is the first candidate-positive H3 result, but the hypothesis remains scoped. The next decisive question is whether a second H2-selected composite also shows exact-component sensitivity under strong interventions. v1.5 therefore adds targeted planning for secondary composites while preserving the claim boundary: H2 residuals select candidates; H3 interventions determine whether the candidate is a dependency site.
