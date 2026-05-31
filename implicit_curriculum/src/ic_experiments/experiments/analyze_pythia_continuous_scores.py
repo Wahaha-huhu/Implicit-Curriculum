@@ -10,7 +10,7 @@ import pandas as pd
 from ic_experiments.run_management import append_registry, write_manifest
 
 
-FEATURES = ["frequency_proxy", "reference_learnability", "formal_utility", "composition_depth"]
+FEATURES = ["frequency_proxy", "reference_learnability", "formal_utility", "composition_depth", "answer_entropy_proxy"]
 
 
 def _spearman(x: pd.Series, y: pd.Series) -> float:

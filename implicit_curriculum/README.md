@@ -669,3 +669,34 @@ pythia_continuous_component_coupling.csv
 ```
 
 These outputs are observational calibration only. They can identify slice/checkpoint regimes where Pythia shows subthreshold movement, but they do not establish causal dependency.
+
+## v2.7 Pythia H2-ready observational suite
+
+v2.7 adds a larger Pythia observational slice suite and H2-readiness diagnostics. This is an observational bridge only: it can test whether checkpointed LMs show H1/H2-like signatures, but it cannot support causal dependency claims.
+
+Commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_h2_ready_slice_suite \
+  --output-dir results/pythia_h2_ready_slice_suite_v27 \
+  --n-per-slice 64 \
+  --code-version v2.7
+
+PYTHONPATH=src python -m ic_experiments.experiments.run_pythia_observational_pilot \
+  --slice-table results/pythia_h2_ready_slice_suite_v27/pythia_slice_table.csv \
+  --examples results/pythia_h2_ready_slice_suite_v27/pythia_slice_examples.jsonl \
+  --output-dir results/pythia_h2_ready_observational_pilot_v27 \
+  --model-name EleutherAI/pythia-70m \
+  --revisions step0 step1000 step10000 step143000 \
+  --max-examples-per-slice 64 \
+  --device cuda \
+  --code-version v2.7
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_h2_readiness \
+  --result-dir results/pythia_h2_ready_observational_pilot_v27 \
+  --code-version v2.7
+
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_continuous_scores \
+  --result-dir results/pythia_h2_ready_observational_pilot_v27 \
+  --code-version v2.7
+```

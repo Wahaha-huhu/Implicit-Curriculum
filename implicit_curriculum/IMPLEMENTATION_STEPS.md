@@ -870,3 +870,14 @@ pythia_continuous_component_coupling.csv
 ```
 
 For future Pythia runs, rerun `run_pythia_observational_pilot` with v2.6 to record correct-option margin, rank, and reciprocal rank. Existing outputs remain compatible but will only expose metrics already present.
+
+## v2.7 — Pythia H2-ready observational suite
+
+Added:
+
+- `make_pythia_h2_ready_slice_suite`
+- `analyze_pythia_h2_readiness`
+- expanded Pythia slice metadata with `answer_entropy_proxy`
+- `thesis_evidence/PYTHIA_H2_READY_SLICE_PLAN.md`
+
+Purpose: expand the Pythia bridge from calibration-only to an H2-ready observational suite, if the larger slice set produces enough non-flat primitive and composite signals. This remains observational and cannot establish causal dependency.
