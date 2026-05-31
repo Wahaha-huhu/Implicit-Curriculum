@@ -1,0 +1,5 @@
+claim,status,basis
+H3 residuals imply universal exact-component dependency,not_supported,"Only A02→C06 is positive; other tested components are weak, negative, or operation-family-level."
+H3 residuals identify useful candidate intervention sites,supported_pilot,"H2-selected C06 produced a localized positive exact-component result; C07 produced informative boundary results."
+Exact-component dependency is heterogeneous across components/composites,supported_controlled_pilot,"A02→C06 positive; A00→C06 weak; A04→C07 operation-family; A03→C07 negative."
+Controlled B1 evidence generalizes causally to real LLMs,not_tested,"No real LLM interventions have been run; any LLM evidence would be observational only."

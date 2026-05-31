@@ -449,3 +449,22 @@ bash results/b1_h3_secondary_plan_v15/recommended_h3_commands.sh
 ```
 
 Use this for the next comprehensive test: whether the pair-specific `A02_substitute -> C06` causal signal generalizes to another delayed composite, rather than only one C06 component.
+
+### v1.6 H3 evidence synthesis
+
+Use `analyze_b1_h3_evidence_matrix` to combine multiple H3 pair-specific intervention runs into thesis-ready evidence tables. This is now the preferred summary layer before updating claims.
+
+Example:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_evidence_matrix \
+  --row-dirs \
+    results/b1_h3_row0_strong_v12 \
+    results/b1_h3_opfamily_row1_v11 \
+    results/b1_h3_secondary_v15_row0_A04_reverse_to_C07_substitute_then_reverse_04_03_strong \
+    results/b1_h3_secondary_v15_row1_A03_copy_to_C07_substitute_then_reverse_04_03_strong \
+  --output-dir results/b1_h3_evidence_matrix_v16 \
+  --code-version v1.6 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```

@@ -559,3 +559,35 @@ Decision rule:
 - If a secondary composite shows exact-component effects under pretraining and strong corruption, the H3 result becomes a replicated controlled phenomenon.
 - If only C06/A02 works, the thesis claim remains localized/pair-specific.
 - If the secondary composite is negative, use it as evidence that H2 residuals are candidate selectors, not sufficient evidence of dependency.
+
+## v1.6 — Comprehensive H3 evidence synthesis
+
+Added a synthesis layer for all current B1 H3 pair-specific intervention results.
+
+New command:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_evidence_matrix \
+  --row-dirs <h3_result_dir_1> <h3_result_dir_2> ... \
+  --output-dir results/b1_h3_evidence_matrix_v16 \
+  --code-version v1.6 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Expected outputs:
+
+- `H3_SYNTHESIS.md`
+- `h3_pair_evidence_matrix.csv`
+- `h3_all_intervention_contrasts.csv`
+- `h3_composite_level_summary.csv`
+- `h3_claim_boundary_table.csv`
+- `run_manifest.json`
+
+The durable thesis archive now includes:
+
+- `thesis_evidence/H3_SYNTHESIS.md`
+- `thesis_evidence/tables/h3_pair_evidence_matrix.csv`
+- `thesis_evidence/tables/h3_claim_boundary_table.csv`
+
+Current interpretation: H3 evidence supports heterogeneous causal structure. `A02_substitute → C06` is positive pair-specific evidence; `A00_copy → C06` is weak/mixed; C07 pairs support operation-family/negative boundary evidence rather than exact-component dependency.
