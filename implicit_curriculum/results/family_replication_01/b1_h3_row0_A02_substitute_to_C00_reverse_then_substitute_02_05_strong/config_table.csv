@@ -1,0 +1,11 @@
+condition,backend,max_data_seen,batch_size,learning_rate,weight_decay,n_parameters,component,composite,same_operation_control,different_operation_control,upweight_factor,delay_fraction,corrupt_prob,strong_corrupt_prob,strong_delay_fraction,pretrain_data_seen
+baseline,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+pretrain_component,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+pretrain_same_operation_unrelated,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+pretrain_different_operation_matched,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+corrupt_component_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+corrupt_same_operation_unrelated_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+corrupt_different_operation_matched_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+delay_component_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+delay_same_operation_unrelated_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
+delay_different_operation_matched_strong,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A02_substitute,C00_reverse_then_substitute_02_05,U01_unrelated_substitute,A03_copy,2.0,0.35,0.25,0.5,0.6,50000
