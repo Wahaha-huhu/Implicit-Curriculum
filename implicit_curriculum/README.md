@@ -726,3 +726,17 @@ Expected outputs:
 - `thesis_evidence/first_stage_summary/first_stage_figure_table_plan.csv`
 
 This package should be treated as the first stable thesis-writing checkpoint. It supports controlled-methodology and localized-dependency claims, not universal causal claims about LLM pretraining.
+
+## v2.9: Pythia residual refinement
+
+v2.9 adds a refinement layer for the Pythia observational bridge. After running `analyze_pythia_continuous_scores`, use:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_residual_refinement \
+  --result-dir results/pythia_h2_ready_observational_pilot_v27 \
+  --code-version v2.9 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+This writes metric-agreement and composite-family summaries. The output remains observational only and cannot establish causal dependency.

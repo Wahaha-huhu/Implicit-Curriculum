@@ -912,3 +912,35 @@ Next possible stages:
 2. strengthen B2 sparse-parity frequency baseline;
 3. run Pythia v2.7 suite on a larger model or more checkpoints;
 4. generate a third B1 family with H3-readiness built into calibration.
+
+## v2.9 — Pythia residual refinement
+
+Purpose: decide whether the Pythia H2-style residuals from v2.7 are stable across metrics and composite families.
+
+Run after continuous-score analysis:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_residual_refinement \
+  --result-dir results/pythia_h2_ready_observational_pilot_v27 \
+  --code-version v2.9 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+Send back:
+
+```text
+pythia_residual_refinement_report.md
+pythia_residual_agreement_by_composite.csv
+pythia_residual_family_summary.csv
+pythia_component_coupling_agreement.csv
+pythia_residual_metric_matrix.csv
+```
+
+Interpretation:
+
+- GREEN: several composites show residual agreement across metrics and component coupling supports the same direction.
+- YELLOW: residuals exist but are metric-dependent.
+- RED: residuals are degenerate or dominated by controls.
+
+Claim boundary: observational bridge only; no causal dependency claim.
