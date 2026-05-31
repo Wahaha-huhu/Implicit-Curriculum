@@ -544,3 +544,21 @@ PYTHONPATH=src python -m ic_experiments.experiments.audit_b1_learnability_proxy 
 ```
 
 These commands diagnose whether an H3 candidate is truly negative, too hard at the default acquisition threshold, or a better candidate for final/AUC-based analysis.
+
+### v2.2 readiness-aware H3 planning
+
+v2.2 adds a readiness-aware H3 planner so the largest H2 residuals are not blindly used for intervention when they are too hard to acquire. The key command is:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_readiness_aware_plan --help
+```
+
+It consumes `h3_ready_pair_selection.csv` from `select_b1_h3_ready_candidates` and writes an H3 plan compatible with the existing `run_b1_h3_interventions` runner.
+
+v2.2 also adds:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.summarize_b1_family_diagnostics --help
+```
+
+This writes a family-level synthesis stating whether a B1 family supports H1/H2 regime claims, H3 replication claims, or only diagnostic/boundary claims.

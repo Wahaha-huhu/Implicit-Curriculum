@@ -666,3 +666,73 @@ Family 2 exposed a methodological failure mode: the largest H2 residuals can sel
 - `audit_b1_learnability_proxy`: checks whether `reference_learnability` behaves like difficulty or is confounded/reversed in a given B1 family.
 
 Use these before spending more GPU time on family-2 H3 interventions.
+
+## v2.2 — Readiness-aware H3 planning and family diagnostic synthesis
+
+v2.2 adds two utilities after the family-2 H3 failure mode exposed by v2.1:
+
+1. `make_b1_h3_readiness_aware_plan`
+   - consumes `h3_ready_pair_selection.csv` from the readiness selector;
+   - filters to H3-ready pairs by default;
+   - writes a normal `h3_operation_family_plan.csv` so existing H3 runners can be used;
+   - optionally writes `recommended_h3_commands.sh`.
+
+2. `summarize_b1_family_diagnostics`
+   - combines H1, H2, readiness, threshold-sensitivity, and learnability-audit outputs;
+   - writes a family-level claim-boundary report;
+   - helps decide whether a family supports H3 replication or only H1/H2 regime contrast.
+
+Recommended family-2 flow:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.select_b1_h3_ready_candidates \
+  --h1-result-dir results/family_replication_01/b1_h1_shared_sweep \
+  --pair-selection results/family_replication_01/b1_h1_shared_sweep/h2_pair_selection.csv \
+  --output-dir results/family_replication_01/h3_readiness_v21 \
+  --metric-family token_accuracy \
+  --thresholds 0.3 0.4 0.5 0.6 0.7 \
+  --target-threshold 0.5 \
+  --min-final 0.15 \
+  --max-final 0.90 \
+  --min-acq-rate 0.05 \
+  --min-residual 0.0 \
+  --code-version v2.2 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+If this finds ready candidates:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_readiness_aware_plan \
+  --structure-table results/family_replication_01/b1_h1_shared_sweep/structure_table.csv \
+  --ready-pair-selection results/family_replication_01/h3_readiness_v21/h3_ready_pair_selection.csv \
+  --output-dir results/family_replication_01/b1_h3_readiness_aware_plan_v22 \
+  --ready-only \
+  --allow-not-ready \
+  --top-composites 1 \
+  --components-per-composite 2 \
+  --write-run-script \
+  --condition-set strong \
+  --run-output-prefix results/family_replication_01/b1_h3_ready_v22 \
+  --code-version v2.2 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Then inspect the plan before running `recommended_h3_commands.sh`.
+
+To summarize a family after diagnostics:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.summarize_b1_family_diagnostics \
+  --family-id family_replication_01 \
+  --h1-dir results/family_replication_01/b1_h1_shared_sweep \
+  --h2-dir results/family_replication_01/b1_h1_shared_sweep \
+  --readiness-dir results/family_replication_01/h3_readiness_v21 \
+  --threshold-sensitivity-dir results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong \
+  --output-dir results/family_replication_01/family_diagnostic_synthesis_v22 \
+  --code-version v2.2 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
