@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_observational_slice_suite.py",
+    "--output-dir",
+    "results/pythia_slice_suite_v24",
+    "--n-per-slice",
+    "64",
+    "--code-version",
+    "v2.4"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v2.4",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_observational_slice_suite.py --output-dir results/pythia_slice_suite_v24 --n-per-slice 64 --code-version v2.4",
+  "created_at_utc": "2026-05-31T19:40:23+00:00",
+  "experiment": "Pythia_observational_slice_suite",
+  "git_sha": "5d8c455197c36a24a9d1fec2d1879c7167b8a546",
+  "git_status_short": "?? results/pythia_slice_suite_v24/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_pythia_observational_slice_suite.cpython-311.pyc",
+  "input_paths": {},
+  "n_examples": 768,
+  "n_slices": 12,
+  "output_dir": "results/pythia_slice_suite_v24",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia_slice_suite_v24",
+  "thesis_use": "diagnostic"
+}

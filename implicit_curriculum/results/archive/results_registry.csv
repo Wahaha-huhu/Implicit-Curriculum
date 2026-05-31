@@ -1,3 +1,6 @@
 run_id,code_version,git_sha,experiment,backend,output_path,status,thesis_use,created_at_utc
 family_replication_01_replication_plan,v2.0,unknown,B1_second_family_replication_plan,B1_sequence_dsl,/mnt/data/b1_replication_plan_smoke_v20,planned,candidate,2026-05-31T16:00:03+00:00
 pythia_slice_suite_smoke,v2.4,,Pythia_observational_slice_suite,Pythia_observational,/mnt/data/work_v24/results/pythia_slice_suite_smoke,created,diagnostic,2026-05-31T19:36:22+00:00
+pythia_slice_suite_v24,v2.4,,Pythia_observational_slice_suite,Pythia_observational,results/pythia_slice_suite_v24,created,diagnostic,2026-05-31T19:40:23+00:00
+pythia_observational_pilot_v24,v2.4,,Pythia_observational_pilot,Pythia_observational,results/pythia_observational_pilot_v24,created,diagnostic,2026-05-31T19:47:20+00:00
+pythia_observational_pilot_v24,v2.4,,Pythia_observational_pilot_analysis,Pythia_observational,results/pythia_observational_pilot_v24,analyzed,diagnostic,2026-05-31T19:48:25+00:00

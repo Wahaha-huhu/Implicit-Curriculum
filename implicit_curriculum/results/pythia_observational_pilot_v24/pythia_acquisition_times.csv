@@ -1,0 +1,13 @@
+model_name,slice_id,acquired,acquired_at_index,acquired_at_data_seen_proxy,final_metric,auc_metric,kind,family,operation_type,composition_depth,frequency_proxy,reference_learnability,formal_utility,component_ids,control_type
+EleutherAI/pythia-70m,arith_add_1d,0,,3.0,0.21875,0.23046875,atomic,arithmetic,addition,1,0.85,0.25,0.8,,
+EleutherAI/pythia-70m,arith_add_then_compare,0,,3.0,0.328125,0.28125,composite,arithmetic,add_then_compare,2,0.35,0.65,0.0,arith_add_1d;arith_compare_1d,
+EleutherAI/pythia-70m,arith_compare_1d,0,,3.0,0.203125,0.203125,atomic,arithmetic,comparison,1,0.7,0.2,0.6,,
+EleutherAI/pythia-70m,arith_surface_control,0,,3.0,0.265625,0.26171875,surface_control,arithmetic,surface_numbers,1,0.35,0.35,0.0,,surface
+EleutherAI/pythia-70m,retrieval_kv,0,,3.0,0.21875,0.21875,atomic,retrieval,retrieve,1,0.6,0.45,0.7,,
+EleutherAI/pythia-70m,retrieval_then_compare,0,,3.0,0.40625,0.3203125,composite,retrieval,retrieve_then_compare,2,0.3,0.8,0.0,retrieval_kv;arith_compare_1d,
+EleutherAI/pythia-70m,string_copy,0,,3.0,0.34375,0.265625,atomic,string,copy,1,0.65,0.3,0.7,,
+EleutherAI/pythia-70m,string_reverse,0,,3.0,0.234375,0.23828125,atomic,string,reverse,1,0.5,0.55,0.7,,
+EleutherAI/pythia-70m,string_reverse_then_copy,0,,3.0,0.171875,0.21875,composite,string,reverse_then_copy,2,0.25,0.85,0.0,string_reverse;string_copy,
+EleutherAI/pythia-70m,string_surface_control,0,,3.0,0.265625,0.265625,surface_control,string,surface_tokens,1,0.25,0.4,0.0,,surface
+EleutherAI/pythia-70m,syntax_distractor_agreement,0,,3.0,0.203125,0.22265625,composite,syntax,agreement_with_distractor,2,0.4,0.7,0.0,syntax_local_agreement,
+EleutherAI/pythia-70m,syntax_local_agreement,0,,3.0,0.25,0.2421875,atomic,syntax,agreement,1,0.75,0.3,0.7,,
