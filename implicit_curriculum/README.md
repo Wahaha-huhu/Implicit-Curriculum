@@ -364,3 +364,18 @@ The first H3 C06 pilot was mixed: exact-component upweighting helped relative to
 - generic data-budget/distribution effects.
 
 Use `make_b1_h3_operation_family_plan` to create a plan from `h2_pair_selection.csv`, then run `run_b1_h3_interventions --plan-file ... --plan-index N` for each planned component-composite row.
+
+
+### v1.2 H3 multi-row summary and stronger intervention conditions
+
+Combine previously analyzed H3 rows:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_multirow   --row-dirs results/b1_h3_opfamily_row0_v11 results/b1_h3_opfamily_row1_v11   --output-dir results/b1_h3_c06_multirow_v12   --code-version v1.2   --archive-root results/archive   --thesis-use candidate
+```
+
+Run a stronger row-0 intervention suite:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h3_interventions   --output-dir results/b1_h3_row0_strong_v12   --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv   --plan-file results/b1_h3_operation_family_plan_v11/h3_operation_family_plan.csv   --plan-index 0   --seeds 0 1 2 3 4 5 6 7 8 9   --conditions baseline pretrain_component pretrain_same_operation_unrelated pretrain_different_operation_matched corrupt_component_strong corrupt_same_operation_unrelated_strong corrupt_different_operation_matched_strong delay_component_strong delay_same_operation_unrelated_strong delay_different_operation_matched_strong   --pretrain-data-seen 50000   --strong-corrupt-prob 0.50   --strong-delay-fraction 0.60   --max-data-seen 250000   --batch-size 256   --n-checkpoints 100   --eval-examples-per-task 512   --d-model 128   --n-layers 2   --n-heads 4   --d-mlp 512   --vocab-content 32   --input-len 6   --device cuda   --code-version v1.2   --archive-root results/archive   --thesis-use candidate
+```

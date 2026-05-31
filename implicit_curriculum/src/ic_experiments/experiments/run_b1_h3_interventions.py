@@ -80,6 +80,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--upweight-factor", type=float, default=2.0)
     p.add_argument("--delay-fraction", type=float, default=0.35)
     p.add_argument("--corrupt-prob", type=float, default=0.25)
+    p.add_argument("--strong-corrupt-prob", type=float, default=0.50)
+    p.add_argument("--strong-delay-fraction", type=float, default=0.60)
+    p.add_argument("--pretrain-data-seen", type=int, default=50_000, help="Extra component/control-only pretraining budget for pretrain_* conditions. This is separate from max_data_seen.")
     p.add_argument("--device", type=str, default="cpu")
     p.add_argument("--skip-existing", action="store_true")
     p.add_argument("--code-version", type=str, default="v1.1")
@@ -161,7 +164,7 @@ def main() -> None:
 
     summary = {
         "backend": family.name,
-        "version": "v1.1",
+        "version": "v1.2",
         "purpose": "B1 H3 pair-specific intervention training with operation-family controls.",
         "pair": pair,
         "conditions": args.conditions,
@@ -361,6 +364,13 @@ def train_one_intervention(family, cfg: SequenceDSLConfig, args: argparse.Namesp
     intervention_task = intervention_target(condition, pair)
     intervention_idx = task_index.get(intervention_task, -1)
 
+    # Model-state intervention: pretrain the component/control before mixed training.
+    # This tests whether having the component representation already available
+    # accelerates composite acquisition, without directly changing the subsequent
+    # mixed-training sampling distribution.
+    if condition.startswith("pretrain_") and intervention_idx >= 0 and args.pretrain_data_seen > 0:
+        pretrain_task(model, family, cfg, opt, criterion, args, intervention_idx, device)
+
     data_seen = 0
     ckpt_idx = 0
     eval_rows = []
@@ -370,7 +380,8 @@ def train_one_intervention(family, cfg: SequenceDSLConfig, args: argparse.Namesp
         weights = intervention_weights(base_weights, condition, intervention_idx, data_seen, args)
         tokens, labels, task_ids = make_lm_batch(family.tasks, cfg, args.batch_size, device, weights)
         if condition.startswith("corrupt_") and intervention_idx >= 0:
-            labels = corrupt_labels(labels, task_ids, intervention_idx, cfg, args.corrupt_prob)
+            prob = float(args.strong_corrupt_prob) if condition.endswith("_strong") else float(args.corrupt_prob)
+            labels = corrupt_labels(labels, task_ids, intervention_idx, cfg, prob)
         task_sample_counts += torch.bincount(task_ids.detach().cpu(), minlength=len(family.tasks)).numpy().astype(np.int64)
         opt.zero_grad(set_to_none=True)
         logits = model(tokens)
@@ -396,33 +407,67 @@ def train_one_intervention(family, cfg: SequenceDSLConfig, args: argparse.Namesp
 
 
 def intervention_target(condition: str, pair: dict[str, str]) -> str | None:
-    if condition in {"upweight_component", "delay_component", "corrupt_component"}:
+    """Resolve which task a condition targets.
+
+    Naming convention:
+    - *_component targets the exact component.
+    - *_same_operation_unrelated targets the same-operation control.
+    - *_different_operation_matched targets the different-operation control.
+    - *_unrelated_matched is legacy and defaults to same-operation/unrelated.
+    - *_fake_component and *_surface_control target their corresponding controls.
+    Suffixes like _strong do not change the target.
+    """
+    c = condition.removesuffix("_strong")
+    if c in {"upweight_component", "delay_component", "corrupt_component", "pretrain_component"}:
         return pair["component"]
-    if condition in {"upweight_unrelated_matched", "delay_unrelated_matched", "corrupt_unrelated_matched",
-                     "upweight_same_operation_unrelated", "delay_same_operation_unrelated", "corrupt_same_operation_unrelated"}:
+    if c in {"upweight_unrelated_matched", "delay_unrelated_matched", "corrupt_unrelated_matched", "pretrain_unrelated_matched",
+             "upweight_same_operation_unrelated", "delay_same_operation_unrelated", "corrupt_same_operation_unrelated", "pretrain_same_operation_unrelated"}:
         return pair.get("same_operation_control") or pair.get("unrelated_control")
-    if condition in {"upweight_different_operation_matched", "delay_different_operation_matched", "corrupt_different_operation_matched"}:
+    if c in {"upweight_different_operation_matched", "delay_different_operation_matched", "corrupt_different_operation_matched", "pretrain_different_operation_matched"}:
         return pair.get("different_operation_control")
-    if condition == "upweight_fake_component":
+    if c in {"upweight_fake_component", "pretrain_fake_component"}:
         return pair["fake_component_control"]
-    if condition == "upweight_surface_control":
+    if c in {"upweight_surface_control", "pretrain_surface_control"}:
         return pair["surface_control"]
     return None
 
 
+
 def intervention_weights(base_weights: torch.Tensor, condition: str, idx: int, data_seen: int, args: argparse.Namespace) -> torch.Tensor:
     weights = base_weights.clone()
-    if idx < 0 or condition == "baseline":
+    if idx < 0 or condition == "baseline" or condition.startswith("pretrain_"):
         return weights / weights.sum()
     if condition.startswith("upweight_"):
         weights[idx] = weights[idx] * float(args.upweight_factor)
-    elif condition.startswith("delay_") and data_seen < int(args.max_data_seen * args.delay_fraction):
-        weights[idx] = 0.0
+    elif condition.startswith("delay_"):
+        frac = float(args.strong_delay_fraction) if condition.endswith("_strong") else float(args.delay_fraction)
+        if data_seen < int(args.max_data_seen * frac):
+            weights[idx] = 0.0
     # Corruption does not alter sampling; it only corrupts labels for target task.
     s = weights.sum()
     if float(s) <= 0:
         return base_weights / base_weights.sum()
     return weights / s
+
+
+def pretrain_task(model: nn.Module, family, cfg: SequenceDSLConfig, opt: torch.optim.Optimizer, criterion: nn.Module, args: argparse.Namespace, intervention_idx: int, device: torch.device) -> None:
+    """Pretrain a single component/control task before mixed training.
+
+    This is a model-state intervention. It changes the initial model state while
+    keeping the subsequent mixed-training distribution unchanged. It should be
+    compared against same-operation and different-operation pretraining controls.
+    """
+    weights = torch.zeros(len(family.tasks), dtype=torch.float32, device=device)
+    weights[intervention_idx] = 1.0
+    steps = max(1, int(args.pretrain_data_seen) // max(1, int(args.batch_size)))
+    model.train()
+    for _ in range(steps):
+        tokens, labels, task_ids = make_lm_batch(family.tasks, cfg, args.batch_size, device, weights)
+        opt.zero_grad(set_to_none=True)
+        logits = model(tokens)
+        loss = criterion(logits.reshape(-1, logits.size(-1)), labels.reshape(-1))
+        loss.backward()
+        opt.step()
 
 
 def corrupt_labels(labels: torch.Tensor, task_ids: torch.Tensor, intervention_idx: int, cfg: SequenceDSLConfig, prob: float) -> torch.Tensor:
@@ -474,6 +519,9 @@ def config_row(args: argparse.Namespace, condition: str, n_params: int, pair: di
         "upweight_factor": args.upweight_factor,
         "delay_fraction": args.delay_fraction,
         "corrupt_prob": args.corrupt_prob,
+        "strong_corrupt_prob": args.strong_corrupt_prob,
+        "strong_delay_fraction": args.strong_delay_fraction,
+        "pretrain_data_seen": args.pretrain_data_seen,
     }
 
 
@@ -496,6 +544,7 @@ def run_report(args: argparse.Namespace, pair: dict[str, str], eval_df: pd.DataF
         f"- conditions: `{', '.join(args.conditions)}`",
         f"- seeds: `{', '.join(map(str, args.seeds))}`",
         f"- max_data_seen: `{args.max_data_seen}`",
+        f"- pretrain_data_seen: `{args.pretrain_data_seen}`",
         f"- eval rows: `{len(eval_df)}`",
     ]
     if not acq_df.empty:

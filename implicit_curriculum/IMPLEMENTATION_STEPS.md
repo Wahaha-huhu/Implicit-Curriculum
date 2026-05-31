@@ -451,3 +451,25 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_operation_family_
 ```
 
 Then run `run_b1_h3_interventions` with `--plan-file` and `--plan-index`. The runner now supports same-operation and different-operation controls and intervention conditions such as `upweight_same_operation_unrelated`, `upweight_different_operation_matched`, `delay_same_operation_unrelated`, and `corrupt_same_operation_unrelated`.
+
+
+## v1.2 — H3 consolidation and stronger component-specific tests
+
+Status: implemented.
+
+Adds:
+- `analyze_b1_h3_multirow` to combine multiple H3 row analyses into a thesis-ready component-level summary.
+- Optional stronger H3 intervention conditions:
+  - `pretrain_component`, `pretrain_same_operation_unrelated`, `pretrain_different_operation_matched`
+  - `delay_component_strong`, `delay_same_operation_unrelated_strong`, `delay_different_operation_matched_strong`
+  - `corrupt_component_strong`, `corrupt_same_operation_unrelated_strong`, `corrupt_different_operation_matched_strong`
+- Updated thesis evidence notes to record the row-0/row-1 mixed H3 interpretation.
+
+Scientific status:
+- Row 0 (`A02_substitute → C06`) gives a promising exact-component upweight signal.
+- Row 1 (`A00_copy → C06`) is weak/mixed.
+- Current H3 evidence is component-specific and not yet sufficient for a broad developmental-dependency claim.
+
+Next recommended run:
+- Combine row 0 and row 1 with `analyze_b1_h3_multirow`.
+- Run stronger/model-state intervention test on row 0 using pretraining and strong corruption/delay variants.

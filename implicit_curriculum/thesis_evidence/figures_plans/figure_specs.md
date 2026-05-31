@@ -54,3 +54,21 @@ Plot:
 Thesis claim supported:
 
 - First intervention is mixed/negative for exact dependency and motivates operation-family controls.
+
+
+## H3 C06 component-specific evidence table
+
+Purpose: show that the same delayed composite (`C06`) responds differently to two listed components.
+
+Rows:
+- `A02_substitute → C06`: strong upweight signal; weak delay.
+- `A00_copy → C06`: weak/mixed signal.
+
+Candidate columns:
+- upweight exact-vs-same-operation censored delta
+- upweight exact-vs-same-operation expected-direction rate
+- corrupt exact-vs-same-operation expected-direction rate
+- delay exact-vs-same-operation expected-direction rate
+- thesis-safe verdict
+
+Intended claim: H3 evidence is component-specific and motivates stronger model-state tests, not a final dependency proof.

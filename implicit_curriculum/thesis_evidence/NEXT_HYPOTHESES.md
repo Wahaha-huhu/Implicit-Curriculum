@@ -57,3 +57,13 @@ The C06 intervention pilot suggests that `C06_reverse_then_substitute_02_00` may
 > C06 residual delay is caused by operation-family difficulty/transfer rather than exact-component developmental dependency.
 
 v1.1 tests this by comparing exact-component interventions against same-operation unrelated controls and different-operation matched controls, and by running both H2-selected components for C06 when possible.
+
+
+## Next H3 hypothesis after row 0 / row 1
+
+Hypothesis: `C06_reverse_then_substitute_02_00` is more sensitive to the substitution component than to the copy component.
+
+Predicted stronger-test pattern:
+- `pretrain_component` for `A02_substitute` should accelerate C06 more than `pretrain_same_operation_unrelated` and `pretrain_different_operation_matched`.
+- Strong corruption of `A02_substitute` should hurt C06 more than strong corruption of same-operation and different-operation controls.
+- If only pretraining/corruption but not delay works, the mechanism may be representation availability rather than strict temporal gating.

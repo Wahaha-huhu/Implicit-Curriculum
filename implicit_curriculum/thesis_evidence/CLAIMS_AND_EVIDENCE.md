@@ -32,3 +32,17 @@ Unsafe:
 Unsafe:
 
 > The C06 intervention proves component A02 causally enables C06.
+
+
+## H3 pilot evidence after operation-family controls
+
+**Claim status:** mixed / not yet sufficient for exact developmental dependency.
+
+Evidence:
+- Row 0 (`A02_substitute → C06`) shows a promising exact-component upweight effect beyond same-operation, different-operation, fake, and surface controls.
+- Row 1 (`A00_copy → C06`) is weak/mixed; copy-component upweight does not robustly accelerate the composite.
+
+Interpretation:
+- The delayed composite residual is not explained by generic component count alone.
+- Current evidence points to component- or operation-specific causal relevance, with substitution more promising than copy.
+- Stronger model-state interventions are required before making a full dependency claim.

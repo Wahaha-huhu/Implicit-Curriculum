@@ -15,7 +15,7 @@ from ic_experiments.sequence_analysis import final_metrics
 
 
 CONTRAST_SPECS = [
-    # Legacy exact-vs-unrelated contrast; in v1.1 unrelated_control defaults to same-operation unrelated.
+    # Legacy exact-vs-unrelated contrast; in v1.1+ unrelated_control defaults to same-operation unrelated.
     ("upweight_component", "upweight_unrelated_matched", "earlier", "exact_vs_legacy_unrelated"),
     ("upweight_component", "upweight_same_operation_unrelated", "earlier", "exact_vs_same_operation"),
     ("upweight_component", "upweight_different_operation_matched", "earlier", "exact_vs_different_operation"),
@@ -28,6 +28,14 @@ CONTRAST_SPECS = [
     ("delay_component", "delay_unrelated_matched", "later", "exact_delay_vs_legacy_unrelated"),
     ("delay_component", "delay_same_operation_unrelated", "later", "exact_delay_vs_same_operation"),
     ("delay_component", "delay_different_operation_matched", "later", "exact_delay_vs_different_operation"),
+    # Stronger variants for v1.2.
+    ("pretrain_component", "pretrain_same_operation_unrelated", "earlier", "exact_pretrain_vs_same_operation"),
+    ("pretrain_component", "pretrain_different_operation_matched", "earlier", "exact_pretrain_vs_different_operation"),
+    ("pretrain_same_operation_unrelated", "pretrain_different_operation_matched", "earlier", "operation_family_pretrain_vs_different_operation"),
+    ("corrupt_component_strong", "corrupt_same_operation_unrelated_strong", "later", "exact_strong_corrupt_vs_same_operation"),
+    ("corrupt_component_strong", "corrupt_different_operation_matched_strong", "later", "exact_strong_corrupt_vs_different_operation"),
+    ("delay_component_strong", "delay_same_operation_unrelated_strong", "later", "exact_strong_delay_vs_same_operation"),
+    ("delay_component_strong", "delay_different_operation_matched_strong", "later", "exact_strong_delay_vs_different_operation"),
 ]
 
 
@@ -37,7 +45,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--metric-family", type=str, default="token_accuracy")
     p.add_argument("--threshold", type=float, default=0.7)
     p.add_argument("--patience", type=int, default=2)
-    p.add_argument("--code-version", type=str, default="v1.1")
+    p.add_argument("--code-version", type=str, default="v1.2")
     p.add_argument("--run-id", type=str, default=None)
     p.add_argument("--archive-root", type=Path, default=None)
     p.add_argument("--thesis-use", type=str, default="candidate")
