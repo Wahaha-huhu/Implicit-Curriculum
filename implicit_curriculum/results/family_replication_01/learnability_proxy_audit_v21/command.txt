@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/audit_b1_learnability_proxy.py --h1-result-dir results/family_replication_01/b1_h1_shared_sweep --metric-family token_accuracy --threshold 0.7 --output-dir results/family_replication_01/learnability_proxy_audit_v21 --code-version v2.1 --archive-root results/archive --thesis-use diagnostic
