@@ -1,0 +1,9 @@
+Contribution,Evidence supporting it,Claim strength,Needed for stronger version
+Synthetic recovery validates pipeline,Exp0 recovery gate,Strong for pipeline,None
+Regime contrast B2 vs B1,B2 frequency signal + B1 learnability signal,Pilot,Improve B2 acquisition coverage
+B1 structural ordering,B1 H1 six-config sign stability,Green pilot,More seeds/families
+Atomic parallel-null residual method,B1 H2 predictor ladder and residuals,Green pilot,Second family replication
+Residuals are candidate selectors not proof,H3 mixed outcomes across C06/C07,Strong controlled lesson,None conceptually; more pairs empirically
+Localized exact-component sensitivity,A02_substitute -> C06 strong H3,Pair-specific positive,Second family or mediator confirmation
+Uniform dependency not supported,A00->C06 weak; C07 rows non-exact,Supported negative/boundary result,More pairs for breadth
+LLM applicability,Pythia bridge design only,Not tested,Run Pythia observational pilot

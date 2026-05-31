@@ -591,3 +591,17 @@ The durable thesis archive now includes:
 - `thesis_evidence/tables/h3_claim_boundary_table.csv`
 
 Current interpretation: H3 evidence supports heterogeneous causal structure. `A02_substitute → C06` is positive pair-specific evidence; `A00_copy → C06` is weak/mixed; C07 pairs support operation-family/negative boundary evidence rather than exact-component dependency.
+
+## v1.7 — Task-design validity and Pythia bridge planning
+
+Added durable thesis-design documents that justify the controlled task design and clarify how the work can become a credible contribution:
+
+1. `thesis_evidence/TASK_DESIGN_JUSTIFICATION.md` — validity argument for B0/B1/B2/Pythia and control classes.
+2. `thesis_evidence/PYTHIA_BRIDGE_EXPERIMENT_DESIGN.md` — observational bridge from controlled signatures to Pythia-like checkpointed LLMs.
+3. `thesis_evidence/TOP_CONFERENCE_POSITIONING.md` — contribution framing and reviewer-risk matrix.
+4. `thesis_evidence/tables/task_design_validity_matrix.csv` — what each task/control rules out.
+5. `thesis_evidence/tables/contribution_claim_map.csv` — evidence-to-claim map.
+6. `thesis_evidence/tables/pythia_bridge_slice_design.csv` — candidate Pythia slice families.
+
+Next recommended experiments remain: mediator diagnostics for positive vs negative B1 pairs; second-family B1 replication; B2 coverage strengthening; small Pythia observational pilot.
+

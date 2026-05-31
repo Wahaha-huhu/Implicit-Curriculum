@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/mnt/data/work_v17/src/ic_experiments/experiments/make_thesis_design_dossier.py",
+    "--output-dir",
+    "thesis_evidence/design_dossier",
+    "--code-version",
+    "v1.7"
+  ],
+  "backend": "evidence_archive",
+  "code_version": "v1.7",
+  "command": "/mnt/data/work_v17/src/ic_experiments/experiments/make_thesis_design_dossier.py --output-dir thesis_evidence/design_dossier --code-version v1.7",
+  "created_at_utc": "2026-05-31T15:38:15+00:00",
+  "experiment": "thesis_design_dossier_index",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {
+    "evidence_dir": "thesis_evidence"
+  },
+  "output_dir": "thesis_evidence/design_dossier",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "thesis_design_dossier_index",
+  "thesis_use": "candidate"
+}

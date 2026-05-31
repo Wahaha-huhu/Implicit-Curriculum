@@ -1,0 +1,12 @@
+relative_path,exists,size_bytes,role
+TASK_DESIGN_JUSTIFICATION.md,True,7003,document
+PYTHIA_BRIDGE_EXPERIMENT_DESIGN.md,True,5037,document
+TOP_CONFERENCE_POSITIONING.md,True,3649,document
+HYPOTHESIS_AUDIT.md,True,5977,document
+OVERALL_RESULTS_SYNTHESIS.md,True,2181,document
+H3_SYNTHESIS.md,True,3364,document
+tables/task_design_validity_matrix.csv,True,1206,table
+tables/contribution_claim_map.csv,True,955,table
+tables/pythia_bridge_slice_design.csv,True,916,table
+tables/h3_pair_evidence_matrix.csv,True,1193,table
+tables/h3_claim_boundary_table.csv,True,722,table

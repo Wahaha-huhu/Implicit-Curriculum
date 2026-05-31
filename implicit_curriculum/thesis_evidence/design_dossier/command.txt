@@ -1,0 +1,1 @@
+/mnt/data/work_v17/src/ic_experiments/experiments/make_thesis_design_dossier.py --output-dir thesis_evidence/design_dossier --code-version v1.7

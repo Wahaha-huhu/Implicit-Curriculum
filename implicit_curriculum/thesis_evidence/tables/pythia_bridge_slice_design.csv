@@ -1,0 +1,6 @@
+Domain,Primitive slice examples,Composite slice examples,Controls,Primary metric,Claim type
+Arithmetic,"single digit add; carry detection; comparison","multi-step add with carry; compare after transform","length/frequency matched templates",accuracy/loss over checkpoints,observational
+Syntax,"local agreement; number marking","agreement under distractors; nested agreement","surface matched nonsyntactic templates",accuracy/loss over checkpoints,observational
+Brackets,"local bracket closing","nested bracket matching","same-token shuffled controls",accuracy/loss over checkpoints,observational
+Retrieval,"key-value lookup","retrieve then transform; retrieve then compare","irrelevant-key same surface controls",accuracy/loss over checkpoints,observational
+String operations,"copy; reverse; token mapping","reverse then map; map then compare","same tokens no operation",accuracy/loss over checkpoints,observational

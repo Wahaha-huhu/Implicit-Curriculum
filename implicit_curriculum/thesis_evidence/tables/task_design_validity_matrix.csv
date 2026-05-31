@@ -1,0 +1,10 @@
+Design element,Primary purpose,Threat ruled out,Current evidence status,Thesis role
+Atomic tasks,Define no-dependency baseline,No parallel-rate comparison,Implemented and used in H2,Core method
+True composites,Test structured residuals and candidate dependency,No candidate H3 sites,Implemented C06/C07,Core method
+Shortcut controls,Formal component without required reuse,Formal dependency mistaken for neural reuse,Implemented but not always central,Control support
+Surface controls,Same surface/template without computation,Surface familiarity,Implemented in H3,Control support
+Same-operation controls,Same operation family different exact component,Operation-family transfer mistaken for exact dependency,Crucial in H3,Core control
+Different-operation controls,Matched but different operation,Generic data-budget/difficulty effects,Used in strong H3,Core control
+B2 sparse parity,Frequency/quanta baseline,No contrast regime,Yellow-green; coverage should improve,Baseline/contrast
+B1 sequence DSL,Controlled transformer substrate,Boolean toy too artificial,Green pilot,Primary controlled evidence
+Pythia slices,Observational LLM bridge,No relevance to LLM-like systems,Not run yet,Future corroboration

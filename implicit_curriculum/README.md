@@ -468,3 +468,17 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_evidence_matri
   --archive-root results/archive \
   --thesis-use candidate
 ```
+
+## v1.7 thesis-design validity additions
+
+The repository now includes durable thesis-design documents under `thesis_evidence/`:
+
+- `TASK_DESIGN_JUSTIFICATION.md`: why B0/B1/B2/Pythia exist, what each control rules out, and what claims the task design can support.
+- `PYTHIA_BRIDGE_EXPERIMENT_DESIGN.md`: observational bridge plan for Pythia-like checkpointed LLMs.
+- `TOP_CONFERENCE_POSITIONING.md`: contribution framing, reviewer concerns, and claim boundaries.
+- `tables/task_design_validity_matrix.csv`: task-design elements and validity threats.
+- `tables/contribution_claim_map.csv`: contribution-to-evidence mapping.
+- `tables/pythia_bridge_slice_design.csv`: first-pass Pythia slice families.
+
+These files are append-only thesis evidence. They should be updated whenever new experiments change the claim boundary.
+
