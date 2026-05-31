@@ -1,0 +1,11 @@
+slice_id,prompt_family,component_ids,n_rows,n_runs,n_under_verdicts,n_over_verdicts,n_mixed_verdicts,mean_underperforming_metric_rate,mean_median_residual_z,runs,stability_verdict
+comp_add_then_compare,arithmetic,arith_add_small;arith_compare,3,3,3,0,0,0.7333333333333334,-1.124453779347286,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_add_then_even,arithmetic,arith_add_small;arith_even,3,3,3,0,0,0.7999999999999999,-0.7702407673882745,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_sub_then_compare,arithmetic,arith_sub_small;arith_compare,3,3,3,0,0,0.7333333333333334,-0.7551891202969525,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_first_then_same,string,word_first;word_same,3,3,3,0,0,0.6666666666666666,-0.4099165268540916,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_reverse_then_last,string,word_reverse2;word_last,3,3,3,0,0,0.6666666666666666,-0.205077137147497,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_reverse_then_same,string,word_reverse2;word_same,3,3,3,0,0,0.6,0.46160752016369616,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_max_then_compare,arithmetic,arith_max2;arith_compare,3,3,3,0,0,0.6666666666666666,0.7088483970647815,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_retrieve_then_color,retrieval,retrieval_object;semantic_color_lookup,3,3,2,1,0,0.5333333333333333,0.0596862938470181,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_reverse_then_first,string,word_reverse2;word_first,3,3,2,1,0,0.6000000000000001,0.49278630216606656,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
+comp_retrieve_then_compare,retrieval,retrieval_number;arith_compare,3,3,2,1,0,0.5333333333333333,1.0893141678967253,EleutherAI/pythia-160m;EleutherAI/pythia-410m;EleutherAI/pythia-70m,stable_underperforming_observational
