@@ -421,3 +421,33 @@ Primary outputs:
 - `run_manifest.json`
 
 Decision rule: GREEN requires component upweighting to move the selected composite earlier than unrelated/fake/surface upweighting, and component delay/corruption to move it later or reduce final metric more than matched unrelated interventions. Residual evidence remains observational; this is the first controlled causal test.
+
+## Durable thesis evidence record
+
+From v1.0.1 onward, every serious result that may support a thesis claim should be summarized under `thesis_evidence/`. Active `results/` directories may be overwritten, but `thesis_evidence/` should be append-only except for documented corrections.
+
+After each major run:
+
+1. Copy compact reports/CSVs into `thesis_evidence/results_summaries/`.
+2. Add a row to `thesis_evidence/RESULTS_REGISTRY.csv`.
+3. Update `thesis_evidence/EXPERIMENT_LOG.md` with the verdict and caveats.
+4. Update `thesis_evidence/CLAIMS_AND_EVIDENCE.md` only if the result changes what can be safely claimed.
+5. Add or update figure/table plans in `thesis_evidence/FIGURES_TABLES_TODO.md`.
+
+
+## v1.1 — H3 operation-family controls
+
+Adds a sharper H3 intervention design after the first C06 test showed mixed results: the exact component improved the composite relative to fake/surface controls, but not relative to a same-operation unrelated control. The new goal is to distinguish exact-component dependency from operation-family transfer.
+
+New commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_h3_operation_family_plan \
+  --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --pair-selection results/b1_h1_shared_sweep_v08/h2_pair_selection.csv \
+  --output-dir results/b1_h3_operation_family_plan_v11 \
+  --top-composites 1 \
+  --components-per-composite 2
+```
+
+Then run `run_b1_h3_interventions` with `--plan-file` and `--plan-index`. The runner now supports same-operation and different-operation controls and intervention conditions such as `upweight_same_operation_unrelated`, `upweight_different_operation_matched`, `delay_same_operation_unrelated`, and `corrupt_same_operation_unrelated`.

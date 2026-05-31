@@ -15,11 +15,19 @@ from ic_experiments.sequence_analysis import final_metrics
 
 
 CONTRAST_SPECS = [
-    ("upweight_component", "upweight_unrelated_matched", "earlier"),
-    ("upweight_component", "upweight_fake_component", "earlier"),
-    ("upweight_component", "upweight_surface_control", "earlier"),
-    ("corrupt_component", "corrupt_unrelated_matched", "later"),
-    ("delay_component", "delay_unrelated_matched", "later"),
+    # Legacy exact-vs-unrelated contrast; in v1.1 unrelated_control defaults to same-operation unrelated.
+    ("upweight_component", "upweight_unrelated_matched", "earlier", "exact_vs_legacy_unrelated"),
+    ("upweight_component", "upweight_same_operation_unrelated", "earlier", "exact_vs_same_operation"),
+    ("upweight_component", "upweight_different_operation_matched", "earlier", "exact_vs_different_operation"),
+    ("upweight_component", "upweight_fake_component", "earlier", "exact_vs_fake_component"),
+    ("upweight_component", "upweight_surface_control", "earlier", "exact_vs_surface"),
+    ("upweight_same_operation_unrelated", "upweight_different_operation_matched", "earlier", "operation_family_vs_different_operation"),
+    ("corrupt_component", "corrupt_unrelated_matched", "later", "exact_corrupt_vs_legacy_unrelated"),
+    ("corrupt_component", "corrupt_same_operation_unrelated", "later", "exact_corrupt_vs_same_operation"),
+    ("corrupt_component", "corrupt_different_operation_matched", "later", "exact_corrupt_vs_different_operation"),
+    ("delay_component", "delay_unrelated_matched", "later", "exact_delay_vs_legacy_unrelated"),
+    ("delay_component", "delay_same_operation_unrelated", "later", "exact_delay_vs_same_operation"),
+    ("delay_component", "delay_different_operation_matched", "later", "exact_delay_vs_different_operation"),
 ]
 
 
@@ -29,7 +37,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--metric-family", type=str, default="token_accuracy")
     p.add_argument("--threshold", type=float, default=0.7)
     p.add_argument("--patience", type=int, default=2)
-    p.add_argument("--code-version", type=str, default="v1.0")
+    p.add_argument("--code-version", type=str, default="v1.1")
     p.add_argument("--run-id", type=str, default=None)
     p.add_argument("--archive-root", type=Path, default=None)
     p.add_argument("--thesis-use", type=str, default="candidate")
@@ -122,7 +130,7 @@ def prepare_acq(acq: pd.DataFrame, eval_df: pd.DataFrame, metric_family: str, th
 def intervention_contrasts(acq: pd.DataFrame, final: pd.DataFrame, pair: dict[str, str], metric_family: str) -> pd.DataFrame:
     rows: list[dict[str, Any]] = []
     composite = pair["composite"]
-    for left, right, expected in CONTRAST_SPECS:
+    for left, right, expected, contrast_type in CONTRAST_SPECS:
         if left not in set(acq["condition"]) or right not in set(acq["condition"]):
             continue
         left_acq = acq[(acq["condition"] == left) & (acq["task_name"] == composite)][["seed", "acquired_at", "censored_acquired_at", "is_censored"]].rename(
@@ -136,7 +144,7 @@ def intervention_contrasts(acq: pd.DataFrame, final: pd.DataFrame, pair: dict[st
         right_final = _final_metric(final, right, composite, metric_family, "right")
         merged = merged.merge(left_final, on="seed", how="left").merge(right_final, on="seed", how="left")
         if merged.empty:
-            rows.append(empty_contrast(left, right, expected, composite))
+            rows.append(empty_contrast(left, right, expected, composite, contrast_type))
             continue
         both = merged[merged["left_acquired_at"].notna() & merged["right_acquired_at"].notna()].copy()
         strict_delta = both["left_acquired_at"] - both["right_acquired_at"] if not both.empty else pd.Series(dtype=float)
@@ -155,6 +163,7 @@ def intervention_contrasts(acq: pd.DataFrame, final: pd.DataFrame, pair: dict[st
             "left_condition": left,
             "right_condition": right,
             "expected_direction": expected,
+            "contrast_type": contrast_type,
             "n_paired_seeds": int(len(merged)),
             "n_strict_paired_acquired": int(len(both)),
             "left_acquisition_rate": float(merged["left_acquired_at"].notna().mean()),
@@ -177,12 +186,13 @@ def _final_metric(final: pd.DataFrame, condition: str, task_name: str, metric_fa
     return out.rename(columns={col: f"{prefix}_final_metric"})
 
 
-def empty_contrast(left: str, right: str, expected: str, composite: str) -> dict[str, Any]:
+def empty_contrast(left: str, right: str, expected: str, composite: str, contrast_type: str = "") -> dict[str, Any]:
     return {
         "composite": composite,
         "left_condition": left,
         "right_condition": right,
         "expected_direction": expected,
+        "contrast_type": contrast_type,
         "n_paired_seeds": 0,
         "n_strict_paired_acquired": 0,
         "left_acquisition_rate": np.nan,
@@ -197,7 +207,12 @@ def empty_contrast(left: str, right: str, expected: str, composite: str) -> dict
 
 
 def summarize_pair(acq: pd.DataFrame, final: pd.DataFrame, contrasts: pd.DataFrame, pair: dict[str, str], metric_family: str) -> pd.DataFrame:
-    tasks = [pair["component"], pair["composite"], pair["unrelated_control"], pair["fake_component_control"], pair["surface_control"]]
+    task_keys = ["component", "composite", "unrelated_control", "same_operation_control", "different_operation_control", "fake_component_control", "surface_control"]
+    tasks = []
+    for key in task_keys:
+        value = pair.get(key)
+        if value and value not in tasks:
+            tasks.append(value)
     rows = []
     for condition in sorted(acq["condition"].unique()):
         for task in tasks:
@@ -237,9 +252,11 @@ def make_report(pair: dict[str, str], acq: pd.DataFrame, final: pd.DataFrame, co
         "## Pair",
         f"- component: `{pair['component']}`",
         f"- composite: `{pair['composite']}`",
-        f"- unrelated_control: `{pair['unrelated_control']}`",
-        f"- fake_component_control: `{pair['fake_component_control']}`",
-        f"- surface_control: `{pair['surface_control']}`",
+        f"- unrelated_control: `{pair.get('unrelated_control', '')}`",
+        f"- same_operation_control: `{pair.get('same_operation_control', '')}`",
+        f"- different_operation_control: `{pair.get('different_operation_control', '')}`",
+        f"- fake_component_control: `{pair.get('fake_component_control', '')}`",
+        f"- surface_control: `{pair.get('surface_control', '')}`",
         "",
         "## Composite acquisition by condition",
     ]
@@ -255,7 +272,7 @@ def make_report(pair: dict[str, str], acq: pd.DataFrame, final: pd.DataFrame, co
     else:
         for _, r in contrasts.iterrows():
             lines.append(
-                f"- `{r['left_condition']}` vs `{r['right_condition']}` ({r['expected_direction']}): "
+                f"- `{r['contrast_type']}`: `{r['left_condition']}` vs `{r['right_condition']}` ({r['expected_direction']}): "
                 f"strict Δ={_fmt(r['strict_delta_acquired_at_mean'])} (n={int(r['n_strict_paired_acquired'])}), "
                 f"censored Δ={_fmt(r['censored_delta_acquired_at_mean'])}, "
                 f"censored-rate={_fmt(r['censored_expected_direction_rate'])}, "
@@ -264,13 +281,21 @@ def make_report(pair: dict[str, str], acq: pd.DataFrame, final: pd.DataFrame, co
     if not contrasts.empty:
         mean_censored = contrasts["censored_expected_direction_rate"].mean()
         mean_final = contrasts["final_metric_expected_direction_rate"].mean()
+        exact_same = contrasts[contrasts.get("contrast_type", pd.Series(dtype=str)).astype(str).str.contains("same_operation", na=False)]
+        exact_diff = contrasts[contrasts.get("contrast_type", pd.Series(dtype=str)).astype(str).str.contains("different_operation", na=False)]
         lines += [
             "",
             "## Decision aid",
             f"- mean censored expected-direction rate: `{mean_censored:.3f}`",
             f"- mean final-metric expected-direction rate: `{mean_final:.3f}`",
+        ]
+        if not exact_same.empty:
+            lines.append(f"- exact-vs-same-operation censored expected-direction rate: `{exact_same['censored_expected_direction_rate'].mean():.3f}`")
+        if not exact_diff.empty:
+            lines.append(f"- exact/different-operation censored expected-direction rate: `{exact_diff['censored_expected_direction_rate'].mean():.3f}`")
+        lines += [
             "",
-            "GREEN requires most contrasts to move in the expected direction versus unrelated/fake/surface controls, with nontrivial paired coverage. YELLOW means intervention signal is mixed or coverage is weak; RED means matched controls move similarly or opposite.",
+            "GREEN for exact-component dependency requires exact-component interventions to beat same-operation, different-operation, fake, and surface controls. If component and same-operation controls both help similarly, interpret the result as operation-family transfer rather than exact dependency.",
         ]
     return "\n".join(lines)
 

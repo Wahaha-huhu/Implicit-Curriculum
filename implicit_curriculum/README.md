@@ -342,3 +342,25 @@ PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h3_interventions \
 PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_interventions \
   --result-dir results/b1_h3_c06_v10 --metric-family token_accuracy --threshold 0.7
 ```
+
+## Thesis evidence archive
+
+The repository includes `thesis_evidence/`, an append-only folder for cumulative experiment summaries, claim/evidence mapping, and figure/table planning. Use this folder for thesis-writing source material rather than overwriteable `results/` directories.
+
+Key files:
+
+- `thesis_evidence/EXPERIMENT_LOG.md`
+- `thesis_evidence/CLAIMS_AND_EVIDENCE.md`
+- `thesis_evidence/RESULTS_REGISTRY.csv`
+- `thesis_evidence/FIGURES_TABLES_TODO.md`
+
+
+### v1.1 H3 operation-family control layer
+
+The first H3 C06 pilot was mixed: exact-component upweighting helped relative to fake/surface controls, but not relative to a same-operation unrelated control. v1.1 therefore adds an operation-family control plan and conditions that distinguish:
+
+- exact component dependency;
+- operation-family transfer;
+- generic data-budget/distribution effects.
+
+Use `make_b1_h3_operation_family_plan` to create a plan from `h2_pair_selection.csv`, then run `run_b1_h3_interventions --plan-file ... --plan-index N` for each planned component-composite row.

@@ -1,0 +1,8 @@
+claim,status,supporting_run,short_result,safe_wording
+Synthetic recovery validates analysis,green,exp0_recovery_gate,Known worlds recovered,The analysis pipeline is validated on synthetic mechanisms.
+Sparse parity is frequency dominated,yellow_green,b2_sparse_parity_v06,freq time-Spearman around -0.68 to -0.71,Sparse parity shows a quanta-style frequency signal in pilot runs.
+B1 learnability predicts order,green_pilot,b1_h1_shared_sweep_v08,learnability sign-rate 1.0 across configs,Reference learnability robustly predicts later acquisition in B1 pilot.
+B1 frequency weakly predicts order,green_pilot_with_caveat,b1_h1_shared_sweep_v08,frequency sign-rate 1.0 but small rho,"Frequency has a weaker expected-direction effect, strongest within atomics."
+Atomic predictor dominance drifts by config,green_pilot,b1_h2_predictor_ladder_v09,frequency-only or learnability-only selected depending on config,"Simple predictors suffice within config, but the dominant factor drifts."
+Composite residuals select H3 pairs,green_pilot,b1_h2_predictor_ladder_v09,C06 delayed across configs,Structured residuals select candidate pairs for intervention.
+Exact-component dependency for C06,not_supported,b1_h3_c06_v10,component does not beat same-operation unrelated,First intervention suggests operation-family transfer rather than exact-component dependency.

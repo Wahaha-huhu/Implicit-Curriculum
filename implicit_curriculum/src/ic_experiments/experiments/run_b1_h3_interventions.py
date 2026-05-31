@@ -32,13 +32,16 @@ from ic_experiments.sequence_analysis import (
 DEFAULT_CONDITIONS = [
     "baseline",
     "upweight_component",
-    "upweight_unrelated_matched",
+    "upweight_same_operation_unrelated",
+    "upweight_different_operation_matched",
     "upweight_fake_component",
     "upweight_surface_control",
     "delay_component",
-    "delay_unrelated_matched",
+    "delay_same_operation_unrelated",
+    "delay_different_operation_matched",
     "corrupt_component",
-    "corrupt_unrelated_matched",
+    "corrupt_same_operation_unrelated",
+    "corrupt_different_operation_matched",
 ]
 
 
@@ -52,6 +55,10 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--unrelated-control", type=str, default=None)
     p.add_argument("--fake-component-control", type=str, default=None)
     p.add_argument("--surface-control", type=str, default=None)
+    p.add_argument("--same-operation-control", type=str, default=None, help="Control with the same operation family as the component but not the exact component.")
+    p.add_argument("--different-operation-control", type=str, default=None, help="Control matched in frequency/difficulty but from a different operation family.")
+    p.add_argument("--plan-file", type=Path, default=None, help="Optional h3_operation_family_plan.csv produced by make_b1_h3_operation_family_plan.")
+    p.add_argument("--plan-index", type=int, default=0, help="Row index in --plan-file to use.")
     p.add_argument("--conditions", nargs="+", default=DEFAULT_CONDITIONS)
     p.add_argument("--seeds", type=int, nargs="+", default=list(range(10)))
     p.add_argument("--max-data-seen", type=int, default=250_000)
@@ -75,7 +82,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--corrupt-prob", type=float, default=0.25)
     p.add_argument("--device", type=str, default="cpu")
     p.add_argument("--skip-existing", action="store_true")
-    p.add_argument("--code-version", type=str, default="v1.0")
+    p.add_argument("--code-version", type=str, default="v1.1")
     p.add_argument("--run-id", type=str, default=None)
     p.add_argument("--archive-root", type=Path, default=None)
     p.add_argument("--thesis-use", type=str, default="candidate")
@@ -154,8 +161,8 @@ def main() -> None:
 
     summary = {
         "backend": family.name,
-        "version": "v1.0",
-        "purpose": "B1 H3 pair-specific intervention training.",
+        "version": "v1.1",
+        "purpose": "B1 H3 pair-specific intervention training with operation-family controls.",
         "pair": pair,
         "conditions": args.conditions,
         "seeds": args.seeds,
@@ -210,14 +217,24 @@ def resolve_pair_and_controls(args: argparse.Namespace, structure: pd.DataFrame)
         "unrelated_control": args.unrelated_control,
         "fake_component_control": args.fake_component_control,
         "surface_control": args.surface_control,
+        "same_operation_control": args.same_operation_control,
+        "different_operation_control": args.different_operation_control,
     }
+    if args.plan_file is not None and args.plan_file.exists():
+        plan = pd.read_csv(args.plan_file)
+        if plan.empty:
+            raise ValueError(f"Plan file is empty: {args.plan_file}")
+        row = plan.iloc[int(args.plan_index)]
+        for key in pair:
+            if not pair[key] and key in row and str(row[key]) != "nan":
+                pair[key] = str(row[key])
     if args.pair_selection is not None and args.pair_selection.exists():
         pairs = pd.read_csv(args.pair_selection)
         if not pairs.empty:
             # Prefer highest residual and positive rate if available.
             sort_cols = [c for c in ["positive_rate", "mean_residual_log_time", "residual_log_time"] if c in pairs.columns]
             if sort_cols:
-                pairs = pairs.sort_values(sort_cols, ascending=[False] + [False] * (len(sort_cols) - 1))
+                pairs = pairs.sort_values(sort_cols, ascending=[False] * len(sort_cols))
             row = pairs.iloc[0]
             pair["component"] = pair["component"] or str(row.get("component", row.get("component_id", "")))
             pair["composite"] = pair["composite"] or str(row.get("composite", row.get("composite_id", row.get("task_name", ""))))
@@ -225,7 +242,16 @@ def resolve_pair_and_controls(args: argparse.Namespace, structure: pd.DataFrame)
     names = set(structure["task_name"] if "task_name" in structure.columns else structure["structure_id"])
     pair["component"] = pair["component"] or ("A02_substitute" if "A02_substitute" in names else None)
     pair["composite"] = pair["composite"] or ("C06_reverse_then_substitute_02_00" if "C06_reverse_then_substitute_02_00" in names else None)
-    pair["unrelated_control"] = pair["unrelated_control"] or choose_control(structure, "unrelated", pair["composite"])
+
+    # Operation-family controls. The legacy unrelated_control is retained for backwards
+    # compatibility but is now interpreted as the same-operation unrelated control by default.
+    pair["same_operation_control"] = pair["same_operation_control"] or choose_operation_control(
+        structure, pair["component"], pair["composite"], same_operation=True
+    )
+    pair["different_operation_control"] = pair["different_operation_control"] or choose_operation_control(
+        structure, pair["component"], pair["composite"], same_operation=False
+    )
+    pair["unrelated_control"] = pair["unrelated_control"] or pair["same_operation_control"] or choose_control(structure, "unrelated", pair["composite"])
     pair["fake_component_control"] = pair["fake_component_control"] or choose_control(structure, "shortcut", pair["component"])
     pair["surface_control"] = pair["surface_control"] or choose_control(structure, "surface_control", pair["component"])
     return {k: str(v) for k, v in pair.items() if v is not None and str(v) and str(v) != "nan"}
@@ -257,8 +283,53 @@ def choose_control(structure: pd.DataFrame, kind: str, target: str | None) -> st
     return str(cand.iloc[0]["task_name"])
 
 
+
+def choose_operation_control(structure: pd.DataFrame, component: str | None, composite: str | None, same_operation: bool) -> str | None:
+    """Choose a control that separates exact-component reuse from operation-family transfer.
+
+    same_operation=True chooses a task with the same operation family as the component,
+    but not the exact component and not a component of the target composite. This tests
+    whether an intervention effect is exact-component specific or merely operation-family
+    transfer. same_operation=False chooses a different-operation control matched on
+    frequency/reference learnability where possible.
+    """
+    if structure.empty or not component:
+        return None
+    df = structure.copy()
+    if "task_name" not in df.columns and "structure_id" in df.columns:
+        df["task_name"] = df["structure_id"]
+    if component not in set(df["task_name"]):
+        return None
+    comp_row = df[df["task_name"] == component].iloc[0]
+    component_op = str(comp_row.get("op", comp_row.get("operation", "")))
+    forbidden = {component}
+    if composite and composite in set(df["task_name"]):
+        forbidden.add(composite)
+        c_row = df[df["task_name"] == composite].iloc[0]
+        comps = str(c_row.get("components", "")).split(",")
+        forbidden |= {x for x in comps if x and x != "nan"}
+    cand = df[~df["task_name"].isin(forbidden)].copy()
+    if "op" not in cand.columns and "operation" in cand.columns:
+        cand["op"] = cand["operation"]
+    cand = cand[cand["op"].astype(str).eq(component_op) if same_operation else ~cand["op"].astype(str).eq(component_op)].copy()
+    if cand.empty:
+        return None
+    # Prefer unrelated controls, then atomics, then other controls; this avoids accidentally
+    # selecting the target composite or another true composite unless no alternative exists.
+    kind_priority = {"unrelated": 0, "atomic": 1, "surface_control": 2, "shortcut": 3, "composite": 4}
+    cand["kind_priority"] = cand.get("kind", "").map(kind_priority).fillna(9).astype(float)
+    target_freq = float(comp_row.get("frequency", np.nan))
+    target_learn = float(comp_row.get("reference_learnability", np.nan))
+    cand["match_score"] = cand["kind_priority"]
+    if np.isfinite(target_freq) and "frequency" in cand.columns:
+        cand["match_score"] += (np.log(np.maximum(cand["frequency"].astype(float), 1e-12)) - np.log(max(target_freq, 1e-12))).abs()
+    if np.isfinite(target_learn) and "reference_learnability" in cand.columns:
+        cand["match_score"] += 0.25 * (cand["reference_learnability"].astype(float) - target_learn).abs()
+    cand = cand.sort_values(["match_score", "task_name"])
+    return str(cand.iloc[0]["task_name"])
+
 def validate_pair(pair: dict[str, str], tasks_by_name: dict[str, int]) -> None:
-    needed = ["component", "composite", "unrelated_control", "fake_component_control", "surface_control"]
+    needed = ["component", "composite", "unrelated_control", "same_operation_control", "different_operation_control", "fake_component_control", "surface_control"]
     missing = [k for k in needed if not pair.get(k)]
     if missing:
         raise ValueError(f"Could not resolve H3 pair/control fields: {missing}. Pair={pair}")
@@ -327,8 +398,11 @@ def train_one_intervention(family, cfg: SequenceDSLConfig, args: argparse.Namesp
 def intervention_target(condition: str, pair: dict[str, str]) -> str | None:
     if condition in {"upweight_component", "delay_component", "corrupt_component"}:
         return pair["component"]
-    if condition in {"upweight_unrelated_matched", "delay_unrelated_matched", "corrupt_unrelated_matched"}:
-        return pair["unrelated_control"]
+    if condition in {"upweight_unrelated_matched", "delay_unrelated_matched", "corrupt_unrelated_matched",
+                     "upweight_same_operation_unrelated", "delay_same_operation_unrelated", "corrupt_same_operation_unrelated"}:
+        return pair.get("same_operation_control") or pair.get("unrelated_control")
+    if condition in {"upweight_different_operation_matched", "delay_different_operation_matched", "corrupt_different_operation_matched"}:
+        return pair.get("different_operation_control")
     if condition == "upweight_fake_component":
         return pair["fake_component_control"]
     if condition == "upweight_surface_control":
@@ -395,6 +469,8 @@ def config_row(args: argparse.Namespace, condition: str, n_params: int, pair: di
         "n_parameters": n_params,
         "component": pair["component"],
         "composite": pair["composite"],
+        "same_operation_control": pair.get("same_operation_control", ""),
+        "different_operation_control": pair.get("different_operation_control", ""),
         "upweight_factor": args.upweight_factor,
         "delay_fraction": args.delay_fraction,
         "corrupt_prob": args.corrupt_prob,
@@ -411,6 +487,8 @@ def run_report(args: argparse.Namespace, pair: dict[str, str], eval_df: pd.DataF
         f"- component: `{pair['component']}`",
         f"- composite: `{pair['composite']}`",
         f"- unrelated_control: `{pair['unrelated_control']}`",
+        f"- same_operation_control: `{pair.get('same_operation_control', '')}`",
+        f"- different_operation_control: `{pair.get('different_operation_control', '')}`",
         f"- fake_component_control: `{pair['fake_component_control']}`",
         f"- surface_control: `{pair['surface_control']}`",
         "",
