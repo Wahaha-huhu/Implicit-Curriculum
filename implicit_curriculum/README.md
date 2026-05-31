@@ -505,3 +505,30 @@ Key files:
 - `thesis_evidence/tables/final_claim_evidence_matrix.csv`
 - `thesis_evidence/tables/mediator_pair_evidence_matrix.csv`
 - `thesis_evidence/tables/figure_source_map.csv`
+
+### v2.0 second-family replication workflow
+
+Generate a second-family replication plan:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_replication_plan \
+  --output-dir results/b1_replication_plan_v20 \
+  --family-id family_replication_01 \
+  --candidate-seeds 20 21 22 23 24 25 26 27 28 29 \
+  --code-version v2.0
+```
+
+Then run the generated script section by section:
+
+```bash
+bash results/b1_replication_plan_v20/recommended_replication_commands.sh
+```
+
+After a replication family has H1/H2/H3 outputs, aggregate families with:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_cross_family_synthesis \
+  --family-registry thesis_evidence/tables/b1_family_registry.csv \
+  --output-dir results/b1_cross_family_synthesis_v20 \
+  --code-version v2.0
+```

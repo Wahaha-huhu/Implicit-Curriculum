@@ -644,3 +644,15 @@ New or updated evidence artifacts:
 - `thesis_evidence/tables/figure_source_map.csv`
 
 Current claim boundary: localized exact-component dependency is supported for one controlled pair and gradient-corroborated; universal dependency and causal LLM generalization are not supported.
+
+## v2.0 — Second B1-family replication workflow
+
+Added:
+
+- `make_b1_replication_plan`: generates a full calibration → H1 → H2 → H3 command script for an independently generated B1 family.
+- `analyze_b1_cross_family_synthesis`: aggregates H1/H2/H3 evidence across generated B1 families using a registry CSV.
+- `thesis_evidence/SECOND_FAMILY_REPLICATION_PLAN.md`
+- `thesis_evidence/CROSS_FAMILY_SYNTHESIS_PLAN.md`
+- `thesis_evidence/tables/b1_family_registry_template.csv`
+
+Scientific purpose: test whether the localized dependency result found in the first B1 family recurs in a second generated family. This is the next key credibility step before claiming a robust controlled phenomenon.
