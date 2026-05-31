@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py --result-dir results/b1_h3_secondary_v15_row1_A03_copy_to_C07_substitute_then_reverse_04_03_strong --metric-family token_accuracy --threshold 0.7 --code-version v1.5 --archive-root results/archive --thesis-use candidate
