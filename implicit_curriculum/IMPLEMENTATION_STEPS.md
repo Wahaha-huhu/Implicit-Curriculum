@@ -656,3 +656,13 @@ Added:
 - `thesis_evidence/tables/b1_family_registry_template.csv`
 
 Scientific purpose: test whether the localized dependency result found in the first B1 family recurs in a second generated family. This is the next key credibility step before claiming a robust controlled phenomenon.
+
+## v2.1 — H3 threshold/readiness and learnability-proxy audit
+
+Family 2 exposed a methodological failure mode: the largest H2 residuals can select composites that are too hard for H3 intervention analysis at the default token-accuracy threshold. v2.1 adds:
+
+- `analyze_b1_h3_threshold_sensitivity`: reanalyzes H3 runs across multiple thresholds and reports AUC/final metrics.
+- `select_b1_h3_ready_candidates`: ranks H2 residual candidates by residual size plus measurable H1 readiness.
+- `audit_b1_learnability_proxy`: checks whether `reference_learnability` behaves like difficulty or is confounded/reversed in a given B1 family.
+
+Use these before spending more GPU time on family-2 H3 interventions.

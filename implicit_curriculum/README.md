@@ -532,3 +532,15 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_cross_family_synt
   --output-dir results/b1_cross_family_synthesis_v20 \
   --code-version v2.0
 ```
+
+### v2.1 H3 readiness and threshold sensitivity
+
+New diagnostic commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_h3_threshold_sensitivity --help
+PYTHONPATH=src python -m ic_experiments.experiments.select_b1_h3_ready_candidates --help
+PYTHONPATH=src python -m ic_experiments.experiments.audit_b1_learnability_proxy --help
+```
+
+These commands diagnose whether an H3 candidate is truly negative, too hard at the default acquisition threshold, or a better candidate for final/AUC-based analysis.
