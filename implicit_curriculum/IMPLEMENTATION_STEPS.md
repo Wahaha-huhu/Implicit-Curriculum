@@ -945,15 +945,25 @@ Interpretation:
 
 Claim boundary: observational bridge only; no causal dependency claim.
 
-## v3.0 — Pythia observational model/config sweep
+## v3.1 — Consolidate Pythia sweep evidence
 
-Adds a sweep planner and cross-run synthesizer for the Pythia observational bridge.
+Purpose: preserve the v3.0 Pythia 70M/160M model sweep in the durable thesis evidence archive and update the claim boundary.
 
-New commands:
+Run after the v3.0 sweep synthesis exists:
 
 ```bash
-PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_sweep_plan
-PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_sweep_synthesis
+PYTHONPATH=src python -m ic_experiments.experiments.consolidate_pythia_sweep_evidence \
+  --sweep-synthesis-dir results/pythia_sweep_synthesis_v30 \
+  --evidence-dir thesis_evidence \
+  --code-version v3.1 \
+  --archive-root results/archive \
+  --thesis-use candidate
 ```
 
-Use this after generating the H2-ready Pythia slice suite. The sweep tests whether residual patterns are stable across model sizes, checkpoint sets, or evaluation budgets. It remains observational only.
+The consolidated claim is observational: arithmetic and string composites show stable underperformance across Pythia-70M and Pythia-160M under continuous primitive-to-composite residual analysis, while retrieval composites are more model/config dependent. This strengthens the Pythia bridge but does not establish causal dependency.
+
+Next experiments after v3.1:
+
+1. Run the same H2-ready slice suite on Pythia-410M if feasible.
+2. Run denser checkpoints for 70M/160M.
+3. Add focused arithmetic composites to stress-test the most stable residual family.

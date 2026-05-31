@@ -1,1 +1,0 @@
-/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_threshold_sensitivity.py --result-dir results/pythia_easy_observational_pilot_v26 --metric accuracy --thresholds 0.2 0.3 0.4 0.5 --code-version v2.6 --archive-root results/archive --thesis-use diagnostic

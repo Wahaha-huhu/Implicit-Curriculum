@@ -1,0 +1,6 @@
+claim,status,evidence,boundary
+Pythia-style checkpointed models show measurable primitive/composite slice dynamics under continuous scores,supported_observational_pilot,The v2.7/v3.0 H2-ready slice suite yields moving atomic and composite slices across multiple continuous metrics,This is observational and does not establish causal dependency
+Primitive-to-composite residual analysis is feasible in Pythia-like checkpoints,supported_observational_pilot,The v2.9/v3.0 analyses produce residual rows for 10 composites across five metrics,Residuals are candidate signatures not proof of component reuse
+Some residual patterns persist across Pythia model sizes/configurations,supported_observational_pilot,The 70M/160M sweep identifies several stable underperforming composites especially arithmetic and string composites,Only two model sizes have been swept so far; 410M or denser checkpoints would strengthen this
+Pythia causally learns composites from primitive components,not_supported,No Pythia pretraining interventions have been run,This claim would require interventions or stronger mechanistic evidence beyond observational trajectories
+Pythia replicates the B1 exact-component dependency result,not_supported,The Pythia bridge has residual/coupling signatures not H3-style matched interventions,Use Pythia as observational bridge only

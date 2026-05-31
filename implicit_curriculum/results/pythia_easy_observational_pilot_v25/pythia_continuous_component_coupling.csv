@@ -1,7 +1,0 @@
-model_name,metric,composite_slice_id,component_ids,n_components_found,composite_final,component_mean_final,composite_minus_component_final,composite_delta,component_mean_delta,composite_minus_component_delta
-EleutherAI/pythia-70m,accuracy,easy_add_then_compare,easy_add_1d;easy_compare_1d,2,0.3125,0.203125,0.109375,0.09375,-0.0078125,0.1015625
-EleutherAI/pythia-70m,accuracy,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,2,0.15625,0.265625,-0.109375,-0.125,0.0078125,-0.1328125
-EleutherAI/pythia-70m,mean_logprob_correct,easy_add_then_compare,easy_add_1d;easy_compare_1d,2,-4.424877677112818,-4.521097704768181,0.09622002765536308,6.7452490590512735,6.50064231455326,0.24460674449801356
-EleutherAI/pythia-70m,mean_logprob_correct,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,2,-5.415589332580566,-4.900465287268162,-0.5151240453124046,5.400176435709,5.971937723457813,-0.5717612877488136
-EleutherAI/pythia-70m,mean_logprob_margin,easy_add_then_compare,easy_add_1d;easy_compare_1d,2,0.3014755249023437,0.4801578540354967,-0.17868232913315302,-0.2729352861642838,-0.12339305691421032,-0.1495422292500735
-EleutherAI/pythia-70m,mean_logprob_margin,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,2,0.9008407555520536,0.7280006166547537,0.17284013889729988,0.4543422721326353,0.2113813664764166,0.2429609056562187

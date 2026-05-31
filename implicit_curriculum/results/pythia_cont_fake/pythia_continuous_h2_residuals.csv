@@ -1,0 +1,11 @@
+model_name,metric,target_summary,slice_id,component_ids,observed,predicted,residual,n_atomic_fit
+fake,accuracy,final_metric,easy_add_then_compare,easy_add_1d;easy_compare_1d,0.3,,,4
+fake,accuracy,final_metric,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0.3,,,4
+fake,mean_correct_margin,final_metric,easy_add_then_compare,easy_add_1d;easy_compare_1d,-0.2,,,4
+fake,mean_correct_margin,final_metric,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,-0.2,,,4
+fake,mean_correct_mrr,final_metric,easy_add_then_compare,easy_add_1d;easy_compare_1d,0.325,,,4
+fake,mean_correct_mrr,final_metric,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0.325,,,4
+fake,mean_logprob_correct,final_metric,easy_add_then_compare,easy_add_1d;easy_compare_1d,-2.7,,,4
+fake,mean_logprob_correct,final_metric,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,-2.7,,,4
+fake,mean_logprob_margin,final_metric,easy_add_then_compare,easy_add_1d;easy_compare_1d,0.2,,,4
+fake,mean_logprob_margin,final_metric,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0.2,,,4

@@ -741,6 +741,26 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_residual_refi
 
 This writes metric-agreement and composite-family summaries. The output remains observational only and cannot establish causal dependency.
 
-### Pythia observational model/config sweep
+## v3.1 — Pythia sweep evidence consolidation
 
-Version v3.0 adds a sweep layer for the Pythia observational bridge. It can generate commands for multiple Pythia model sizes and evaluation budgets, then aggregate residual-refinement outputs across runs. Stable cross-model residual patterns are useful observational evidence, but they do not establish causal dependency.
+v3.1 adds a consolidation command for the Pythia observational model sweep. The command copies the canonical v3.0 sweep outputs into `thesis_evidence/`, writes a claim-boundary table, and updates the overall synthesis while preserving the causal boundary: Pythia residuals are observational bridge evidence, not H3 causal evidence.
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.consolidate_pythia_sweep_evidence \
+  --sweep-synthesis-dir results/pythia_sweep_synthesis_v30 \
+  --evidence-dir thesis_evidence \
+  --code-version v3.1 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Expected durable outputs include:
+
+```text
+thesis_evidence/PYTHIA_SWEEP_SYNTHESIS.md
+thesis_evidence/tables/pythia_sweep_run_summary.csv
+thesis_evidence/tables/pythia_sweep_residual_stability.csv
+thesis_evidence/tables/pythia_sweep_family_stability.csv
+thesis_evidence/tables/pythia_sweep_claim_boundary.csv
+thesis_evidence/results_summaries/v30_PYTHIA_SWEEP_SYNTHESIS.md
+```

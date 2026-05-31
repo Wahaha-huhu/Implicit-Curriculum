@@ -1,0 +1,9 @@
+slice_id,kind,family,operation_type,composition_depth,frequency_proxy,reference_learnability,formal_utility,component_ids,control_type
+easy_add_1d,atomic,arithmetic,addition,1,0.9,0.2,0.8,,
+easy_compare_1d,atomic,arithmetic,comparison,1,0.8,0.2,0.8,,
+easy_add_then_compare,composite,arithmetic,add_then_compare,2,0.4,0.5,0.0,easy_add_1d;easy_compare_1d,
+easy_copy_word,atomic,string,copy,1,0.75,0.25,0.7,,
+easy_reverse_two_words,atomic,string,reverse,1,0.55,0.45,0.7,,
+easy_reverse_then_copy,composite,string,reverse_then_copy,2,0.3,0.65,0.0,easy_reverse_two_words;easy_copy_word,
+easy_color_surface,surface_control,surface,surface_color,1,0.5,0.25,0.0,,surface
+easy_animals_surface,surface_control,surface,surface_animal,1,0.5,0.25,0.0,,surface

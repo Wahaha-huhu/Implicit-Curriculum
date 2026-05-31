@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/mnt/data/work_v27/src/ic_experiments/experiments/analyze_pythia_continuous_scores.py",
+    "--result-dir",
+    "results/pythia_h2_ready_fake_run",
+    "--code-version",
+    "v2.7",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v2.7",
+  "command": "/mnt/data/work_v27/src/ic_experiments/experiments/analyze_pythia_continuous_scores.py --result-dir results/pythia_h2_ready_fake_run --code-version v2.7 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T21:15:18+00:00",
+  "experiment": "Pythia_observational_continuous_score_analysis",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "h2_target": "final_metric",
+  "input_paths": {
+    "result_dir": "results/pythia_h2_ready_fake_run"
+  },
+  "metrics": [
+    "accuracy",
+    "mean_logprob_correct",
+    "mean_correct_margin",
+    "mean_correct_mrr",
+    "mean_logprob_margin"
+  ],
+  "output_dir": "results/pythia_h2_ready_fake_run",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "pythia_h2_ready_fake_run",
+  "thesis_use": "diagnostic"
+}

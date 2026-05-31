@@ -1,0 +1,1 @@
+/mnt/data/work_v27/src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py --output-dir results/pythia_h2_ready_slice_suite_smoke --n-per-slice 4 --code-version v2.7 --archive-root results/archive --thesis-use diagnostic

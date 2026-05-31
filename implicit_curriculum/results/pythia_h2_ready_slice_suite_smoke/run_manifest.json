@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/mnt/data/work_v27/src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py",
+    "--output-dir",
+    "results/pythia_h2_ready_slice_suite_smoke",
+    "--n-per-slice",
+    "4",
+    "--code-version",
+    "v2.7",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v2.7",
+  "command": "/mnt/data/work_v27/src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py --output-dir results/pythia_h2_ready_slice_suite_smoke --n-per-slice 4 --code-version v2.7 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T21:15:06+00:00",
+  "experiment": "Pythia_H2_ready_slice_suite_generation",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {},
+  "n_atomic": 16,
+  "n_composites": 10,
+  "n_controls": 3,
+  "n_examples": 116,
+  "n_slices": 29,
+  "output_dir": "results/pythia_h2_ready_slice_suite_smoke",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "pythia_h2_ready_slice_suite_smoke",
+  "thesis_use": "diagnostic"
+}
