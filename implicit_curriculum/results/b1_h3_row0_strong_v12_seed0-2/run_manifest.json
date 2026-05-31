@@ -1,0 +1,43 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py",
+    "--result-dir",
+    "results/b1_h3_row0_strong_v12_seed0-2",
+    "--metric-family",
+    "token_accuracy",
+    "--threshold",
+    "0.7",
+    "--code-version",
+    "v1.2",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v1.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py --result-dir results/b1_h3_row0_strong_v12_seed0-2 --metric-family token_accuracy --threshold 0.7 --code-version v1.2 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T11:02:07+00:00",
+  "experiment": "B1_H3_pair_specific_intervention_analysis",
+  "git_sha": "d84db1b6f98062425c3b9eea0615ffe511e8b890",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/b1_h3_row0_strong_v12_seed0-2/\n?? src/ic_experiments/__pycache__/configs.cpython-311.pyc\n?? src/ic_experiments/__pycache__/data.cpython-311.pyc\n?? src/ic_experiments/__pycache__/design.cpython-311.pyc\n?? src/ic_experiments/__pycache__/metrics.cpython-311.pyc\n?? src/ic_experiments/__pycache__/sequence_analysis.cpython-311.pyc\n?? src/ic_experiments/__pycache__/tasks.cpython-311.pyc\n?? src/ic_experiments/backends/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h3_interventions.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_b1_h3_interventions.cpython-311.pyc",
+  "input_paths": {
+    "result_dir": "results/b1_h3_row0_strong_v12_seed0-2"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/b1_h3_row0_strong_v12_seed0-2",
+  "pair": {
+    "component": "A02_substitute",
+    "composite": "C06_reverse_then_substitute_02_00",
+    "different_operation_control": "A07_reverse",
+    "fake_component_control": "K01_shortcut_for_A07_reverse",
+    "same_operation_control": "U00_unrelated_substitute",
+    "surface_control": "S00_surface_rotate",
+    "unrelated_control": "U00_unrelated_substitute"
+  },
+  "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h3_analysis_A02_substitute_to_C06_reverse_then_substitute_02_00",
+  "thesis_use": "diagnostic",
+  "threshold": 0.7
+}
