@@ -14,3 +14,4 @@ pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_observational_pilot,Pythia_
 pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:20:32+00:00
 pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:22:25+00:00
 first_stage_summary,v2.8,,first_stage_experiment_summary,,thesis_evidence/first_stage_summary,created,candidate,
+pythia_h2_ready_observational_pilot_v27,v2.9,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:45:37+00:00
