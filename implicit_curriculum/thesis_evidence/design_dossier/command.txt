@@ -1,1 +1,1 @@
-/mnt/data/work_v17/src/ic_experiments/experiments/make_thesis_design_dossier.py --output-dir thesis_evidence/design_dossier --code-version v1.7
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_thesis_design_dossier.py --evidence-dir thesis_evidence --output-dir thesis_evidence/design_dossier --code-version v1.7
