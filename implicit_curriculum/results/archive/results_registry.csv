@@ -48,3 +48,11 @@ pythia-160m_n64,v3.1,,Pythia_H2_readiness_analysis,Pythia_observational,results/
 pythia-160m_n64,v3.1,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:44:58+00:00
 pythia-160m_n64,v3.1,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:45:00+00:00
 pythia_sweep_synthesis_v31_70m_160m_410m_fixed,v3.1,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_sweep_synthesis_v31_70m_160m_410m_fixed,created,diagnostic,2026-05-31T22:45:13+00:00
+pythia-160m_n64,v3.1,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:47:30+00:00
+pythia-160m_n64,v3.1,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:48:02+00:00
+pythia-160m_n64,v3.1,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:48:04+00:00
+pythia-160m_n64,v3.1,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T22:48:05+00:00
+pythia-70m_n64,v3.1,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-70m_n64,analyzed,diagnostic,2026-05-31T22:48:14+00:00
+pythia-70m_n64,v3.1,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-70m_n64,analyzed,diagnostic,2026-05-31T22:48:16+00:00
+pythia-70m_n64,v3.1,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v30/pythia-70m_n64,analyzed,diagnostic,2026-05-31T22:48:17+00:00
+pythia_sweep_synthesis_v31_70m_160m_410m_fixed,v3.1,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_sweep_synthesis_v31_70m_160m_410m_fixed,created,diagnostic,2026-05-31T22:48:24+00:00
