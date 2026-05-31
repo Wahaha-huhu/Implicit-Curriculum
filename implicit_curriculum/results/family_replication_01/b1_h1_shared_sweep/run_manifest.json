@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h2_predictor_ladder.py",
+    "--result-dir",
+    "results/family_replication_01/b1_h1_shared_sweep",
+    "--metric-family",
+    "token_accuracy",
+    "--threshold",
+    "0.7",
+    "--n-permutations",
+    "100",
+    "--code-version",
+    "v2.0",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v2.0",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h2_predictor_ladder.py --result-dir results/family_replication_01/b1_h1_shared_sweep --metric-family token_accuracy --threshold 0.7 --n-permutations 100 --code-version v2.0 --archive-root results/archive --thesis-use candidate",
+  "created_at_utc": "2026-05-31T16:43:00+00:00",
+  "experiment": "B1_H2_predictor_ladder_atomic_parallel_null",
+  "git_sha": "dbf7526050aeb6d8d826df7969c7cbd6f603e294",
+  "git_status_short": "M results/archive/results_registry.csv\n M thesis_evidence/final_evidence_package/command.txt\n M thesis_evidence/final_evidence_package/final_evidence_package_index.md\n M thesis_evidence/final_evidence_package/git_commit.txt\n M thesis_evidence/final_evidence_package/run_manifest.json\n?? results/b1_replication_plan_v20/\n?? results/family_replication_01/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/configs.cpython-311.pyc\n?? src/ic_experiments/__pycache__/data.cpython-311.pyc\n?? src/ic_experiments/__pycache__/design.cpython-311.pyc\n?? src/ic_experiments/__pycache__/metrics.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/__pycache__/sequence_analysis.cpython-311.pyc\n?? src/ic_experiments/__pycache__/tasks.cpython-311.pyc\n?? src/ic_experiments/backends/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_cross_family_synthesis.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h1_shared_sweep.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h2_predictor_ladder.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_b1_replication_plan.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_final_thesis_evidence_package.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_b1_h1_shared_sweep.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_sequence_dsl_calibration.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_sequence_dsl_pilot.cpython-311.pyc",
+  "input_paths": {
+    "result_dir": "results/family_replication_01/b1_h1_shared_sweep"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/family_replication_01/b1_h1_shared_sweep",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h2_from_b1_h1_shared_sweep",
+  "thesis_use": "candidate",
+  "threshold": 0.7
+}

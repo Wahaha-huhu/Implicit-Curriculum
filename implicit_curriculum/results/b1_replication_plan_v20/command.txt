@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_b1_replication_plan.py --output-dir results/b1_replication_plan_v20 --family-id family_replication_01 --candidate-seeds 20 21 22 23 24 25 26 27 28 29 --calibration-seeds 0 1 2 --sweep-seeds 0 1 2 3 4 5 6 7 8 9 --h3-seeds 0 1 2 3 4 5 6 7 8 9 --code-version v2.0 --device cuda
