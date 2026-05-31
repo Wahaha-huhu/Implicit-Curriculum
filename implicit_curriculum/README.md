@@ -740,3 +740,7 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_residual_refi
 ```
 
 This writes metric-agreement and composite-family summaries. The output remains observational only and cannot establish causal dependency.
+
+### Pythia observational model/config sweep
+
+Version v3.0 adds a sweep layer for the Pythia observational bridge. It can generate commands for multiple Pythia model sizes and evaluation budgets, then aggregate residual-refinement outputs across runs. Stable cross-model residual patterns are useful observational evidence, but they do not establish causal dependency.

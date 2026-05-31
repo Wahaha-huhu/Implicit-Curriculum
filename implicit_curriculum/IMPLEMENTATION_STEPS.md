@@ -944,3 +944,16 @@ Interpretation:
 - RED: residuals are degenerate or dominated by controls.
 
 Claim boundary: observational bridge only; no causal dependency claim.
+
+## v3.0 — Pythia observational model/config sweep
+
+Adds a sweep planner and cross-run synthesizer for the Pythia observational bridge.
+
+New commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_sweep_plan
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_sweep_synthesis
+```
+
+Use this after generating the H2-ready Pythia slice suite. The sweep tests whether residual patterns are stable across model sizes, checkpoint sets, or evaluation budgets. It remains observational only.

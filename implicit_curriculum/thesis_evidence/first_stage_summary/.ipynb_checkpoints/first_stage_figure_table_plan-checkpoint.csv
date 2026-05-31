@@ -1,8 +1,0 @@
-figure_or_table,source,section
-Figure: staged methodology pipeline,summary/design docs,Methodology
-Table: claim boundary matrix,first_stage_claim_table.csv,Results/Discussion
-Figure: B1 H1 predictor signs by family,H1 reports/summaries,Results
-Figure: H3 pair evidence matrix,h3_pair_evidence_matrix.csv and cross-family synthesis,Results
-Figure: mediator gradient alignment,mediator_contrast_summary.csv,Results
-Table: family 2 readiness diagnostic,h3_readiness_report/table,Discussion
-Figure: Pythia continuous residuals,pythia_continuous_h2_residuals.csv,Observational bridge
