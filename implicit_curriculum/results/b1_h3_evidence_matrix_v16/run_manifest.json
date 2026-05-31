@@ -1,0 +1,38 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_evidence_matrix.py",
+    "--row-dirs",
+    "results/b1_h3_row0_strong_v12",
+    "results/b1_h3_opfamily_row1_v11",
+    "results/b1_h3_secondary_v15_row0_A04_reverse_to_C07_substitute_then_reverse_04_03_strong",
+    "results/b1_h3_secondary_v15_row1_A03_copy_to_C07_substitute_then_reverse_04_03_strong",
+    "--output-dir",
+    "results/b1_h3_evidence_matrix_v16",
+    "--code-version",
+    "v1.6",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v1.6",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_evidence_matrix.py --row-dirs results/b1_h3_row0_strong_v12 results/b1_h3_opfamily_row1_v11 results/b1_h3_secondary_v15_row0_A04_reverse_to_C07_substitute_then_reverse_04_03_strong results/b1_h3_secondary_v15_row1_A03_copy_to_C07_substitute_then_reverse_04_03_strong --output-dir results/b1_h3_evidence_matrix_v16 --code-version v1.6 --archive-root results/archive --thesis-use candidate",
+  "created_at_utc": "2026-05-31T15:22:38+00:00",
+  "experiment": "B1_H3_evidence_matrix_synthesis",
+  "git_sha": "9a93ddd9df90a25af70e963d1b6fa8622f7ff821",
+  "git_status_short": "?? results/b1_h3_evidence_matrix_v16/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b1_h3_evidence_matrix.cpython-311.pyc",
+  "input_paths": {
+    "row_dirs": [
+      "results/b1_h3_row0_strong_v12",
+      "results/b1_h3_opfamily_row1_v11",
+      "results/b1_h3_secondary_v15_row0_A04_reverse_to_C07_substitute_then_reverse_04_03_strong",
+      "results/b1_h3_secondary_v15_row1_A03_copy_to_C07_substitute_then_reverse_04_03_strong"
+    ]
+  },
+  "output_dir": "results/b1_h3_evidence_matrix_v16",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h3_evidence_matrix",
+  "thesis_use": "candidate"
+}
