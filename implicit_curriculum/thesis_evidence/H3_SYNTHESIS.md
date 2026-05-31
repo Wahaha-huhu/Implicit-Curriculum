@@ -43,3 +43,9 @@ The next strongest additions would be:
 2. Add mediator diagnostics for `A02 → C06`, such as early gradient alignment, representation/probe transfer, or activation patching.
 3. Improve B2 sparse-parity coverage so the quanta-style frequency baseline is thesis-ready.
 4. Eventually run an observational, non-causal Pythia slice check if the controlled story remains coherent.
+
+## Mediator diagnostic addendum
+
+Mediator diagnostics strengthen the interpretation of the H3 evidence. The positive pair `A02_substitute → C06` has early exact-component gradient cosine 0.533, compared with 0.210 for the same-operation control and 0.223 for the different-operation control. By contrast, weak/negative pairs such as `A00_copy → C06` and `A03_copy → C07` do not show exact-component gradient separation. The operation-family case `A04_reverse → C07` shows high exact gradient cosine but a nearly matched same-operation reverse control, consistent with operation-family transfer.
+
+The current CKA diagnostic is not discriminative: values are nearly flat across exact and control pairs. Therefore the H3 mechanism claim should reference early gradient alignment, not CKA-based representation evidence.

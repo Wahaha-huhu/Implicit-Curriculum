@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/mnt/data/work_v19/src/ic_experiments/experiments/make_final_thesis_evidence_package.py",
+    "--evidence-dir",
+    "thesis_evidence",
+    "--output-dir",
+    "thesis_evidence/final_evidence_package",
+    "--code-version",
+    "v1.9"
+  ],
+  "backend": "thesis_evidence",
+  "code_version": "v1.9",
+  "command": "/mnt/data/work_v19/src/ic_experiments/experiments/make_final_thesis_evidence_package.py --evidence-dir thesis_evidence --output-dir thesis_evidence/final_evidence_package --code-version v1.9",
+  "created_at_utc": "2026-05-31T15:55:11+00:00",
+  "experiment": "final_thesis_evidence_package_index",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {
+    "evidence_dir": "thesis_evidence"
+  },
+  "missing_required_artifacts": [],
+  "output_dir": "thesis_evidence/final_evidence_package",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "final_evidence_package"
+}

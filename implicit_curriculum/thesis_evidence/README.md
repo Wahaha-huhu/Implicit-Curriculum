@@ -33,3 +33,15 @@ The rule is:
 - `Tier 3`: observational LLM corroboration only.
 
 No result currently supports a real-LLM causal claim.
+
+## v1.9 mediator consolidation
+
+The v1.9 evidence update adds mediator diagnostics and a final claim/evidence matrix. The key new files are:
+
+- `MEDIATOR_DIAGNOSTIC_SYNTHESIS.md`
+- `FINAL_RESULTS_SYNTHESIS.md`
+- `tables/mediator_pair_evidence_matrix.csv`
+- `tables/final_claim_evidence_matrix.csv`
+- mediator result summaries in `results_summaries/`
+
+The current mechanism claim is gradient-alignment-based. CKA is recorded as non-discriminative under the current measurement protocol.

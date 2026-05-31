@@ -1,0 +1,5 @@
+pair,composite,component,h3_status,exact_grad_cos,same_operation_grad_cos,different_operation_grad_cos,exact_minus_same_grad_cos,exact_minus_different_grad_cos,exact_cka,same_operation_cka,different_operation_cka,mediator_interpretation
+A02_substitute_to_C06,C06_reverse_then_substitute_02_00,A02_substitute,positive_exact_component_pair_specific,0.533,0.210,0.223,0.323,0.310,0.714,0.715,0.713,gradient mediator supports exact-component specificity; CKA not discriminative
+A00_copy_to_C06,C06_reverse_then_substitute_02_00,A00_copy,weak_or_negative,0.146,0.159,0.205,-0.013,-0.059,0.712,0.710,0.715,no exact-component gradient separation
+A04_reverse_to_C07,C07_substitute_then_reverse_04_03,A04_reverse,operation_family_transfer,0.465,0.441,0.217,0.024,0.248,0.708,0.709,0.713,operation-family gradient coupling; exact not much above same-operation
+A03_copy_to_C07,C07_substitute_then_reverse_04_03,A03_copy,weak_or_negative,0.230,0.273,0.192,-0.043,0.038,0.709,0.708,0.712,no exact-component gradient separation

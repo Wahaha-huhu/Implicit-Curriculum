@@ -1,0 +1,9 @@
+figure_id,figure_title,primary_sources,claim_supported,status
+F1,Experimental ladder and claim tiers,"EXPERIMENT_LOG.md; TASK_DESIGN_JUSTIFICATION.md",overall design,planned
+F2,Synthetic recovery gate,"results_summaries/exp0_recovery_report.md; results_summaries/exp0_recovery_verdict.csv",analysis pipeline validation,planned
+F3,B2 sparse parity baseline,"results_summaries/b2_sparse_parity_analysis_report.md; results_summaries/b2_sparse_parity_degree_summary.csv",frequency/difficulty baseline,planned
+F4,B1 H1 sign stability,"results_summaries/b1_h1_sign_stability.csv; results_summaries/b1_h1_config_summary.csv",structural ordering,planned
+F5,H2 predictor ladder and residuals,"results_summaries/b1_h2_analysis_report.md; results_summaries/b1_h2_pair_selection.csv",atomic predictors and candidate residuals,planned
+F6,H3 pair evidence matrix,"tables/h3_pair_evidence_matrix.csv; H3_SYNTHESIS.md",heterogeneous dependency,planned
+F7,Mediator gradient alignment,"tables/mediator_pair_evidence_matrix.csv; MEDIATOR_DIAGNOSTIC_SYNTHESIS.md",gradient-mediated localized dependency,planned
+T1,Final claim evidence matrix,tables/final_claim_evidence_matrix.csv,thesis claim boundary,planned

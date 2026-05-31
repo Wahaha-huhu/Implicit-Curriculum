@@ -621,3 +621,26 @@ Outputs:
 - `mediator_analysis_report.md`
 
 Interpretation: mechanistic corroboration only; causal claims still require H3 interventions.
+
+## v1.9 — Final evidence consolidation after mediator diagnostics
+
+Purpose: consolidate H1/H2/H3/mediator results into durable thesis artifacts.
+
+New command:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_final_thesis_evidence_package \
+  --evidence-dir thesis_evidence \
+  --output-dir thesis_evidence/final_evidence_package \
+  --code-version v1.9
+```
+
+New or updated evidence artifacts:
+
+- `thesis_evidence/FINAL_RESULTS_SYNTHESIS.md`
+- `thesis_evidence/MEDIATOR_DIAGNOSTIC_SYNTHESIS.md`
+- `thesis_evidence/tables/final_claim_evidence_matrix.csv`
+- `thesis_evidence/tables/mediator_pair_evidence_matrix.csv`
+- `thesis_evidence/tables/figure_source_map.csv`
+
+Current claim boundary: localized exact-component dependency is supported for one controlled pair and gradient-corroborated; universal dependency and causal LLM generalization are not supported.

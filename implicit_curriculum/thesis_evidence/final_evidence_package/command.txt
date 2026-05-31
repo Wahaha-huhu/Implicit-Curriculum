@@ -1,0 +1,1 @@
+/mnt/data/work_v19/src/ic_experiments/experiments/make_final_thesis_evidence_package.py --evidence-dir thesis_evidence --output-dir thesis_evidence/final_evidence_package --code-version v1.9

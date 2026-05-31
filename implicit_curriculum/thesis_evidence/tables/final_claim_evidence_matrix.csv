@@ -1,0 +1,10 @@
+claim_id,claim,current_status,key_evidence,main_caveat,thesis_use
+C1,Analysis pipeline can recover known mechanisms before neural use,supported,Exp0 simulated recovery recovered frequency-only learnability-only three-factor and dependency-gated worlds,Only validates analysis pipeline not neural mechanism,Methods/gate
+C2,Sparse parity provides a quanta-style frequency baseline,partially_supported,B2 frequency effects strong and degree separates final performance,Acquisition coverage still lower than ideal,Background/contrast
+C3,B1 acquisition order is structurally predictable,supported_pilot,H1 sign-stability across six configs; learnability robust; frequency weak but stable,One generated B1 family and small transformer scale,Main controlled result
+C4,Atomic parallel-rate models can select composite residual candidates,supported_pilot,H2 selected simple atomic predictors and identified C06/C07 residuals,Residuals are observational not causal,Main controlled result
+C5,H2 residuals imply exact-component dependency,not_supported,H3 shows C07 and A00→C06 do not support exact dependency,Residuals remain useful selectors but not proofs,Boundary result
+C6,Localized exact-component dependency can occur,supported_pair_specific,A02→C06 exact pretraining and corruption beat same-operation and different-operation controls,Currently one positive pair/family; delay weaker,Main causal pilot
+C7,Dependency is heterogeneous across formal components,supported_pilot,A02→C06 positive; A00→C06 weak; A04→C07 operation-family; A03→C07 negative,Needs replication in more families,Main conceptual result
+C8,H3-positive pair has gradient-mediated support,supported_pilot,A02→C06 exact gradient cosine 0.533 vs same-op 0.210 and different-op 0.223,CKA not discriminative and gradient is correlational,Mechanistic corroboration
+C9,Controlled B1 results causally explain Pythia/LLM training,not_tested,No Pythia interventions or causal LLM training experiments,Can only do observational corroboration later,Claim boundary

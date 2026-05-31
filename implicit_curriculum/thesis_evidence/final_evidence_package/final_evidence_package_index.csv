@@ -1,0 +1,12 @@
+artifact,present,path
+"FINAL_RESULTS_SYNTHESIS.md",true,"thesis_evidence/FINAL_RESULTS_SYNTHESIS.md"
+"OVERALL_RESULTS_SYNTHESIS.md",true,"thesis_evidence/OVERALL_RESULTS_SYNTHESIS.md"
+"H3_SYNTHESIS.md",true,"thesis_evidence/H3_SYNTHESIS.md"
+"MEDIATOR_DIAGNOSTIC_SYNTHESIS.md",true,"thesis_evidence/MEDIATOR_DIAGNOSTIC_SYNTHESIS.md"
+"HYPOTHESIS_AUDIT.md",true,"thesis_evidence/HYPOTHESIS_AUDIT.md"
+"THESIS_CLAIM_RULES.md",true,"thesis_evidence/THESIS_CLAIM_RULES.md"
+"tables/final_claim_evidence_matrix.csv",true,"thesis_evidence/tables/final_claim_evidence_matrix.csv"
+"tables/h3_pair_evidence_matrix.csv",true,"thesis_evidence/tables/h3_pair_evidence_matrix.csv"
+"tables/mediator_pair_evidence_matrix.csv",true,"thesis_evidence/tables/mediator_pair_evidence_matrix.csv"
+"tables/figure_source_map.csv",true,"thesis_evidence/tables/figure_source_map.csv"
+"results_summaries/b1_mediator_h3_pairs_v18_analysis_report.md",true,"thesis_evidence/results_summaries/b1_mediator_h3_pairs_v18_analysis_report.md"

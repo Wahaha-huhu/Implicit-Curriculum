@@ -135,3 +135,49 @@ Plot candidates:
 Caption message:
 
 > Exact component pretraining and corruption move the delayed composite beyond operation-matched controls, but the result is pair-specific and should not be generalized to all components.
+
+## Figure 8 — H3 evidence matrix across tested pairs
+
+Purpose: show that dependency is heterogeneous rather than universal.
+
+Source files:
+
+- `tables/h3_pair_evidence_matrix.csv`
+- `H3_SYNTHESIS.md`
+
+Possible panels:
+
+- pair-by-pair heatmap with verdict categories;
+- composite-level summary: C06 localized exact site, C07 operation-family/saturation.
+
+## Figure 9 — Mediator diagnostics: gradient alignment separates the positive pair
+
+Purpose: show that the H3-positive pair has stronger early gradient coupling than controls and weak/negative pairs.
+
+Source files:
+
+- `tables/mediator_pair_evidence_matrix.csv`
+- `results_summaries/b1_mediator_h3_pairs_v18_analysis_report.md`
+- `results_summaries/b1_mediator_h3_pairs_v18_contrast_summary.csv`
+
+Possible panels:
+
+- bar plot: exact vs same-operation vs different-operation gradient cosine for each pair;
+- exact-minus-control gradient cosine by pair;
+- CKA flatness panel or appendix table showing CKA is not discriminative.
+
+## Table 3 — Final claim/evidence matrix
+
+Purpose: thesis-safe claim boundary.
+
+Source file:
+
+- `tables/final_claim_evidence_matrix.csv`
+
+Columns:
+
+- claim;
+- status;
+- key evidence;
+- caveat;
+- thesis use.

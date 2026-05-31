@@ -30,3 +30,13 @@ The current H3 matrix has four tested pairs:
 - `A03_copy → C07`: negative.
 
 This makes the H3 conclusion stronger but narrower: residuals are useful candidate selectors, but interventions are necessary to map the actual causal structure.
+
+## Mediator diagnostic update
+
+The mediator diagnostic stage adds mechanistic corroboration for the localized H3 positive pair. `A02_substitute → C06_reverse_then_substitute_02_00` has much stronger early gradient alignment with its composite than same-operation, different-operation, fake, or surface controls. Weak/negative pairs do not show this exact-component gradient separation, and the operation-family pair `A04_reverse → C07` shows exact and same-operation reverse gradients that are nearly matched.
+
+This supports the gradient-mediated interpretation for the localized positive pair, but current CKA is not discriminative and should not be used as representation-level evidence for exact dependency.
+
+Updated core claim:
+
+> In controlled sequence-transformer training, structural predictors and atomic residuals identify candidate composite interactions; interventions and mediator diagnostics show that exact-component reuse is localized and gradient-aligned rather than universal across formal components.

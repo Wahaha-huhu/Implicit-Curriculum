@@ -486,3 +486,22 @@ These files are append-only thesis evidence. They should be updated whenever new
 ### v1.8 mediator diagnostics
 
 Use `run_b1_mediator_diagnostics` to probe early gradient and representation coupling for selected H3 pairs, then `analyze_b1_mediator_diagnostics` to compare exact components against same-operation, different-operation, fake, and surface controls. These diagnostics support the gradient-mediated mechanism but do not by themselves establish causality.
+
+## v1.9 final evidence consolidation
+
+The `thesis_evidence/` folder now includes mediator diagnostics and a final claim/evidence matrix. To build an index of thesis evidence artifacts:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_final_thesis_evidence_package \
+  --evidence-dir thesis_evidence \
+  --output-dir thesis_evidence/final_evidence_package \
+  --code-version v1.9
+```
+
+Key files:
+
+- `thesis_evidence/FINAL_RESULTS_SYNTHESIS.md`
+- `thesis_evidence/MEDIATOR_DIAGNOSTIC_SYNTHESIS.md`
+- `thesis_evidence/tables/final_claim_evidence_matrix.csv`
+- `thesis_evidence/tables/mediator_pair_evidence_matrix.csv`
+- `thesis_evidence/tables/figure_source_map.csv`
