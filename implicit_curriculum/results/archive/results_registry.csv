@@ -5,3 +5,7 @@ pythia_easy_slice_suite_smoke,v2.5,,Pythia_easy_slice_suite_generation,Pythia_ob
 pythia_easy_slice_suite_v25,v2.5,,Pythia_easy_slice_suite_generation,Pythia_observational,results/pythia_easy_slice_suite_v25,created,diagnostic,2026-05-31T20:47:00+00:00
 pythia_easy_observational_pilot_v25,v2.5,,Pythia_observational_pilot,Pythia_observational,results/pythia_easy_observational_pilot_v25,created,diagnostic,2026-05-31T20:47:27+00:00
 pythia_easy_observational_pilot_v25,v2.5,,Pythia_observational_threshold_sensitivity,Pythia_observational,results/pythia_easy_observational_pilot_v25,analyzed,diagnostic,2026-05-31T20:48:04+00:00
+pythia_easy_observational_pilot_v25,v2.6,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_easy_observational_pilot_v25,analyzed,diagnostic,2026-05-31T21:00:47+00:00
+pythia_easy_observational_pilot_v26,v2.6,,Pythia_observational_pilot,Pythia_observational,results/pythia_easy_observational_pilot_v26,created,diagnostic,2026-05-31T21:02:58+00:00
+pythia_easy_observational_pilot_v26,v2.6,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_easy_observational_pilot_v26,analyzed,diagnostic,2026-05-31T21:03:56+00:00
+pythia_easy_observational_pilot_v26,v2.6,,Pythia_observational_threshold_sensitivity,Pythia_observational,results/pythia_easy_observational_pilot_v26,analyzed,diagnostic,2026-05-31T21:04:07+00:00

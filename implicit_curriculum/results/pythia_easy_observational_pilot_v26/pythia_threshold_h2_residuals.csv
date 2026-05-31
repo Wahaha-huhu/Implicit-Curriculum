@@ -1,0 +1,9 @@
+model_name,metric,threshold,slice_id,component_ids,acquired,final_metric,observed_log_time,predicted_log_time,residual_log_time,n_atomic_fit
+EleutherAI/pythia-70m,accuracy,0.2,easy_add_then_compare,easy_add_1d;easy_compare_1d,1,0.3125,0.0,11.090354888959114,-11.090354888959114,4
+EleutherAI/pythia-70m,accuracy,0.2,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,1,0.15625,0.0,10.397207708399169,-10.397207708399169,4
+EleutherAI/pythia-70m,accuracy,0.3,easy_add_then_compare,easy_add_1d;easy_compare_1d,1,0.3125,,,,1
+EleutherAI/pythia-70m,accuracy,0.3,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0,0.15625,,,,1
+EleutherAI/pythia-70m,accuracy,0.4,easy_add_then_compare,easy_add_1d;easy_compare_1d,0,0.3125,,,,0
+EleutherAI/pythia-70m,accuracy,0.4,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0,0.15625,,,,0
+EleutherAI/pythia-70m,accuracy,0.5,easy_add_then_compare,easy_add_1d;easy_compare_1d,0,0.3125,,,,0
+EleutherAI/pythia-70m,accuracy,0.5,easy_reverse_then_copy,easy_reverse_two_words;easy_copy_word,0,0.15625,,,,0
