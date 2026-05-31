@@ -482,3 +482,7 @@ The repository now includes durable thesis-design documents under `thesis_eviden
 
 These files are append-only thesis evidence. They should be updated whenever new experiments change the claim boundary.
 
+
+### v1.8 mediator diagnostics
+
+Use `run_b1_mediator_diagnostics` to probe early gradient and representation coupling for selected H3 pairs, then `analyze_b1_mediator_diagnostics` to compare exact components against same-operation, different-operation, fake, and surface controls. These diagnostics support the gradient-mediated mechanism but do not by themselves establish causality.

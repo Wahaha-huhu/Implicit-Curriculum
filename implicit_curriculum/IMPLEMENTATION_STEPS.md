@@ -605,3 +605,19 @@ Added durable thesis-design documents that justify the controlled task design an
 
 Next recommended experiments remain: mediator diagnostics for positive vs negative B1 pairs; second-family B1 replication; B2 coverage strengthening; small Pythia observational pilot.
 
+
+## v1.8 — Mediator diagnostics
+
+Adds `run_b1_mediator_diagnostics` and `analyze_b1_mediator_diagnostics`.
+
+Purpose: test whether H3-positive pairs show stronger early gradient/representation coupling than weak/negative or operation-family pairs.
+
+Outputs:
+
+- `mediator_task_stats.csv`
+- `mediator_pair_stats.csv`
+- `mediator_pair_role_summary.csv`
+- `mediator_contrast_summary.csv`
+- `mediator_analysis_report.md`
+
+Interpretation: mechanistic corroboration only; causal claims still require H3 interventions.
