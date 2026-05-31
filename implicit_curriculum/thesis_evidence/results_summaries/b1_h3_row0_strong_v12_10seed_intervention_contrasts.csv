@@ -1,0 +1,6 @@
+composite,left_condition,right_condition,expected_direction,n_paired_seeds,n_strict_paired_acquired,left_acquisition_rate,right_acquisition_rate,strict_delta_acquired_at_mean,strict_expected_direction_rate,censored_delta_acquired_at_mean,censored_expected_direction_rate,final_metric_delta_mean,final_metric_expected_direction_rate,left_final_metric_mean,right_final_metric_mean
+C06_reverse_then_substitute_02_00,upweight_component,upweight_unrelated_matched,earlier,10,8,0.9,0.8,7104.0,0.0,-2867.2,0.1,-0.00107421875,0.3,0.7554687678813934,0.7565429866313934
+C06_reverse_then_substitute_02_00,upweight_component,upweight_fake_component,earlier,10,5,0.9,0.5,-27596.8,1.0,-40345.6,0.9,0.030696606636047362,1.0,0.7554687678813934,0.724772161245346
+C06_reverse_then_substitute_02_00,upweight_component,upweight_surface_control,earlier,10,7,0.9,0.7,-27977.14285714286,0.8571428571428571,-31385.6,0.8,0.0181640625,0.9,0.7554687678813934,0.7373047053813935
+C06_reverse_then_substitute_02_00,corrupt_component,corrupt_unrelated_matched,later,10,4,0.4,0.4,14464.0,0.75,5785.6,0.3,0.002604156732559204,0.4,0.7081054806709289,0.7055013239383697
+C06_reverse_then_substitute_02_00,delay_component,delay_unrelated_matched,later,10,5,0.5,0.6,-10035.2,0.0,-307.2,0.1,-0.005794268846511841,0.6,0.7141276240348816,0.7199218928813934

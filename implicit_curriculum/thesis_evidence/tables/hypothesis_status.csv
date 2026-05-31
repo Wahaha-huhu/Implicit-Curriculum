@@ -1,0 +1,8 @@
+hypothesis,status,evidence_level,supporting_runs,safe_claim,unsupported_extension
+H1_structural_ordering,supported_pilot,Tier2_controlled,B1_H1_shared_sweep_v08,Reference learnability robustly predicts later acquisition; frequency is weaker and stratum-dependent,Universal structural law of timing
+H1_sign_stability,supported_pilot,Tier2_controlled,B1_H1_shared_sweep_v08,Expected effect signs are stable across six B1 configs,All configs/architectures/scales share the same coefficients
+H2_simple_atomic_predictors,supported_pilot,Tier2_controlled,B1_H2_predictor_ladder_v09,Atomic acquisition is captured by simple one-factor predictors with config drift,A universal scalar predictor explains all tasks/configs
+H2_composite_residuals,supported_observational,Tier2_controlled,B1_H2_predictor_ladder_v09,C06 is a principled intervention candidate due structured positive residual,Residuals prove dependency
+H3_exact_dependency_partial,partially_supported_pair_specific,Tier1_controlled_pilot,B1_H3_row0_strong_v12,Exact A02 pretraining/corruption moves C06 beyond same/different-operation controls,All composites or all components exhibit developmental dependency
+H3_uniform_component_dependency,not_supported,Tier1_controlled_pilot,B1_H3_row1_v11,A00_copy shows weak/mixed effects; dependency is not uniform,Every formal component causally enables the composite
+LLM_generalization,not_tested,Tier3_future,none,Controlled result is a candidate mechanism for later observational checks,Causal claim about real LLM training

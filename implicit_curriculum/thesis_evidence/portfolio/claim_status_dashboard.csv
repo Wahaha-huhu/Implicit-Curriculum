@@ -1,0 +1,6 @@
+experiment,status,claim_supported,key_caveat,source_file
+Exp0 synthetic recovery,green,Analysis pipeline recovers known synthetic worlds sufficiently for downstream pilots.,Synthetic validation only; not a neural result.,exp0_recovery_report.md
+B2 sparse parity,yellow-green,Quanta-style baseline: frequency effect is strong when learnable (e.g. threshold .85 rho≈-0.71).,Acquisition coverage remains modest (≈0.242); final use should improve coverage.,b2_sparse_parity_analysis_report.md
+B1 H1 ordering/sign stability,green-pilot,Reference learnability robustly predicts later acquisition across configs (mean rho≈0.537); atomic frequency is expected-direction but weaker (rho≈-0.318).,Pilot grid only; frequency is weak/reversed inside composites.,b1_h1_analysis_report.md
+B1 H2 predictor ladder/residuals,green-pilot,Atomic acquisition is explained by simple one-factor predictors with config drift; composite residuals select intervention candidates.,Residuals are observational and do not prove dependency.,b1_h2_analysis_report.md
+B1 H3 C06 interventions,green-yellow pair-specific,A02_substitute → C06 shows pair-specific causal evidence under exact pretraining and strong corruption beyond same/different-operation controls.,A00_copy → C06 is weak/mixed; result is not a universal component-dependency claim.,b1_h3_row0_strong_v12_10seed_analysis_report.md

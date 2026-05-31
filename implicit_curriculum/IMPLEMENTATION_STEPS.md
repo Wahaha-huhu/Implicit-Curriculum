@@ -473,3 +473,46 @@ Scientific status:
 Next recommended run:
 - Combine row 0 and row 1 with `analyze_b1_h3_multirow`.
 - Run stronger/model-state intervention test on row 0 using pretraining and strong corruption/delay variants.
+
+## v1.3 — Hypothesis audit and claim boundary
+
+This version adds a thesis-evidence audit before further experiments. The audit concludes:
+
+- H1 ordering is supported in B1 mainly through reference learnability; frequency is weaker and stratum-dependent.
+- H2 simple predictor/residual analysis is supported as a controlled pilot.
+- H3 exact dependency is supported only for one pair-specific case so far: `A02_substitute -> C06_reverse_then_substitute_02_00`.
+- The original broad claim that composites generally depend on all formal components is too strong.
+- No causal claim about real LLM training is supported yet.
+
+Future work should replicate the pair-specific H3 result across another family/composite and add mediator/probe evidence before making stronger dependency claims.
+
+## v1.4 — Evidence consolidation and comprehensive experiment plan
+
+Purpose: consolidate the current evidence into a thesis-safe portfolio and plan the next experiments needed for a comprehensive picture.
+
+Added commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_thesis_portfolio \
+  --evidence-dir thesis_evidence \
+  --output-dir thesis_evidence/portfolio \
+  --code-version v1.4
+```
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_comprehensive_experiment_plan \
+  --output-dir results/comprehensive_experiment_plan_v14 \
+  --base-structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --base-h2-dir results/b1_h1_shared_sweep_v08 \
+  --code-version v1.4
+```
+
+Main outputs:
+
+- `thesis_evidence/portfolio/portfolio_summary.md`
+- `thesis_evidence/portfolio/claim_status_dashboard.csv`
+- `results/comprehensive_experiment_plan_v14/comprehensive_experiment_plan.md`
+- `results/comprehensive_experiment_plan_v14/comprehensive_experiment_plan.csv`
+- `results/comprehensive_experiment_plan_v14/recommended_commands.sh`
+
+Current claim boundary: H1/H2 are strong controlled-pilot results; H3 is pair-specific positive for `A02_substitute → C06`, mixed for `A00_copy → C06`, and should be replicated before broad dependency claims.

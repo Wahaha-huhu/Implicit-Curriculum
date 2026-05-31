@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h2_predictor_ladder.py",
+    "--result-dir",
+    "results/b1_h1_shared_sweep_v08",
+    "--metric-family",
+    "token_accuracy",
+    "--threshold",
+    "0.7",
+    "--n-permutations",
+    "100",
+    "--code-version",
+    "v0.9",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v0.9",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h2_predictor_ladder.py --result-dir results/b1_h1_shared_sweep_v08 --metric-family token_accuracy --threshold 0.7 --n-permutations 100 --code-version v0.9 --archive-root results/archive --thesis-use candidate",
+  "created_at_utc": "2026-05-30T21:28:43+00:00",
+  "experiment": "B1_H2_predictor_ladder_atomic_parallel_null",
+  "git_sha": "8b87d4a5ec05d0b5477143f54f7e3ab32b34d89a",
+  "git_status_short": "?? results/b1_h1_shared_sweep_v08/h2_acquisition_table.csv\n?? results/b1_h1_shared_sweep_v08/h2_analysis_report.md\n?? results/b1_h1_shared_sweep_v08/h2_atomic_parallel_predictions.csv\n?? results/b1_h1_shared_sweep_v08/h2_composite_residual_summary_by_task.csv\n?? results/b1_h1_shared_sweep_v08/h2_composite_residuals.csv\n?? results/b1_h1_shared_sweep_v08/h2_model_coefficients.csv\n?? results/b1_h1_shared_sweep_v08/h2_pair_selection.csv\n?? results/b1_h1_shared_sweep_v08/h2_permutation_null.csv\n?? results/b1_h1_shared_sweep_v08/h2_predictor_ladder_cv.csv\n?? results/b1_h1_shared_sweep_v08/h2_selected_models.csv\n?? src/ic_experiments/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/",
+  "input_paths": {
+    "result_dir": "results/b1_h1_shared_sweep_v08"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/b1_h1_shared_sweep_v08",
+  "platform": "Linux-6.8.0-40-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "h2_from_b1_h1_shared_sweep_v08",
+  "thesis_use": "candidate",
+  "threshold": 0.7
+}

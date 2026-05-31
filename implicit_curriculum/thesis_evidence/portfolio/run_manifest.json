@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/mnt/data/work_v14/src/ic_experiments/experiments/analyze_thesis_portfolio.py",
+    "--evidence-dir",
+    "thesis_evidence",
+    "--output-dir",
+    "thesis_evidence/portfolio",
+    "--code-version",
+    "v1.4"
+  ],
+  "backend": "evidence_archive",
+  "code_version": "v1.4",
+  "command": "/mnt/data/work_v14/src/ic_experiments/experiments/analyze_thesis_portfolio.py --evidence-dir thesis_evidence --output-dir thesis_evidence/portfolio --code-version v1.4",
+  "created_at_utc": "2026-05-31T14:25:26+00:00",
+  "experiment": "thesis_evidence_portfolio_summary",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {
+    "evidence_dir": "thesis_evidence"
+  },
+  "output_dir": "thesis_evidence/portfolio",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "thesis_evidence_portfolio_summary",
+  "thesis_use": "candidate"
+}

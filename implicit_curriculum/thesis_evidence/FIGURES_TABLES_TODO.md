@@ -107,3 +107,31 @@ Source: `CLAIMS_AND_EVIDENCE.md`.
 ## Table 2 — Experiment versions and status
 
 Source: `RESULTS_REGISTRY.csv`.
+
+---
+
+## New thesis figures/tables after strong H3 row-0
+
+### Table: Hypothesis status audit
+
+Source: `tables/hypothesis_status.csv`.
+
+Purpose: show which hypotheses are supported, partially supported, unsupported, or future-only.
+
+### Figure/Table: H3 exact-component intervention contrast for A02 -> C06
+
+Source:
+
+- `results_summaries/b1_h3_row0_strong_v12_intervention_contrasts.csv`
+- `results_summaries/b1_h3_row0_strong_v12_pair_summary.csv`
+
+Plot candidates:
+
+- censored acquisition time by condition;
+- final token accuracy by condition;
+- exact pretrain vs same/different-operation controls;
+- exact strong corruption vs same/different-operation controls.
+
+Caption message:
+
+> Exact component pretraining and corruption move the delayed composite beyond operation-matched controls, but the result is pair-specific and should not be generalized to all components.

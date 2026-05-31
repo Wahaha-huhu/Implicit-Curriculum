@@ -379,3 +379,36 @@ Run a stronger row-0 intervention suite:
 ```bash
 PYTHONPATH=src python -m ic_experiments.experiments.run_b1_h3_interventions   --output-dir results/b1_h3_row0_strong_v12   --structure-table results/b1_h1_shared_sweep_v08/structure_table.csv   --plan-file results/b1_h3_operation_family_plan_v11/h3_operation_family_plan.csv   --plan-index 0   --seeds 0 1 2 3 4 5 6 7 8 9   --conditions baseline pretrain_component pretrain_same_operation_unrelated pretrain_different_operation_matched corrupt_component_strong corrupt_same_operation_unrelated_strong corrupt_different_operation_matched_strong delay_component_strong delay_same_operation_unrelated_strong delay_different_operation_matched_strong   --pretrain-data-seen 50000   --strong-corrupt-prob 0.50   --strong-delay-fraction 0.60   --max-data-seen 250000   --batch-size 256   --n-checkpoints 100   --eval-examples-per-task 512   --d-model 128   --n-layers 2   --n-heads 4   --d-mlp 512   --vocab-content 32   --input-len 6   --device cuda   --code-version v1.2   --archive-root results/archive   --thesis-use candidate
 ```
+
+## v1.3 thesis claim audit
+
+v1.3 adds a durable hypothesis audit under `thesis_evidence/`:
+
+- `HYPOTHESIS_AUDIT.md`
+- `THESIS_CLAIM_RULES.md`
+- `tables/hypothesis_status.csv`
+
+The main conclusion is that the original broad dependency hypothesis is too strong. Current evidence supports controlled ordering/predictability claims and one pair-specific H3 causal result (`A02_substitute -> C06`), but not a universal developmental-dependency mechanism or any causal claim about real LLM training.
+
+### v1.4 evidence portfolio
+
+From v1.4 onward, the repository includes a thesis-evidence portfolio generator. Use it after adding new result summaries to `thesis_evidence/results_summaries/`:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_thesis_portfolio \
+  --evidence-dir thesis_evidence \
+  --output-dir thesis_evidence/portfolio \
+  --code-version v1.4
+```
+
+To create the next-experiment plan for broadening the evidence base:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_b1_comprehensive_experiment_plan \
+  --output-dir results/comprehensive_experiment_plan_v14 \
+  --base-structure-table results/b1_h1_shared_sweep_v08/structure_table.csv \
+  --base-h2-dir results/b1_h1_shared_sweep_v08 \
+  --code-version v1.4
+```
+
+The current thesis-safe conclusion is scoped: B1 H1/H2 are promising controlled-pilot results; H3 provides pair-specific evidence for `A02_substitute → C06`, but not a universal dependency mechanism.

@@ -46,3 +46,23 @@ Interpretation:
 - The delayed composite residual is not explained by generic component count alone.
 - Current evidence points to component- or operation-specific causal relevance, with substitution more promising than copy.
 - Stronger model-state interventions are required before making a full dependency claim.
+
+---
+
+## Claim update after v1.2 strong row-0 test
+
+The original H3 claim, if stated as "composites depend causally on their components," is too strong. The current evidence supports a narrower claim:
+
+> In the controlled B1 sequence-DSL setting, one delayed composite (`C06_reverse_then_substitute_02_00`) is causally sensitive to one exact component (`A02_substitute`). Exact component pretraining accelerates the composite beyond same-operation and different-operation controls, and exact component corruption delays/degrades it beyond those controls.
+
+This should be described as **pair-specific causal evidence**, not a general developmental-dependency law.
+
+### Updated H3 claim status
+
+| Claim | Status | Why |
+|---|---|---|
+| Residuals can select meaningful dependency candidates. | Supported pilot | H2 selected C06; H3 found a positive exact-component signal for A02. |
+| Exact A02 substitution component causally affects C06 acquisition. | Supported pair-specific pilot | Strong pretrain and corruption interventions beat same/different-operation controls. |
+| C06 depends equally on all listed components. | Not supported | A00 copy component was weak/mixed. |
+| Composite-after-component ordering generally reflects dependency. | Not supported yet | Only one pair-specific positive result; broader replication needed. |
+| The result transfers to LLM training. | Not tested | No LLM/Pythia causal evidence. |

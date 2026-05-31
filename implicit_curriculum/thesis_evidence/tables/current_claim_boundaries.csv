@@ -1,0 +1,11 @@
+claim,status,evidence,caveat
+Synthetic recovery validates pipeline,supported,Exp0 recovery gate,Only synthetic
+B2 sparse parity provides frequency-dominated baseline,yellow_green,B2 sparse parity analysis,Acquisition coverage modest
+B1 reference learnability predicts later acquisition,supported_pilot,B1 H1 shared sweep,Controlled B1 only
+B1 frequency universally predicts order,not_supported,B1 H1 shows weak/stratum-dependent frequency,Do not claim universal frequency law
+Atomic acquisition simple predictors,supported_pilot,B1 H2 predictor ladder,Selected factor drifts by config
+Composite residuals prove dependency,not_supported,H2 residuals observational,Use only for H3 pair selection
+A02_substitute causally affects C06,supported_pair_specific,H3 strong row0 10 seeds,Needs replication across family/pairs
+A00_copy causally affects C06,weak_mixed,H3 row1,Not robust
+Uniform component dependency,not_supported,Row0 positive row1 weak,Map boundaries instead
+LLM causal mechanism,not_tested,No Pythia causal evidence,Only candidate interpretation

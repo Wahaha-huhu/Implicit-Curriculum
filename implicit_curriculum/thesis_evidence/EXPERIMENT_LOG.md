@@ -208,3 +208,40 @@ Do not use as:
 ### v1.1 implementation note — operation-family H3 controls
 
 After the v1.0 C06 H3 pilot returned a mixed/negative exact-dependency result, v1.1 adds operation-family controls. The goal is to separate exact-component dependency from operation-family transfer. No new claim is added yet; this is an implementation milestone preparing the next H3 run.
+
+---
+
+## B1 H3 — Strong row-0 exact-component test (`A02_substitute -> C06`)
+
+**Status:** positive pair-specific pilot; not universal dependency.  
+**Version:** v1.2.  
+**Evidence files:**
+
+- `results_summaries/b1_h3_row0_strong_v12_analysis_report.md`
+- `results_summaries/b1_h3_row0_strong_v12_intervention_contrasts.csv`
+- `results_summaries/b1_h3_row0_strong_v12_pair_summary.csv`
+- `results_summaries/b1_h3_row0_strong_v12_run_manifest.json`
+
+Pair tested:
+
+- Exact component: `A02_substitute`
+- Composite: `C06_reverse_then_substitute_02_00`
+- Same-operation control: `U00_unrelated_substitute`
+- Different-operation control: `A07_reverse`
+
+Key result:
+
+- Exact component pretraining makes the composite acquire much earlier than same-operation and different-operation pretraining.
+- Exact component strong corruption delays/degrades the composite more than same-operation and different-operation corruption.
+- Strong delay is directionally compatible but weaker.
+
+Use in thesis:
+
+- Supports a **pair-specific controlled causal claim**: the substitution-side component is causally relevant to C06 acquisition in this controlled B1 setting.
+- Supports the broader methodological claim that H2 residuals can lead to meaningful H3 intervention targets.
+
+Do not use as:
+
+- Evidence for universal developmental dependency.
+- Evidence that every formal component of C06 is causally relevant; row 1 was weak/mixed.
+- Evidence about real LLM training.
