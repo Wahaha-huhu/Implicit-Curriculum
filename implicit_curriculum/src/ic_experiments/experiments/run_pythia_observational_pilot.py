@@ -71,13 +71,21 @@ def _evaluate_model(model_name: str, revision: str | None, examples: list[dict[s
         pred_i = int(np.argmax(scores))
         correct_i = choices.index(ex["correct_choice"])
         sorted_scores = sorted(scores, reverse=True)
-        margin = float(sorted_scores[0] - sorted_scores[1]) if len(sorted_scores) > 1 else 0.0
+        top_margin = float(sorted_scores[0] - sorted_scores[1]) if len(sorted_scores) > 1 else 0.0
+        correct_score = float(scores[correct_i])
+        best_incorrect = max(float(s) for j, s in enumerate(scores) if j != correct_i) if len(scores) > 1 else float("nan")
+        correct_margin = correct_score - best_incorrect if math.isfinite(best_incorrect) else 0.0
+        # Rank 1 means the correct option is top-scored. Ties are treated optimistically.
+        correct_rank = 1 + sum(float(s) > correct_score for j, s in enumerate(scores) if j != correct_i)
         rows.append({
             "slice_id": sid,
             "correct": int(pred_i == correct_i),
-            "logprob_correct": float(scores[correct_i]),
+            "logprob_correct": correct_score,
             "logprob_pred": float(scores[pred_i]),
-            "logprob_margin": margin,
+            "logprob_margin": top_margin,
+            "correct_margin": float(correct_margin),
+            "correct_rank": int(correct_rank),
+            "correct_mrr": float(1.0 / correct_rank),
             "n_choices": len(choices),
         })
     return rows
@@ -98,6 +106,9 @@ def _aggregate(rows: list[dict[str, Any]], model_name: str, revision: str, check
             "accuracy": float(np.mean([r["correct"] for r in rs])),
             "mean_logprob_correct": float(np.mean([r["logprob_correct"] for r in rs])),
             "mean_logprob_margin": float(np.mean([r["logprob_margin"] for r in rs])),
+            "mean_correct_margin": float(np.mean([r.get("correct_margin", float("nan")) for r in rs])),
+            "mean_correct_rank": float(np.mean([r.get("correct_rank", float("nan")) for r in rs])),
+            "mean_correct_mrr": float(np.mean([r.get("correct_mrr", float("nan")) for r in rs])),
             "n_examples": len(rs),
         })
     return out
@@ -133,7 +144,7 @@ def main() -> None:
         all_rows.extend(_aggregate(eval_rows, args.model_name, rev, i, float(proxies[i])))
 
     with (out / "pythia_eval_curves.csv").open("w", newline="", encoding="utf-8") as f:
-        fieldnames = ["model_name", "revision", "checkpoint_index", "data_seen_proxy", "slice_id", "accuracy", "mean_logprob_correct", "mean_logprob_margin", "n_examples"]
+        fieldnames = ["model_name", "revision", "checkpoint_index", "data_seen_proxy", "slice_id", "accuracy", "mean_logprob_correct", "mean_logprob_margin", "mean_correct_margin", "mean_correct_rank", "mean_correct_mrr", "n_examples"]
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(all_rows)

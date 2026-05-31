@@ -844,3 +844,29 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_easy_slice_suite
 ```
 
 Then evaluate it with `run_pythia_observational_pilot` and analyze with the threshold-sensitivity command.
+
+## v2.6 — Pythia continuous-score bridge
+
+The v2.6 milestone addresses the fact that Pythia-70M pilots may not cross top-1 accuracy thresholds even when the correct option becomes more competitive.
+
+Run on an existing Pythia result directory:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_continuous_scores \
+  --result-dir results/pythia_easy_observational_pilot_v25 \
+  --code-version v2.6 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+Send back:
+
+```text
+pythia_continuous_score_report.md
+pythia_continuous_slice_summary.csv
+pythia_continuous_h1_summary.csv
+pythia_continuous_h2_residuals.csv
+pythia_continuous_component_coupling.csv
+```
+
+For future Pythia runs, rerun `run_pythia_observational_pilot` with v2.6 to record correct-option margin, rank, and reciprocal rank. Existing outputs remain compatible but will only expose metrics already present.

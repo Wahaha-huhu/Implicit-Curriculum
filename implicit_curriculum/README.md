@@ -641,3 +641,31 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_easy_slice_suite
 ```
 
 Use these when the initial Pythia pilot has no acquired slices at the default threshold. Threshold-sensitivity and easy-slice calibration are diagnostic only and do not support causal claims.
+
+## v2.6 Pythia continuous-score calibration
+
+Pythia observational bridge v2.6 adds continuous-score analysis so that subthreshold learning can be diagnosed without relying only on top-1 accuracy thresholds.
+
+New command:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_continuous_scores \
+  --result-dir results/pythia_easy_observational_pilot_v25 \
+  --code-version v2.6 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+Future `run_pythia_observational_pilot` outputs also include correct-option margin, correct-option rank, and reciprocal rank. Existing v2.4/v2.5 outputs can still be analyzed for available metrics such as accuracy and correct log probability.
+
+Outputs:
+
+```text
+pythia_continuous_score_report.md
+pythia_continuous_slice_summary.csv
+pythia_continuous_h1_summary.csv
+pythia_continuous_h2_residuals.csv
+pythia_continuous_component_coupling.csv
+```
+
+These outputs are observational calibration only. They can identify slice/checkpoint regimes where Pythia shows subthreshold movement, but they do not establish causal dependency.
