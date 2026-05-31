@@ -1,0 +1,13 @@
+condition,backend,max_data_seen,batch_size,learning_rate,weight_decay,n_parameters,component,composite,same_operation_control,different_operation_control,upweight_factor,delay_fraction,corrupt_prob
+baseline,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+upweight_component,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+upweight_same_operation_unrelated,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+upweight_different_operation_matched,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+upweight_fake_component,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+upweight_surface_control,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+delay_component,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+delay_same_operation_unrelated,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+delay_different_operation_matched,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+corrupt_component,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+corrupt_same_operation_unrelated,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
+corrupt_different_operation_matched,B1_sequence_dsl,250000,256,0.0005,0.1,407808,A00_copy,C06_reverse_then_substitute_02_00,A06_copy,U02_unrelated_substitute,2.0,0.35,0.25
