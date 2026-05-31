@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py",
+    "--result-dir",
+    "results/pythia_h2_ready_observational_pilot_v27",
+    "--code-version",
+    "v2.9",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v2.9",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py --result-dir results/pythia_h2_ready_observational_pilot_v27 --code-version v2.9 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T21:45:37+00:00",
+  "experiment": "Pythia_observational_residual_refinement",
+  "git_sha": "11c19f0895844a96c0a66449af0de158a80945f6",
+  "git_status_short": "?? results/pythia_h2_ready_observational_pilot_v27/pythia_component_coupling_agreement.csv\n?? results/pythia_h2_ready_observational_pilot_v27/pythia_residual_agreement_by_composite.csv\n?? results/pythia_h2_ready_observational_pilot_v27/pythia_residual_family_summary.csv\n?? results/pythia_h2_ready_observational_pilot_v27/pythia_residual_metric_matrix.csv\n?? results/pythia_h2_ready_observational_pilot_v27/pythia_residual_refinement_report.md\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_residual_refinement.cpython-311.pyc",
+  "input_paths": {
+    "result_dir": "results/pythia_h2_ready_observational_pilot_v27"
+  },
+  "metrics": [
+    "accuracy",
+    "mean_correct_margin",
+    "mean_correct_mrr",
+    "mean_logprob_correct",
+    "mean_logprob_margin"
+  ],
+  "output_dir": "results/pythia_h2_ready_observational_pilot_v27",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia_h2_ready_observational_pilot_v27",
+  "thesis_use": "diagnostic"
+}

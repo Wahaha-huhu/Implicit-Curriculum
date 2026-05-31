@@ -1,0 +1,60 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_sweep_plan.py",
+    "--slice-table",
+    "results/pythia_h2_ready_slice_suite_v27/pythia_slice_table.csv",
+    "--examples",
+    "results/pythia_h2_ready_slice_suite_v27/pythia_slice_examples.jsonl",
+    "--output-dir",
+    "results/pythia_sweep_plan_v30",
+    "--run-root",
+    "results/pythia_model_sweep_v30",
+    "--models",
+    "EleutherAI/pythia-70m",
+    "EleutherAI/pythia-160m",
+    "--revisions",
+    "step0",
+    "step1000",
+    "step10000",
+    "step143000",
+    "--max-examples-per-slice",
+    "64",
+    "--device",
+    "cuda",
+    "--code-version",
+    "v3.0",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.0",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_sweep_plan.py --slice-table results/pythia_h2_ready_slice_suite_v27/pythia_slice_table.csv --examples results/pythia_h2_ready_slice_suite_v27/pythia_slice_examples.jsonl --output-dir results/pythia_sweep_plan_v30 --run-root results/pythia_model_sweep_v30 --models EleutherAI/pythia-70m EleutherAI/pythia-160m --revisions step0 step1000 step10000 step143000 --max-examples-per-slice 64 --device cuda --code-version v3.0 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-05-31T21:53:11+00:00",
+  "experiment": "Pythia_observational_sweep_plan",
+  "git_sha": "7bbb826a31ad4d4aee15113e19577dab6f32bb8b",
+  "git_status_short": "?? results/pythia_sweep_plan_v30/\n?? src/ic_experiments/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/",
+  "input_paths": {
+    "examples": "results/pythia_h2_ready_slice_suite_v27/pythia_slice_examples.jsonl",
+    "slice_table": "results/pythia_h2_ready_slice_suite_v27/pythia_slice_table.csv"
+  },
+  "max_examples_per_slice": [
+    64
+  ],
+  "models": [
+    "EleutherAI/pythia-70m",
+    "EleutherAI/pythia-160m"
+  ],
+  "output_dir": "results/pythia_sweep_plan_v30",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "revisions": [
+    "step0",
+    "step1000",
+    "step10000",
+    "step143000"
+  ],
+  "run_id": "pythia_sweep_plan_v30",
+  "thesis_use": "diagnostic"
+}

@@ -1,1 +1,0 @@
-/mnt/data/work_v26/src/ic_experiments/experiments/analyze_pythia_continuous_scores.py --result-dir /mnt/data/work_v26/results/pythia_cont_fake --code-version v2.6 --archive-root /mnt/data/work_v26/results/archive

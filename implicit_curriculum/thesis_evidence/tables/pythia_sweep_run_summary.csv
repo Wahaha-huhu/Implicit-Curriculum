@@ -1,3 +1,0 @@
-run_dir,model_name,has_curves,has_readiness,has_h1,has_residual_refinement,n_slices,n_checkpoints,h2_ready_metrics,n_residual_composites,n_consistent_under,n_consistent_over,n_mixed
-results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,True,True,True,True,29,4,accuracy;mean_correct_margin;mean_correct_mrr;mean_logprob_correct;mean_logprob_margin,10,7,3,0
-results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,True,True,True,True,29,4,accuracy;mean_correct_margin;mean_correct_mrr;mean_logprob_correct;mean_logprob_margin,10,10,0,0

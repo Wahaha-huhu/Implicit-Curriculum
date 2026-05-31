@@ -1,6 +1,0 @@
-model_name,metric,n_atomic,n_composite,n_moving_atomic,n_moving_composite,mean_atomic_delta,mean_composite_delta,mean_atomic_final,mean_composite_final,h2_ready
-fake,accuracy,16,10,16,10,0.06,0.04999999999999999,0.26,0.25,True
-fake,mean_correct_margin,16,10,16,10,0.14,0.12999999999999998,-0.36,-0.37,True
-fake,mean_correct_mrr,16,10,16,10,0.040000000000000036,0.040000000000000036,0.54,0.54,True
-fake,mean_logprob_correct,16,10,16,10,1.04,1.0299999999999998,-3.96,-3.97,True
-fake,mean_logprob_margin,16,10,16,10,0.24,0.23000000000000004,0.24,0.23000000000000004,True

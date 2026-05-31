@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_easy_slice_suite.py --output-dir results/pythia_easy_slice_suite_v25 --n-per-slice 64 --code-version v2.5 --archive-root results/archive --thesis-use diagnostic

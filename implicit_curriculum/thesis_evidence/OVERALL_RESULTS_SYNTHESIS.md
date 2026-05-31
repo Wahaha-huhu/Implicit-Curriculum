@@ -40,7 +40,3 @@ This supports the gradient-mediated interpretation for the localized positive pa
 Updated core claim:
 
 > In controlled sequence-transformer training, structural predictors and atomic residuals identify candidate composite interactions; interventions and mediator diagnostics show that exact-component reuse is localized and gradient-aligned rather than universal across formal components.
-
-## Pythia observational sweep update (v3.1)
-
-The Pythia bridge has progressed from calibration to a useful observational result. With an H2-ready slice suite, Pythia-70M and Pythia-160M both yield primitive/composite residual signatures under continuous multiple-choice metrics. Several arithmetic and string composites are stable underperformers across the two models, while retrieval composites are more model/config dependent. This supports the observational bridge claim that residual analysis can be applied to checkpointed LLMs. It does not establish causal component dependency, because no Pythia pretraining intervention was performed.

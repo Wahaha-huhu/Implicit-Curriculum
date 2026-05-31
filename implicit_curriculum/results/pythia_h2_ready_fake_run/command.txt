@@ -1,1 +1,0 @@
-/mnt/data/work_v27/src/ic_experiments/experiments/analyze_pythia_continuous_scores.py --result-dir results/pythia_h2_ready_fake_run --code-version v2.7 --archive-root results/archive --thesis-use diagnostic
