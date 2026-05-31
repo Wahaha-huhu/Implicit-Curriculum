@@ -1,1 +1,1 @@
-/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_b1_comprehensive_experiment_plan.py --output-dir results/comprehensive_experiment_plan_v14 --base-structure-table results/b1_h1_shared_sweep_v08/structure_table.csv --base-h2-dir results/b1_h1_shared_sweep_v08 --code-version v1.4
+/mnt/data/work_v14/src/ic_experiments/experiments/make_b1_comprehensive_experiment_plan.py --output-dir results/comprehensive_experiment_plan_v14 --code-version v1.4

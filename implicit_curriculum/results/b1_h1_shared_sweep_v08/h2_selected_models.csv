@@ -1,7 +1,0 @@
-condition,model,features,complexity,n_folds,n_errors,cv_rmse_log_time,cv_mae_log_time,cv_se_log_time,best_model,best_rmse_log_time,selection_rule,rmse_tolerance
-base,frequency_only,log_frequency,1,8,80,1.0355034626398885,0.7408510553750305,0.08139660171497087,frequency_only,1.0355034626398885,one_standard_error_simplest,1.1169000643548594
-batch_large,learnability_only,reference_learnability,2,8,80,0.8809082355111968,0.7994651647710829,0.04162137500222562,learnability_only,0.8809082355111968,one_standard_error_simplest,0.9225296105134224
-batch_small,frequency_only,log_frequency,1,8,80,1.0767091916533784,0.7947905782592493,0.08172279635645725,frequency_only,1.0767091916533784,one_standard_error_simplest,1.1584319880098357
-lr_high,frequency_only,log_frequency,1,8,80,1.0162268304289535,0.7322503633637669,0.07927890011222342,frequency_only,1.0162268304289535,one_standard_error_simplest,1.0955057305411768
-lr_low,learnability_only,reference_learnability,2,8,80,0.880738947203059,0.7992811241249347,0.04162076796260045,learnability_only,0.880738947203059,one_standard_error_simplest,0.9223597151656595
-wd_zero,frequency_only,log_frequency,1,8,80,1.0276615648055027,0.7347907554444657,0.08083197430173926,frequency_only,1.0276615648055027,one_standard_error_simplest,1.108493539107242

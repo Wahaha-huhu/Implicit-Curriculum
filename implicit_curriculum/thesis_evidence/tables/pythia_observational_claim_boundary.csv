@@ -1,0 +1,5 @@
+claim,status,reason,boundary
+Pythia slices can be evaluated across checkpoints,planned_v2_4,Multiple-choice slice suite and evaluator are added,Requires available checkpointed HF models/cache
+Pythia H1 signatures can be compared to B1,planned_v2_4,Analyzer computes acquisition timing and structural correlations,Observational only
+Pythia H2 residuals can select candidate composite slices,planned_v2_4,Analyzer fits atomic predictor and reports composite residuals,Residuals are not causal evidence
+Pythia causal dependency is established,not_supported,No pretraining interventions are run,Would require controlled retraining or strong causal interventions

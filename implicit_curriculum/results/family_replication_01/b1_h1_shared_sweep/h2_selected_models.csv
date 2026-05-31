@@ -1,7 +1,0 @@
-condition,model,features,complexity,n_folds,n_errors,cv_rmse_log_time,cv_mae_log_time,cv_se_log_time,best_model,best_rmse_log_time,selection_rule,rmse_tolerance
-base,learnability_only,reference_learnability,2,8,80,0.9189955140896012,0.8252043379156013,0.045505675762575665,learnability_only,0.9189955140896012,one_standard_error_simplest,0.9645011898521769
-batch_large,learnability_only,reference_learnability,2,8,80,0.7254183988194203,0.652562290623039,0.035648478974519476,learnability_only,0.7254183988194203,one_standard_error_simplest,0.7610668777939398
-batch_small,learnability_only,reference_learnability,2,8,80,1.1447353468778094,1.03040476178831,0.05610625557706483,learnability_only,1.1447353468778094,one_standard_error_simplest,1.2008416024548743
-lr_high,learnability_only,reference_learnability,2,8,80,1.1372020305811317,1.0280453345362996,0.054697239013002566,learnability_only,1.1372020305811317,one_standard_error_simplest,1.1918992695941342
-lr_low,learnability_only,reference_learnability,2,8,80,0.7467673953042574,0.6682749014208909,0.0374960249066828,learnability_only,0.7467673953042574,one_standard_error_simplest,0.7842634202109402
-wd_zero,learnability_only,reference_learnability,2,8,80,0.9299694233130599,0.8351967397615944,0.04601726893639954,learnability_only,0.9299694233130599,one_standard_error_simplest,0.9759866922494594

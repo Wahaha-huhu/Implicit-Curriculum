@@ -1,3 +1,0 @@
-composite,n_components_tested,n_positive_exact,n_promising_partial,n_operation_family,n_weak_or_negative,mean_exact_specificity_score,composite_verdict
-C06_reverse_then_substitute_02_00,2,1,0,0,1,0.6499999999999999,has_localized_exact_component_site
-C07_substitute_then_reverse_04_03,2,0,0,1,1,0.21250000000000002,operation_family_or_saturation

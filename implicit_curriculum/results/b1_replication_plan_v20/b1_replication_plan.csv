@@ -1,7 +1,0 @@
-stage,command,output_dir,success_gate,claim_role
-1_calibration,run_sequence_dsl_calibration,results/family_replication_01/sequence_dsl_calibration,calibration passes; token acquisition nonzero/non-saturated; composite coverage sufficient,validates this replication family as a trainable B1 substrate
-2_h1_shared_sweep,run_b1_h1_shared_sweep + analyze_b1_h1_shared_sweep,results/family_replication_01/b1_h1_shared_sweep,learnability positive and frequency expected-direction in true/atomic strata across configs,tests whether H1 sign stability replicates in a new family
-3_h2_predictor_residuals,analyze_b1_h2_predictor_ladder,results/family_replication_01/b1_h1_shared_sweep,simple atomic predictors beat permutation and select structured composite residuals,tests whether residual-based candidate selection replicates
-4_h3_plan,make_b1_h3_operation_family_plan,results/family_replication_01/b1_h3_plan,at least one high-residual composite with controls selected,pre-registers pair-specific H3 replication targets
-5_h3_interventions,recommended_h3_commands.sh,results/family_replication_01/b1_h3_row*,exact component beats same/different controls under pretrain and/or corruption,tests whether localized exact-component sensitivity recurs
-6_optional_mediators,run_b1_mediator_diagnostics + analyze_b1_mediator_diagnostics,results/family_replication_01/b1_mediator_h3_pairs,positive H3 pairs show stronger exact-component early gradient coupling than controls,tests whether mediator pattern replicates

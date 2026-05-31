@@ -779,3 +779,44 @@ Decision rule:
 - If exact positive H3 appears in two families, strengthen the controlled dependency claim.
 - If only family 1 remains positive, keep exact dependency localized and pair-specific.
 - If family 2 shows hard/subthreshold candidates, treat it as evidence for H3-readiness selection, not a failed universal theory.
+
+## v2.4 — Pythia-style observational pilot
+
+Purpose: start the bridge from controlled B1 to checkpointed LMs while preserving the claim boundary. The new Pythia scripts evaluate behavioral slices across checkpoints and run H1/H2-style observational analyses. They do not establish causal dependency.
+
+Commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_observational_slice_suite \
+  --output-dir results/pythia_slice_suite_v24 \
+  --n-per-slice 64 \
+  --code-version v2.4
+```
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_pythia_observational_pilot \
+  --slice-table results/pythia_slice_suite_v24/pythia_slice_table.csv \
+  --examples results/pythia_slice_suite_v24/pythia_slice_examples.jsonl \
+  --output-dir results/pythia_observational_pilot_v24 \
+  --model-name EleutherAI/pythia-70m \
+  --revisions step0 step1000 step10000 step143000 \
+  --device cuda
+```
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_observational_pilot \
+  --result-dir results/pythia_observational_pilot_v24 \
+  --metric accuracy \
+  --threshold 0.5 \
+  --code-version v2.4
+```
+
+Files to inspect:
+
+- `pythia_slice_suite_report.md`
+- `pythia_observational_pilot_report.md`
+- `pythia_observational_analysis_report.md`
+- `pythia_h1_ordering_summary.csv`
+- `pythia_h2_composite_residuals.csv`
+
+Decision rule: if the slice suite is too noisy or models remain near random, redesign slices before scaling. If slices produce interpretable checkpoint curves, expand the suite and compare signatures against the B1 cross-family synthesis.

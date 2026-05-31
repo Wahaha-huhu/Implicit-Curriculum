@@ -592,3 +592,40 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_cross_family_clai
 This writes `CROSS_FAMILY_CONTROLLED_SYNTHESIS.md`, `cross_family_stage_summary.csv`, `cross_family_h3_diagnostics.csv`, and `cross_family_claim_matrix.csv`.
 
 The intended interpretation is conservative: family 1 supports a localized exact-component dependency site, while family 2 is a regime/stress test showing stable H1/H2 structure but no positive H3 replication under the tested settings.
+
+## v2.4 Pythia-style observational bridge
+
+v2.4 adds a lightweight observational pilot for checkpointed causal language models. This bridge is intentionally weaker than B1 H3: it can test H1/H2-like signatures across checkpoints, but it cannot establish causal dependency.
+
+Create the slice suite:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_observational_slice_suite \
+  --output-dir results/pythia_slice_suite_v24 \
+  --n-per-slice 64 \
+  --code-version v2.4
+```
+
+Evaluate a checkpointed model if `torch` and `transformers` are installed and model checkpoints are available:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.run_pythia_observational_pilot \
+  --slice-table results/pythia_slice_suite_v24/pythia_slice_table.csv \
+  --examples results/pythia_slice_suite_v24/pythia_slice_examples.jsonl \
+  --output-dir results/pythia_observational_pilot_v24 \
+  --model-name EleutherAI/pythia-70m \
+  --revisions step0 step1000 step10000 step143000 \
+  --device cuda
+```
+
+Analyze the observational signatures:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_observational_pilot \
+  --result-dir results/pythia_observational_pilot_v24 \
+  --metric accuracy \
+  --threshold 0.5 \
+  --code-version v2.4
+```
+
+Interpret these outputs as observational bridge evidence only. Do not use them as H3 causal evidence.

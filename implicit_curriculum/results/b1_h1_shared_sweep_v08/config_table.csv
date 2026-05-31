@@ -1,7 +1,0 @@
-config_name,backend,max_data_seen,batch_size,learning_rate,weight_decay,warmup_frac,n_checkpoints,eval_examples_per_task,d_model,n_layers,n_heads,d_mlp,dropout,acquisition_threshold,acquisition_patience,device,n_parameters,n_seeds
-base,B1_sequence_dsl,250000,256,0.0005,0.1,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10
-lr_low,B1_sequence_dsl,250000,256,0.00025,0.1,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10
-lr_high,B1_sequence_dsl,250000,256,0.001,0.1,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10
-wd_zero,B1_sequence_dsl,250000,256,0.0005,0.0,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10
-batch_small,B1_sequence_dsl,250000,128,0.0005,0.1,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10
-batch_large,B1_sequence_dsl,250000,512,0.0005,0.1,0.05,100,512,128,2,4,512,0.0,0.7,2,cuda,407808,10

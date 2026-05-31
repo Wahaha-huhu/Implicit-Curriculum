@@ -1,0 +1,9 @@
+family_id,stage,status,key_result,claim_use
+family_01,H1,green_pilot,learnability strong and frequency weak/stable,original controlled ordering evidence
+family_01,H2,green_pilot,structured composite residuals selected C06/C07,candidate selection evidence
+family_01,H3,green_yellow,A02->C06 positive; other pairs weak/operation-family,localized exact dependency plus heterogeneity
+family_01,mediator,yellow_green,A02->C06 has strong early gradient alignment,mechanistic corroboration for positive pair
+family_replication_01,H1,yellow_green,frequency stable and learnability reversed,regime contrast
+family_replication_01,H2,green_methodological,large systematic composite residuals,H2 residual stress test
+family_replication_01,H3_readiness,yellow,C06 ready but C00 hard failure,readiness-gate evidence
+family_replication_01,H3,yellow_red,no exact dependency replication under tested settings,boundary/negative evidence

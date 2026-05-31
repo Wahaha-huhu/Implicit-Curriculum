@@ -1,1 +1,0 @@
-/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_multirow.py --row-dirs results/b1_h3_opfamily_row0_v11 results/b1_h3_opfamily_row1_v11 --output-dir results/b1_h3_c06_multirow_v12 --code-version v1.2 --archive-root results/archive --thesis-use candidate
