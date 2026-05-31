@@ -736,3 +736,46 @@ PYTHONPATH=src python -m ic_experiments.experiments.summarize_b1_family_diagnost
   --archive-root results/archive \
   --thesis-use diagnostic
 ```
+
+## v2.3 — Cross-family controlled synthesis
+
+Purpose: consolidate family 1 and family 2 evidence so thesis claims distinguish replicated patterns from one-family/localized results.
+
+Run after family 2 readiness/H3 diagnostics:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b1_cross_family_claims \
+  --family1-h1-dir results/b1_h1_shared_sweep_v08 \
+  --family1-h2-dir results/b1_h1_shared_sweep_v08 \
+  --family1-h3-matrix results/b1_h3_evidence_matrix_v16/h3_pair_evidence_matrix.csv \
+  --family1-mediator-dir results/b1_mediator_h3_pairs_v18 \
+  --family2-h1-dir results/family_replication_01/b1_h1_shared_sweep \
+  --family2-h2-dir results/family_replication_01/b1_h1_shared_sweep \
+  --family2-readiness-dir results/family_replication_01/h3_readiness_v21 \
+  --family2-h3-dirs \
+    results/family_replication_01/b1_h3_row0_A02_substitute_to_C00_reverse_then_substitute_02_05_strong \
+    results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong \
+    results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong \
+  --family2-threshold-dirs \
+    results/family_replication_01/b1_h3_exclude_c00_row1_A05_substitute_to_C06_reverse_then_substitute_01_05_strong \
+    results/family_replication_01/b1_h3_ready_v22_row0_A01_reverse_to_C06_reverse_then_substitute_01_05_strong \
+  --output-dir results/b1_cross_family_claim_synthesis_v23 \
+  --code-version v2.3 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Send back:
+
+```text
+results/b1_cross_family_claim_synthesis_v23/CROSS_FAMILY_CONTROLLED_SYNTHESIS.md
+results/b1_cross_family_claim_synthesis_v23/cross_family_stage_summary.csv
+results/b1_cross_family_claim_synthesis_v23/cross_family_h3_diagnostics.csv
+results/b1_cross_family_claim_synthesis_v23/cross_family_claim_matrix.csv
+```
+
+Decision rule:
+
+- If exact positive H3 appears in two families, strengthen the controlled dependency claim.
+- If only family 1 remains positive, keep exact dependency localized and pair-specific.
+- If family 2 shows hard/subthreshold candidates, treat it as evidence for H3-readiness selection, not a failed universal theory.
