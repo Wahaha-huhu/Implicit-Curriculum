@@ -820,3 +820,27 @@ Files to inspect:
 - `pythia_h2_composite_residuals.csv`
 
 Decision rule: if the slice suite is too noisy or models remain near random, redesign slices before scaling. If slices produce interpretable checkpoint curves, expand the suite and compare signatures against the B1 cross-family synthesis.
+
+
+## v2.5 — Pythia observational calibration
+
+If the Pythia observational pilot has zero acquisition at threshold 0.5, run:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_threshold_sensitivity \
+  --result-dir results/pythia_observational_pilot_v24 \
+  --metric accuracy \
+  --thresholds 0.2 0.3 0.4 0.5 \
+  --code-version v2.5
+```
+
+Generate an easier calibration suite with:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_easy_slice_suite \
+  --output-dir results/pythia_easy_slice_suite_v25 \
+  --n-per-slice 64 \
+  --code-version v2.5
+```
+
+Then evaluate it with `run_pythia_observational_pilot` and analyze with the threshold-sensitivity command.

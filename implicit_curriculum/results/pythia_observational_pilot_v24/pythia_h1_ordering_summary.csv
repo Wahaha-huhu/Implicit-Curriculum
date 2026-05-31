@@ -1,4 +1,0 @@
-model_name,group,n,acq_rate,rho_frequency_time,rho_learnability_time,rho_utility_time
-EleutherAI/pythia-70m,all,12,0.0,,,
-EleutherAI/pythia-70m,atomic,6,0.0,,,
-EleutherAI/pythia-70m,true_atomic_composite,10,0.0,,,

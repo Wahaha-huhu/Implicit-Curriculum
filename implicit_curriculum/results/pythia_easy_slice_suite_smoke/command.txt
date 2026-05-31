@@ -1,0 +1,1 @@
+/mnt/data/work_v25/src/ic_experiments/experiments/make_pythia_easy_slice_suite.py --output-dir /mnt/data/work_v25/results/pythia_easy_slice_suite_smoke --n-per-slice 2 --code-version v2.5

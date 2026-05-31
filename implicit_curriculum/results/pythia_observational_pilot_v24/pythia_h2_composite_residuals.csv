@@ -1,5 +1,0 @@
-model_name,slice_id,component_ids,observed_log_time,predicted_log_time,residual_log_time,acquired,final_metric
-EleutherAI/pythia-70m,arith_add_then_compare,arith_add_1d;arith_compare_1d,,,,0,0.328125
-EleutherAI/pythia-70m,retrieval_then_compare,retrieval_kv;arith_compare_1d,,,,0,0.40625
-EleutherAI/pythia-70m,string_reverse_then_copy,string_reverse;string_copy,,,,0,0.171875
-EleutherAI/pythia-70m,syntax_distractor_agreement,syntax_local_agreement,,,,0,0.203125

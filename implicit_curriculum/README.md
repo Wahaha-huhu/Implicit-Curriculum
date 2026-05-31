@@ -629,3 +629,15 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_observational
 ```
 
 Interpret these outputs as observational bridge evidence only. Do not use them as H3 causal evidence.
+
+
+### v2.5 Pythia calibration
+
+Pythia observational bridge calibration adds:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_threshold_sensitivity
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_easy_slice_suite
+```
+
+Use these when the initial Pythia pilot has no acquired slices at the default threshold. Threshold-sensitivity and easy-slice calibration are diagnostic only and do not support causal claims.

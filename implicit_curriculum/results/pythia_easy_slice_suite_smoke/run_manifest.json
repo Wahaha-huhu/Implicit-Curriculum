@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/mnt/data/work_v25/src/ic_experiments/experiments/make_pythia_easy_slice_suite.py",
+    "--output-dir",
+    "/mnt/data/work_v25/results/pythia_easy_slice_suite_smoke",
+    "--n-per-slice",
+    "2",
+    "--code-version",
+    "v2.5"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v2.5",
+  "command": "/mnt/data/work_v25/src/ic_experiments/experiments/make_pythia_easy_slice_suite.py --output-dir /mnt/data/work_v25/results/pythia_easy_slice_suite_smoke --n-per-slice 2 --code-version v2.5",
+  "created_at_utc": "2026-05-31T20:41:10+00:00",
+  "experiment": "Pythia_easy_slice_suite_generation",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {},
+  "n_per_slice": 2,
+  "output_dir": "/mnt/data/work_v25/results/pythia_easy_slice_suite_smoke",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "pythia_easy_slice_suite_smoke",
+  "thesis_use": "diagnostic"
+}
