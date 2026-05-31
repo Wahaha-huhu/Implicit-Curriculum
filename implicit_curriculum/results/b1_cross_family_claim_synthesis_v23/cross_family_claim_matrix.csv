@@ -1,0 +1,7 @@
+claim,status,support,boundary
+Acquisition is structured in B1 families,supported_cross_family_pilot,"Both families have usable H1/H2 structure, but predictor signs differ.",Does not imply a universal scalar predictor.
+Frequency is a robust predictor in at least some B1 regimes,supported_but_regime_dependent,Family 2 shows stable frequency effects; family 1 was weaker.,Frequency is not sufficient for all composites or H3 dependency.
+Reference learnability universally predicts later acquisition,not_supported,Family 2 reverses the sign of the proxy.,Treat reference_learnability as a family-specific structural proxy until audited.
+H2 residuals select useful H3 candidates,supported_with_readiness_gate,Family 1 residuals selected a positive localized pair; family 2 residuals exposed hard/subthreshold candidates.,Residual magnitude alone is insufficient; use H3 readiness.
+Exact-component dependency recurs across B1 families,not_yet_supported,Family 1 has one positive pair; family 2 did not replicate exact dependency under tested settings.,Current exact dependency claim remains localized/pair-specific.
+Operation-family transfer is a real alternative mechanism,supported_pilot,Reverse-side tests show exact and same-operation controls often match.,Needs broader sampling to quantify prevalence.
