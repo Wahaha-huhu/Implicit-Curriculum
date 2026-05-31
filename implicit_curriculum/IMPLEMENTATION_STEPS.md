@@ -881,3 +881,34 @@ Added:
 - `thesis_evidence/PYTHIA_H2_READY_SLICE_PLAN.md`
 
 Purpose: expand the Pythia bridge from calibration-only to an H2-ready observational suite, if the larger slice set produces enough non-flat primitive and composite signals. This remains observational and cannot establish causal dependency.
+
+## v2.8 — First-stage experiment summary package
+
+Status: implemented.
+
+Purpose:
+
+The first controlled evidence arc and the first Pythia observational bridge are now mature enough to summarize for thesis writing. v2.8 creates a durable package corresponding to the Methodology & Implementation and Results & Discussion sections.
+
+Implemented components:
+
+- `make_first_stage_experiment_summary` command;
+- top-level thesis evidence notes:
+  - `FIRST_STAGE_EXPERIMENT_SUMMARY.md`,
+  - `METHODOLOGY_IMPLEMENTATION_DRAFT.md`,
+  - `RESULTS_DISCUSSION_DRAFT.md`;
+- tables:
+  - `first_stage_claim_table.csv`,
+  - `first_stage_experiment_map.csv`,
+  - `first_stage_figure_table_plan.csv`.
+
+Scientific boundary:
+
+This stage consolidates evidence. It does not add new causal evidence. It records that exact-component dependency is localized in the controlled B1 family-1 positive pair, not yet replicated as a broad cross-family phenomenon, and that Pythia results remain observational.
+
+Next possible stages:
+
+1. create thesis figures/tables from the first-stage package;
+2. strengthen B2 sparse-parity frequency baseline;
+3. run Pythia v2.7 suite on a larger model or more checkpoints;
+4. generate a third B1 family with H3-readiness built into calibration.

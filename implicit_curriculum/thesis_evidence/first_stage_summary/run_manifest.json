@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/mnt/data/work_v28/src/ic_experiments/experiments/make_first_stage_experiment_summary.py",
+    "--evidence-dir",
+    "thesis_evidence",
+    "--output-dir",
+    "thesis_evidence/first_stage_summary",
+    "--code-version",
+    "v2.8",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "thesis_evidence",
+  "code_version": "v2.8",
+  "command": "/mnt/data/work_v28/src/ic_experiments/experiments/make_first_stage_experiment_summary.py --evidence-dir thesis_evidence --output-dir thesis_evidence/first_stage_summary --code-version v2.8 --archive-root results/archive --thesis-use candidate",
+  "created_at_utc": "2026-05-31T21:34:41+00:00",
+  "experiment": "first_stage_experiment_summary",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {
+    "evidence_dir": "thesis_evidence"
+  },
+  "output_dir": "thesis_evidence/first_stage_summary",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "first_stage_summary",
+  "thesis_use": "candidate"
+}

@@ -700,3 +700,29 @@ PYTHONPATH=src python -m ic_experiments.experiments.analyze_pythia_continuous_sc
   --result-dir results/pythia_h2_ready_observational_pilot_v27 \
   --code-version v2.7
 ```
+
+## v2.8 first-stage experiment summary
+
+v2.8 adds a durable first-stage summary package for thesis writing. It gathers the controlled B1/B2 evidence, cross-family synthesis, mediator diagnostics, and the first Pythia observational bridge into a claim-bounded summary.
+
+Generate the package with:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_first_stage_experiment_summary \
+  --evidence-dir thesis_evidence \
+  --output-dir thesis_evidence/first_stage_summary \
+  --code-version v2.8 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Expected outputs:
+
+- `thesis_evidence/first_stage_summary/FIRST_STAGE_EXPERIMENT_SUMMARY.md`
+- `thesis_evidence/first_stage_summary/METHODOLOGY_IMPLEMENTATION_DRAFT.md`
+- `thesis_evidence/first_stage_summary/RESULTS_DISCUSSION_DRAFT.md`
+- `thesis_evidence/first_stage_summary/first_stage_claim_table.csv`
+- `thesis_evidence/first_stage_summary/first_stage_experiment_map.csv`
+- `thesis_evidence/first_stage_summary/first_stage_figure_table_plan.csv`
+
+This package should be treated as the first stable thesis-writing checkpoint. It supports controlled-methodology and localized-dependency claims, not universal causal claims about LLM pretraining.

@@ -1,0 +1,7 @@
+stage,purpose,status,thesis_role
+Exp0,synthetic recovery,completed,pipeline validity
+B2,sparse-parity frequency/quanta baseline,partial,contrast regime; needs strengthening
+B1 family 1 H1/H2/H3,controlled causal arc,completed,main controlled positive and heterogeneity evidence
+B1 family 1 mediator,gradient/representation corroboration,completed,gradient support for positive pair; CKA negative
+B1 family 2,replication/stress test,completed diagnostic,regime contrast and H3-readiness boundary
+Pythia v2.4-v2.7,observational bridge,calibrated and H2-ready,"observational feasibility, not causal evidence"
