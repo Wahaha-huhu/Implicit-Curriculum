@@ -1,0 +1,11 @@
+source_run_dir,source_model_name,model_name,metric,n_atomic,n_composite,n_moving_atomic,n_moving_composite,mean_atomic_delta,mean_composite_delta,mean_atomic_final,mean_composite_final,h2_ready
+results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,EleutherAI/pythia-70m,accuracy,16,10,12,7,-0.0185546875,0.0046875,0.2314453125,0.2625,True
+results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,EleutherAI/pythia-70m,mean_correct_margin,16,10,16,10,-0.2450742998626083,-0.032175375893712,-0.8647830521222204,-0.6220203433185816,True
+results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,EleutherAI/pythia-70m,mean_correct_mrr,16,10,12,6,-0.0152994791666666,0.0084635416666666,0.5074055989583333,0.5350260416666666,True
+results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,EleutherAI/pythia-70m,mean_logprob_correct,16,10,16,10,6.311005021678284,6.399004774540662,-4.680717557435855,-4.631719908863306,True
+results/pythia_model_sweep_v30/pythia-70m_n64,EleutherAI/pythia-70m,EleutherAI/pythia-70m,mean_logprob_margin,16,10,16,10,0.1822214127751067,0.2315619338303804,0.6825959730194882,0.6467605564743281,True
+results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,EleutherAI/pythia-160m,accuracy,16,10,4,3,-0.005859375,0.0109375,0.2314453125,0.25,True
+results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,EleutherAI/pythia-160m,mean_correct_margin,16,10,16,10,-1.0687907290412113,-0.9504262171685696,-1.5270534827141091,-1.4555266357958316,True
+results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,EleutherAI/pythia-160m,mean_correct_mrr,16,10,8,3,-0.0065104166666666,0.0039062499999999,0.5076497395833333,0.5161458333333334,True
+results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,EleutherAI/pythia-160m,mean_logprob_correct,16,10,16,10,7.050992887350731,7.09790853606537,-4.217686123331077,-4.19674380524084,True
+results/pythia_model_sweep_v30/pythia-160m_n64,EleutherAI/pythia-160m,EleutherAI/pythia-160m,mean_logprob_margin,16,10,16,10,1.713788834051229,1.5889695482328534,1.92610753106419,1.7707071291282772,True
