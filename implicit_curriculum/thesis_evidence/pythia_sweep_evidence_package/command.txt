@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/consolidate_pythia_sweep_evidence.py --sweep-synthesis-dir results/pythia_sweep_synthesis_v30 --evidence-dir thesis_evidence --code-version v3.1 --archive-root results/archive --thesis-use candidate

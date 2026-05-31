@@ -1,0 +1,4 @@
+model_name,prompt_family,n_composites,mean_underperforming_metric_rate,mean_outperforming_metric_rate,n_consistent_underperforming,n_consistent_outperforming,n_mixed,top_underperforming_composites
+EleutherAI/pythia-410m,arithmetic,4,0.8999999999999999,0.1,4,0,0,comp_add_then_even;comp_sub_then_compare;comp_add_then_compare;comp_max_then_compare
+EleutherAI/pythia-410m,string,4,0.6,0.4,4,0,0,comp_first_then_same;comp_reverse_then_last;comp_reverse_then_same;comp_reverse_then_first
+EleutherAI/pythia-410m,retrieval,2,0.6,0.4,2,0,0,comp_retrieve_then_color;comp_retrieve_then_compare

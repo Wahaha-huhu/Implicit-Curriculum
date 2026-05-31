@@ -1,0 +1,11 @@
+slice_id,prompt_family,component_ids,n_rows,n_runs,n_under_verdicts,n_over_verdicts,n_mixed_verdicts,mean_underperforming_metric_rate,mean_median_residual_z,runs,stability_verdict
+comp_add_then_even,arithmetic,arith_add_small;arith_even,1,1,1,0,0,1.0,-1.3171457484398368,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_sub_then_compare,arithmetic,arith_sub_small;arith_compare,1,1,1,0,0,1.0,-0.9767586668024896,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_add_then_compare,arithmetic,arith_add_small;arith_compare,1,1,1,0,0,0.8,-0.9580830247540902,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_first_then_same,string,word_first;word_same,1,1,1,0,0,0.6,-0.3868291028510631,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_retrieve_then_color,retrieval,retrieval_object;semantic_color_lookup,1,1,1,0,0,0.6,0.1229363658996877,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_reverse_then_last,string,word_reverse2;word_last,1,1,1,0,0,0.6,0.4839263951563806,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_reverse_then_same,string,word_reverse2;word_same,1,1,1,0,0,0.6,0.5423752438214221,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_reverse_then_first,string,word_reverse2;word_first,1,1,1,0,0,0.6,0.6092496800947612,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_max_then_compare,arithmetic,arith_max2;arith_compare,1,1,1,0,0,0.8,0.7289693766438373,EleutherAI/pythia-410m,stable_underperforming_observational
+comp_retrieve_then_compare,retrieval,retrieval_number;arith_compare,1,1,1,0,0,0.6,0.8479147830870856,EleutherAI/pythia-410m,stable_underperforming_observational

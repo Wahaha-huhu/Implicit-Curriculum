@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/consolidate_pythia_sweep_evidence.py",
+    "--sweep-synthesis-dir",
+    "results/pythia_sweep_synthesis_v30",
+    "--evidence-dir",
+    "thesis_evidence",
+    "--code-version",
+    "v3.1",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "candidate"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.1",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/consolidate_pythia_sweep_evidence.py --sweep-synthesis-dir results/pythia_sweep_synthesis_v30 --evidence-dir thesis_evidence --code-version v3.1 --archive-root results/archive --thesis-use candidate",
+  "copied_outputs": [],
+  "created_at_utc": "2026-05-31T22:11:41+00:00",
+  "experiment": "Pythia_sweep_evidence_consolidation",
+  "git_sha": "3ff666d814f11749bd3c8775b4001ea62780e725",
+  "git_status_short": "M thesis_evidence/PYTHIA_SWEEP_SYNTHESIS.md\n M thesis_evidence/tables/pythia_sweep_claim_boundary.csv\n?? src/ic_experiments/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/",
+  "input_paths": {
+    "evidence_dir": "thesis_evidence",
+    "sweep_synthesis_dir": "results/pythia_sweep_synthesis_v30"
+  },
+  "output_dir": "thesis_evidence/pythia_sweep_evidence_package",
+  "platform": "Linux-6.8.0-111-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia_sweep_evidence_package",
+  "thesis_use": "candidate"
+}

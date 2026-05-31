@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 /workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py --output-dir results/pythia_h2_ready_slice_suite_v27 --n-per-slice 64 --code-version v2.7 --archive-root results/archive --thesis-use diagnostic
+=======
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py --output-dir results/pythia_h2_ready_slice_suite_v27 --n-per-slice 64 --code-version v3.1 --archive-root results/archive --thesis-use diagnostic
+>>>>>>> 05ceb18 (v3.1 sweep 70-410)

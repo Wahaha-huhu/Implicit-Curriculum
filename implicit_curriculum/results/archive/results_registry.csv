@@ -14,6 +14,7 @@ pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_observational_pilot,Pythia_
 pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:20:32+00:00
 pythia_h2_ready_observational_pilot_v27,v2.7,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:22:25+00:00
 first_stage_summary,v2.8,,first_stage_experiment_summary,,thesis_evidence/first_stage_summary,created,candidate,
+<<<<<<< HEAD
 pythia_h2_ready_observational_pilot_v27,v2.9,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_h2_ready_observational_pilot_v27,analyzed,diagnostic,2026-05-31T21:45:37+00:00
 pythia_sweep_plan_v30,v3.0,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v30,created,diagnostic,2026-05-31T21:53:11+00:00
 pythia-70m_n64,v3.0,,Pythia_observational_pilot,Pythia_observational,results/pythia_model_sweep_v30/pythia-70m_n64,created,diagnostic,2026-05-31T21:54:18+00:00
@@ -25,3 +26,18 @@ pythia-160m_n64,v3.0,,Pythia_H2_readiness_analysis,Pythia_observational,results/
 pythia-160m_n64,v3.0,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T21:57:25+00:00
 pythia-160m_n64,v3.0,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v30/pythia-160m_n64,analyzed,diagnostic,2026-05-31T21:57:27+00:00
 pythia_sweep_synthesis_v30,v3.0,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_sweep_synthesis_v30,created,diagnostic,2026-05-31T22:03:30+00:00
+=======
+pythia_sweep_plan_smoke_v30,v3.0,,Pythia_observational_sweep_plan,Pythia_observational,/mnt/data/pythia_sweep_plan_smoke_v30,created,diagnostic,2026-05-31T21:50:55+00:00
+pythia_sweep_synthesis_smoke_v30,v3.0,,Pythia_observational_sweep_synthesis,Pythia_observational,/mnt/data/pythia_sweep_synthesis_smoke_v30,created,diagnostic,2026-05-31T21:51:07+00:00
+pythia_sweep_evidence_package,v3.1,,Pythia_sweep_evidence_consolidation,Pythia_observational,thesis_evidence/pythia_sweep_evidence_package,created,candidate,2026-05-31T22:11:41+00:00
+pythia_sweep_plan_v31_410m,v3.1,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v31_410m,created,diagnostic,2026-05-31T22:16:58+00:00
+pythia_sweep_plan_v31_410m,v3.1,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v31_410m,created,diagnostic,2026-05-31T22:18:39+00:00
+pythia_sweep_plan_v31_410m,v3.1,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v31_410m,created,diagnostic,2026-05-31T22:18:58+00:00
+pythia_h2_ready_slice_suite_v27,v3.1,,Pythia_H2_ready_slice_suite_generation,Pythia_observational,results/pythia_h2_ready_slice_suite_v27,created,diagnostic,2026-05-31T22:23:04+00:00
+pythia_sweep_plan_v31_410m,v3.1,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v31_410m,created,diagnostic,2026-05-31T22:23:27+00:00
+pythia-410m_n64,v3.1,,Pythia_observational_pilot,Pythia_observational,results/pythia_model_sweep_v31_410m/pythia-410m_n64,created,diagnostic,2026-05-31T22:29:01+00:00
+pythia-410m_n64,v3.1,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_model_sweep_v31_410m/pythia-410m_n64,analyzed,diagnostic,2026-05-31T22:29:03+00:00
+pythia-410m_n64,v3.1,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v31_410m/pythia-410m_n64,analyzed,diagnostic,2026-05-31T22:29:05+00:00
+pythia-410m_n64,v3.1,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v31_410m/pythia-410m_n64,analyzed,diagnostic,2026-05-31T22:29:06+00:00
+pythia_sweep_synthesis_v31_70m_160m_410m,v3.1,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_sweep_synthesis_v31_70m_160m_410m,created,diagnostic,2026-05-31T22:35:36+00:00
+>>>>>>> 05ceb18 (v3.1 sweep 70-410)
