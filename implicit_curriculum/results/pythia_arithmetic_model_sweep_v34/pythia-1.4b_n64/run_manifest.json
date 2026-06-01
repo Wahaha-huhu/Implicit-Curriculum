@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py",
+    "--result-dir",
+    "results/pythia_arithmetic_model_sweep_v34/pythia-1.4b_n64",
+    "--code-version",
+    "v3.4",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.4",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py --result-dir results/pythia_arithmetic_model_sweep_v34/pythia-1.4b_n64 --code-version v3.4 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-06-01T11:22:41+00:00",
+  "experiment": "Pythia_observational_residual_refinement",
+  "git_sha": "464515fe57b51d2acff2a032d4026ffcbfbcc2ed",
+  "git_status_short": "M results/archive/results_registry.csv\n M results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64/git_commit.txt\n M results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64/run_manifest.json\n M results/pythia_arithmetic_model_sweep_v34/pythia-1b_n64/git_commit.txt\n M results/pythia_arithmetic_model_sweep_v34/pythia-1b_n64/run_manifest.json\n M results/pythia_arithmetic_model_sweep_v34/pythia-410m_n64/git_commit.txt\n M results/pythia_arithmetic_model_sweep_v34/pythia-410m_n64/run_manifest.json\n M results/pythia_arithmetic_model_sweep_v34/pythia-70m_n64/git_commit.txt\n M results/pythia_arithmetic_model_sweep_v34/pythia-70m_n64/run_manifest.json\n M results/pythia_arithmetic_slice_suite_v34/git_commit.txt\n M results/pythia_arithmetic_slice_suite_v34/run_manifest.json\n M results/pythia_arithmetic_sweep_plan_v34/git_commit.txt\n M results/pythia_arithmetic_sweep_plan_v34/run_manifest.json\n M src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n M src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/analyze_pythia_continuous_scores.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/analyze_pythia_h2_readiness.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/analyze_pythia_residual_refinement.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/make_pythia_focused_arithmetic_slice_suite.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/make_pythia_sweep_plan.cpython-311.pyc\n M src/ic_experiments/experiments/__pycache__/run_pythia_observational_pilot.cpython-311.pyc\n?? results/pythia_arithmetic_model_sweep_v34/pythia-1.4b_n64/",
+  "input_paths": {
+    "result_dir": "results/pythia_arithmetic_model_sweep_v34/pythia-1.4b_n64"
+  },
+  "metrics": [
+    "accuracy",
+    "mean_correct_margin",
+    "mean_correct_mrr",
+    "mean_logprob_correct",
+    "mean_logprob_margin"
+  ],
+  "output_dir": "results/pythia_arithmetic_model_sweep_v34/pythia-1.4b_n64",
+  "platform": "Linux-6.8.0-110-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia-1.4b_n64",
+  "thesis_use": "diagnostic"
+}
