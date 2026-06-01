@@ -967,3 +967,13 @@ Next experiments after v3.1:
 1. Run the same H2-ready slice suite on Pythia-410M if feasible.
 2. Run denser checkpoints for 70M/160M.
 3. Add focused arithmetic composites to stress-test the most stable residual family.
+
+## v3.2 — Pythia all-model tiered sweep plan
+
+Adds `make_pythia_all_model_sweep_plan`, which creates tiered scripts for:
+
+- full n=64 1B/1.4B evaluation;
+- A100-preferred large-model smoke evaluation for 2.8B/6.9B/12B;
+- synthesis scripts that combine existing small-model runs with new tier outputs.
+
+Use this after the five-model 70M→1.4B smoke synthesis to upgrade smoke evidence and extend the observational sweep to larger Pythia checkpoints.

@@ -764,3 +764,21 @@ thesis_evidence/tables/pythia_sweep_family_stability.csv
 thesis_evidence/tables/pythia_sweep_claim_boundary.csv
 thesis_evidence/results_summaries/v30_PYTHIA_SWEEP_SYNTHESIS.md
 ```
+
+### v3.2 Pythia all-model tiered sweep
+
+Generate a tiered all-model sweep plan:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_all_model_sweep_plan \
+  --slice-table thesis_evidence/pythia_slice_suites/v27_h2_ready/pythia_slice_table.csv \
+  --examples thesis_evidence/pythia_slice_suites/v27_h2_ready/pythia_slice_examples.jsonl \
+  --output-dir results/pythia_all_model_sweep_plan_v32 \
+  --run-root results/pythia_model_sweep_v32 \
+  --device cuda \
+  --code-version v3.2 \
+  --archive-root results/archive \
+  --thesis-use diagnostic
+```
+
+Run the generated tier scripts manually, then run the generated synthesis script.
