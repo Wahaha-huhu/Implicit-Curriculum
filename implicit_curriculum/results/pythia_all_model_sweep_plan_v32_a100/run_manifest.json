@@ -1,0 +1,49 @@
+{
+  "experiment": "Pythia_all_model_tiered_sweep_plan",
+  "backend": "Pythia_observational",
+  "code_version": "v3.2",
+  "created_at_utc": "2026-06-01T09:35:19.675897+00:00",
+  "python": "3.11.10",
+  "platform": "Linux-6.8.0-64-generic-x86_64-with-glibc2.35",
+  "git_sha": "283296c081271ecba564a1220d0a21f7e3427208",
+  "output_dir": "results/pythia_all_model_sweep_plan_v32_a100",
+  "run_root": "results/pythia_model_sweep_v32_a100",
+  "slice_table": "thesis_evidence/pythia_slice_suites/v27_h2_ready/pythia_slice_table.csv",
+  "examples": "thesis_evidence/pythia_slice_suites/v27_h2_ready/pythia_slice_examples.jsonl",
+  "n_planned_runs": 5,
+  "tiers": [
+    {
+      "tier_id": "mid_full_n64",
+      "models": [
+        "EleutherAI/pythia-1b",
+        "EleutherAI/pythia-1.4b"
+      ],
+      "revisions": [
+        "step0",
+        "step1000",
+        "step10000",
+        "step143000"
+      ],
+      "max_examples_per_slice": 64,
+      "device": "cuda",
+      "note": "Upgrade 1B/1.4B from smoke to full n=64 evaluation."
+    },
+    {
+      "tier_id": "large_smoke_n16",
+      "models": [
+        "EleutherAI/pythia-2.8b",
+        "EleutherAI/pythia-6.9b",
+        "EleutherAI/pythia-12b"
+      ],
+      "revisions": [
+        "step0",
+        "step10000",
+        "step143000"
+      ],
+      "max_examples_per_slice": 16,
+      "device": "cuda",
+      "note": "A100-preferred large-model smoke run before full evaluation."
+    }
+  ],
+  "thesis_use": "diagnostic"
+}

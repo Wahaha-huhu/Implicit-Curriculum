@@ -79,3 +79,13 @@ pythia-1p4b_n64,v3.2,,Pythia_observational_residual_refinement,Pythia_observatio
 synthesis_mid_full_n64,v3.2,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_all_model_sweep_plan_v32/synthesis_mid_full_n64,created,diagnostic,2026-06-01T09:16:51+00:00
 synthesis_large_smoke_n16,v3.2,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_all_model_sweep_plan_v32/synthesis_large_smoke_n16,created,diagnostic,2026-06-01T09:16:53+00:00
 synthesis_all_available,v3.2,,Pythia_observational_sweep_synthesis,Pythia_observational,results/pythia_all_model_sweep_plan_v32/synthesis_all_available,created,diagnostic,2026-06-01T09:16:55+00:00
+pythia_h2_ready_slice_suite_v27,v3.2,,Pythia_H2_ready_slice_suite_generation,Pythia_observational,results/pythia_h2_ready_slice_suite_v27,created,diagnostic,2026-06-01T09:34:58+00:00
+pythia-2p8b_n16,v3.2,,Pythia_observational_pilot,Pythia_observational,results/pythia_model_sweep_v32_a100/pythia-2p8b_n16,created,diagnostic,2026-06-01T09:48:02+00:00
+pythia-2p8b_n16,v3.2,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_model_sweep_v32_a100/pythia-2p8b_n16,analyzed,diagnostic,2026-06-01T09:48:04+00:00
+pythia-2p8b_n16,v3.2,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v32_a100/pythia-2p8b_n16,analyzed,diagnostic,2026-06-01T09:48:05+00:00
+pythia-2p8b_n16,v3.2,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v32_a100/pythia-2p8b_n16,analyzed,diagnostic,2026-06-01T09:48:06+00:00
+pythia_sweep_plan_v32_2p8b_smoke_a100,v3.2,,Pythia_observational_sweep_plan,Pythia_observational,results/pythia_sweep_plan_v32_2p8b_smoke_a100,created,diagnostic,2026-06-01T09:55:44+00:00
+pythia-2.8b_n16,v3.2,,Pythia_observational_pilot,Pythia_observational,results/pythia_model_sweep_v32_2p8b_smoke_a100/pythia-2.8b_n16,created,diagnostic,2026-06-01T09:59:17+00:00
+pythia-2.8b_n16,v3.2,,Pythia_H2_readiness_analysis,Pythia_observational,results/pythia_model_sweep_v32_2p8b_smoke_a100/pythia-2.8b_n16,analyzed,diagnostic,2026-06-01T09:59:18+00:00
+pythia-2.8b_n16,v3.2,,Pythia_observational_continuous_score_analysis,Pythia_observational,results/pythia_model_sweep_v32_2p8b_smoke_a100/pythia-2.8b_n16,analyzed,diagnostic,2026-06-01T09:59:20+00:00
+pythia-2.8b_n16,v3.2,,Pythia_observational_residual_refinement,Pythia_observational,results/pythia_model_sweep_v32_2p8b_smoke_a100/pythia-2.8b_n16,analyzed,diagnostic,2026-06-01T09:59:21+00:00
