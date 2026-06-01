@@ -1,0 +1,4 @@
+prompt_family,n_runs,mean_underperforming_metric_rate,total_consistent_under,total_consistent_over,models
+arithmetic,2,0.7749999999999999,8,0,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b
+retrieval,2,0.75,4,0,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b
+string,2,0.7250000000000001,8,0,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b

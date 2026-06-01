@@ -1,0 +1,11 @@
+slice_id,prompt_family,component_ids,n_rows,n_runs,n_under_verdicts,n_over_verdicts,n_mixed_verdicts,mean_underperforming_metric_rate,mean_median_residual_z,runs,stability_verdict
+comp_add_then_compare,arithmetic,arith_add_small;arith_compare,2,2,2,0,0,0.8,-1.2326959493589529,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_add_then_even,arithmetic,arith_add_small;arith_even,2,2,2,0,0,0.8,-0.752883780588496,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_retrieve_then_color,retrieval,retrieval_object;semantic_color_lookup,2,2,2,0,0,0.8,-0.7516109543379912,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_reverse_then_last,string,word_reverse2;word_last,2,2,2,0,0,0.7,-0.524202206994711,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_max_then_compare,arithmetic,arith_max2;arith_compare,2,2,2,0,0,0.8,-0.15558015752216645,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_sub_then_compare,arithmetic,arith_sub_small;arith_compare,2,2,2,0,0,0.7,0.179972733833209,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_first_then_same,string,word_first;word_same,2,2,2,0,0,0.7,0.3200112711525001,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_reverse_then_same,string,word_reverse2;word_same,2,2,2,0,0,0.8,0.42946303091426385,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_reverse_then_first,string,word_reverse2;word_first,2,2,2,0,0,0.7,0.614493131860264,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational
+comp_retrieve_then_compare,retrieval,retrieval_number;arith_compare,2,2,2,0,0,0.7,1.540447448990603,EleutherAI/pythia-1.4b;EleutherAI/pythia-1b,stable_underperforming_observational

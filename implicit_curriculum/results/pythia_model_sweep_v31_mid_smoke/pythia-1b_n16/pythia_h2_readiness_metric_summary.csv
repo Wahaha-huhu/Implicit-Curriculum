@@ -1,0 +1,6 @@
+model_name,metric,n_atomic,n_composite,n_moving_atomic,n_moving_composite,mean_atomic_delta,mean_composite_delta,mean_atomic_final,mean_composite_final,h2_ready
+EleutherAI/pythia-1b,accuracy,16,10,12,7,0.00390625,-0.0125,0.26953125,0.24375,True
+EleutherAI/pythia-1b,mean_correct_margin,16,10,16,10,-0.3962367551866919,-0.20674602165818215,-0.7068839299026877,-0.5337138928472995,True
+EleutherAI/pythia-1b,mean_correct_mrr,16,10,13,9,-0.00976562499999999,-0.01562500000000001,0.5270182291666666,0.5083333333333333,True
+EleutherAI/pythia-1b,mean_logprob_correct,16,10,16,10,8.604270298266783,8.806864418834447,-2.4248538312967867,-2.2963093139231203,True
+EleutherAI/pythia-1b,mean_logprob_margin,16,10,16,10,0.7071995718870312,0.42649185881018636,0.9167957960162312,0.6680601082742215,True
