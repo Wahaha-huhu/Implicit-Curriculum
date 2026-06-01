@@ -806,3 +806,32 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_high_value_experiment_p
   --archive-root results/archive \
   --thesis-use candidate
 ```
+
+## v3.5 high-value experiment consolidation
+
+After running the v3.4 B2 strengthening and focused Pythia arithmetic sweep, consolidate them into the durable thesis evidence archive:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.consolidate_high_value_experiment_evidence \
+  --evidence-dir thesis_evidence \
+  --b2-synthesis-dir results/b2_strengthening_synthesis_v34 \
+  --pythia-arithmetic-suite-dir results/pythia_arithmetic_slice_suite_v34 \
+  --pythia-arithmetic-sweep-dir results/pythia_arithmetic_sweep_synthesis_v34 \
+  --output-dir thesis_evidence/high_value_experiment_consolidation \
+  --code-version v3.5 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+This preserves:
+
+```text
+thesis_evidence/HIGH_VALUE_EXPERIMENT_CONSOLIDATION.md
+thesis_evidence/POST_HIGH_VALUE_THESIS_READINESS.md
+thesis_evidence/B2_STRENGTHENING_SYNTHESIS.md
+thesis_evidence/PYTHIA_ARITHMETIC_SWEEP_SYNTHESIS.md
+thesis_evidence/tables/high_value_experiment_claim_update.csv
+thesis_evidence/tables/post_high_value_final_claim_updates.csv
+```
+
+The command is bookkeeping only. It does not rerun experiments. The final claim boundary remains: B2 is a frequency/difficulty regime contrast, and Pythia arithmetic is observational residual evidence, not causal dependency evidence.

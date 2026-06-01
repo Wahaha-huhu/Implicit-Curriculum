@@ -1024,3 +1024,21 @@ Then run, in order:
 bash results/high_value_experiment_plan_v34/run_b2_strengthening_v34.sh
 bash results/high_value_experiment_plan_v34/run_pythia_arithmetic_sweep_v34.sh
 ```
+
+## v3.5 — Consolidate high-value experiments
+
+After `run_b2_strengthening_v34.sh` and `run_pythia_arithmetic_sweep_v34.sh` have completed, run:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.consolidate_high_value_experiment_evidence \
+  --evidence-dir thesis_evidence \
+  --b2-synthesis-dir results/b2_strengthening_synthesis_v34 \
+  --pythia-arithmetic-suite-dir results/pythia_arithmetic_slice_suite_v34 \
+  --pythia-arithmetic-sweep-dir results/pythia_arithmetic_sweep_synthesis_v34 \
+  --output-dir thesis_evidence/high_value_experiment_consolidation \
+  --code-version v3.5 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+This creates the post-high-value experiment summary and claim update tables. Use it before starting the detailed thesis draft.
