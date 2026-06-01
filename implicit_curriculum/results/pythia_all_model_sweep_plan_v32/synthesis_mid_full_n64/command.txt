@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_sweep_synthesis.py --run-dirs results/pythia_model_sweep_v32/pythia-1b_n64 results/pythia_model_sweep_v32/pythia-1p4b_n64 --output-dir results/pythia_all_model_sweep_plan_v32/synthesis_mid_full_n64 --code-version v3.2 --archive-root results/archive --thesis-use diagnostic

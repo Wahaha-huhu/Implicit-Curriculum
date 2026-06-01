@@ -1,0 +1,11 @@
+source_run_dir,source_model_name,model_name,metric,n_atomic,n_composite,n_moving_atomic,n_moving_composite,mean_atomic_delta,mean_composite_delta,mean_atomic_final,mean_composite_final,h2_ready
+results/pythia_model_sweep_v32/pythia-1b_n64,EleutherAI/pythia-1b,EleutherAI/pythia-1b,accuracy,16,10,12,7,-0.02734375,0.0265625,0.2314453125,0.253125,True
+results/pythia_model_sweep_v32/pythia-1b_n64,EleutherAI/pythia-1b,EleutherAI/pythia-1b,mean_correct_margin,16,10,16,10,-0.4121885491185821,-0.1487508160993456,-0.7408099515014328,-0.4987728727981448,True
+results/pythia_model_sweep_v32/pythia-1b_n64,EleutherAI/pythia-1b,EleutherAI/pythia-1b,mean_correct_mrr,16,10,12,7,-0.0262044270833333,0.0057291666666666,0.5038248697916666,0.513671875,True
+results/pythia_model_sweep_v32/pythia-1b_n64,EleutherAI/pythia-1b,EleutherAI/pythia-1b,mean_logprob_correct,16,10,16,10,8.602330830530263,8.838196631520987,-2.440713160089217,-2.280977838486433,True
+results/pythia_model_sweep_v32/pythia-1b_n64,EleutherAI/pythia-1b,EleutherAI/pythia-1b,mean_logprob_margin,16,10,16,10,0.6994020664715208,0.4206824427470564,0.909001051040832,0.6517206137999892,True
+results/pythia_model_sweep_v32/pythia-1p4b_n64,EleutherAI/pythia-1.4b,EleutherAI/pythia-1.4b,accuracy,16,10,15,8,-0.001953125,0.0078125,0.244140625,0.2640625,True
+results/pythia_model_sweep_v32/pythia-1p4b_n64,EleutherAI/pythia-1.4b,EleutherAI/pythia-1.4b,mean_correct_margin,16,10,16,10,0.2395239970646798,0.2749633356928825,-0.3640898331068456,-0.3220123991370201,True
+results/pythia_model_sweep_v32/pythia-1p4b_n64,EleutherAI/pythia-1.4b,EleutherAI/pythia-1.4b,mean_correct_mrr,16,10,14,8,-0.00439453125,-0.0005208333333333,0.5146484375,0.5253906249999999,True
+results/pythia_model_sweep_v32/pythia-1p4b_n64,EleutherAI/pythia-1.4b,EleutherAI/pythia-1.4b,mean_logprob_correct,16,10,16,10,8.986965082702227,8.964917143061758,-2.039070935803465,-1.9985326942056416,True
+results/pythia_model_sweep_v32/pythia-1p4b_n64,EleutherAI/pythia-1.4b,EleutherAI/pythia-1.4b,mean_logprob_margin,16,10,16,10,-0.0179467322304844,-0.1202006075531244,0.3307027546688914,0.2804043095558882,True

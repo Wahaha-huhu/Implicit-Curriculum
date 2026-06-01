@@ -1,0 +1,4 @@
+run_dir,model_name,has_curves,has_readiness,has_h1,has_residual_refinement,n_slices,n_checkpoints,h2_ready_metrics,n_residual_composites,n_consistent_under,n_consistent_over,n_mixed
+results/pythia_model_sweep_v32/pythia-2p8b_n16,pythia-2p8b_n16,False,False,False,False,0,0,,0,0,0,0
+results/pythia_model_sweep_v32/pythia-6p9b_n16,pythia-6p9b_n16,False,False,False,False,0,0,,0,0,0,0
+results/pythia_model_sweep_v32/pythia-12b_n16,pythia-12b_n16,False,False,False,False,0,0,,0,0,0,0

@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py --result-dir results/pythia_model_sweep_v32/pythia-1b_n64 --code-version v3.2 --archive-root results/archive --thesis-use diagnostic

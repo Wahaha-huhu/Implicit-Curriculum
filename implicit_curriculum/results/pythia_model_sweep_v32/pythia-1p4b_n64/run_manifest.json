@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py",
+    "--result-dir",
+    "results/pythia_model_sweep_v32/pythia-1p4b_n64",
+    "--code-version",
+    "v3.2",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py --result-dir results/pythia_model_sweep_v32/pythia-1p4b_n64 --code-version v3.2 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-06-01T09:15:25+00:00",
+  "experiment": "Pythia_observational_residual_refinement",
+  "git_sha": "1e1ad7a1f6cea5d2fe987ce38e4fa0212356a9fb",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/pythia_all_model_sweep_plan_v32/\n?? results/pythia_model_sweep_v32/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_continuous_scores.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_h2_readiness.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_residual_refinement.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_pythia_all_model_sweep_plan.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_pythia_observational_pilot.cpython-311.pyc\n?? thesis_evidence/pythia_slice_suites/\n?? thesis_evidence/results_summaries/v30_PYTHIA_SWEEP_SYNTHESIS.md\n?? thesis_evidence/results_summaries/v30_pythia_sweep_family_stability.csv\n?? thesis_evidence/results_summaries/v30_pythia_sweep_residual_stability.csv\n?? thesis_evidence/results_summaries/v30_pythia_sweep_run_summary.csv\n?? thesis_evidence/tables/pythia_sweep_family_stability.csv\n?? thesis_evidence/tables/pythia_sweep_residual_stability.csv\n?? thesis_evidence/tables/pythia_sweep_run_summary.csv",
+  "input_paths": {
+    "result_dir": "results/pythia_model_sweep_v32/pythia-1p4b_n64"
+  },
+  "metrics": [
+    "accuracy",
+    "mean_correct_margin",
+    "mean_correct_mrr",
+    "mean_logprob_correct",
+    "mean_logprob_margin"
+  ],
+  "output_dir": "results/pythia_model_sweep_v32/pythia-1p4b_n64",
+  "platform": "Linux-6.8.0-52-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia-1p4b_n64",
+  "thesis_use": "diagnostic"
+}

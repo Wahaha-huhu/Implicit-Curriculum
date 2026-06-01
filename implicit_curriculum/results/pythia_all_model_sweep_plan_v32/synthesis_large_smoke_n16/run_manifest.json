@@ -1,0 +1,36 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_sweep_synthesis.py",
+    "--run-dirs",
+    "results/pythia_model_sweep_v32/pythia-2p8b_n16",
+    "results/pythia_model_sweep_v32/pythia-6p9b_n16",
+    "results/pythia_model_sweep_v32/pythia-12b_n16",
+    "--output-dir",
+    "results/pythia_all_model_sweep_plan_v32/synthesis_large_smoke_n16",
+    "--code-version",
+    "v3.2",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_sweep_synthesis.py --run-dirs results/pythia_model_sweep_v32/pythia-2p8b_n16 results/pythia_model_sweep_v32/pythia-6p9b_n16 results/pythia_model_sweep_v32/pythia-12b_n16 --output-dir results/pythia_all_model_sweep_plan_v32/synthesis_large_smoke_n16 --code-version v3.2 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-06-01T09:16:53+00:00",
+  "experiment": "Pythia_observational_sweep_synthesis",
+  "git_sha": "1e1ad7a1f6cea5d2fe987ce38e4fa0212356a9fb",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/pythia_all_model_sweep_plan_v32/\n?? results/pythia_model_sweep_v32/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_continuous_scores.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_h2_readiness.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_residual_refinement.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_sweep_synthesis.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_pythia_all_model_sweep_plan.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_pythia_observational_pilot.cpython-311.pyc\n?? thesis_evidence/pythia_slice_suites/\n?? thesis_evidence/results_summaries/v30_PYTHIA_SWEEP_SYNTHESIS.md\n?? thesis_evidence/results_summaries/v30_pythia_sweep_family_stability.csv\n?? thesis_evidence/results_summaries/v30_pythia_sweep_residual_stability.csv\n?? thesis_evidence/results_summaries/v30_pythia_sweep_run_summary.csv\n?? thesis_evidence/tables/pythia_sweep_family_stability.csv\n?? thesis_evidence/tables/pythia_sweep_residual_stability.csv\n?? thesis_evidence/tables/pythia_sweep_run_summary.csv",
+  "input_paths": {
+    "run_dirs": [
+      "results/pythia_model_sweep_v32/pythia-2p8b_n16",
+      "results/pythia_model_sweep_v32/pythia-6p9b_n16",
+      "results/pythia_model_sweep_v32/pythia-12b_n16"
+    ]
+  },
+  "output_dir": "results/pythia_all_model_sweep_plan_v32/synthesis_large_smoke_n16",
+  "platform": "Linux-6.8.0-52-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "synthesis_large_smoke_n16",
+  "thesis_use": "diagnostic"
+}
