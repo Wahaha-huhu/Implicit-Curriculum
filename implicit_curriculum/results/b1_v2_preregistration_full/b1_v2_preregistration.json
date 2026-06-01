@@ -1,0 +1,66 @@
+{
+  "acquisition_patience": 2,
+  "acquisition_threshold": 0.7,
+  "alignment_predictor_rule": {
+    "early_max_fraction": 0.2,
+    "evaluation": "AUC against exact_component_dependency labels; leave-family-out when family_id is present, otherwise pair-level AUC only.",
+    "ground_truth": "census verdicts from Exp 2 intervention rows",
+    "primary_score": "early exact-minus-control gradient cosine, measured no later than early_max_fraction of training"
+  },
+  "census_membership_rule": "Every formal component\u2192composite pair that passes the readiness gate, with non-ready rows excluded as hard-composite/non-learning coverage when requested.",
+  "claim_tiers": {
+    "controlled_intervention": "Tier 1 causal within the controlled Sequence DSL setting only",
+    "mediator_alignment": "Tier 1/2 mechanism if validated against census ground truth",
+    "pythia": "Tier 3 observational corroboration only; no causal LLM claim"
+  },
+  "condition_set": "full",
+  "conditions": [
+    "baseline",
+    "upweight_component",
+    "upweight_same_operation_unrelated",
+    "upweight_different_operation_matched",
+    "upweight_fake_component",
+    "upweight_surface_control",
+    "delay_component",
+    "delay_same_operation_unrelated",
+    "delay_different_operation_matched",
+    "corrupt_component",
+    "corrupt_same_operation_unrelated",
+    "corrupt_different_operation_matched",
+    "pretrain_component",
+    "pretrain_same_operation_unrelated",
+    "pretrain_different_operation_matched",
+    "corrupt_component_strong",
+    "corrupt_same_operation_unrelated_strong",
+    "corrupt_different_operation_matched_strong",
+    "delay_component_strong",
+    "delay_same_operation_unrelated_strong",
+    "delay_different_operation_matched_strong"
+  ],
+  "control_battery": [
+    "exact_component",
+    "same_operation_control",
+    "different_operation_control",
+    "fake_component_control",
+    "surface_control",
+    "unrelated_matched_displacement_twin",
+    "readiness_gate"
+  ],
+  "inputs": {
+    "census_plan": "results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv",
+    "ready_pair_selection": "results/b1_v2_h3_ready/h3_ready_pair_selection.csv",
+    "structure_table": "results/b1_v2_h1_shared_sweep/structure_table.csv"
+  },
+  "n_planned_rows": 4,
+  "primary_metric": "token_accuracy",
+  "purpose": "Freeze the Exp 2 causal census and Exp 3 alignment-predicts-verdict analysis before running/adding more rows.",
+  "verdict_rule": {
+    "alpha": 0.1,
+    "difficulty_parallel_or_null": "No exact-component manipulation separates from matched controls.",
+    "exact_component_dependency": "Exact component separates from same-operation and different-operation controls, and from fake/surface controls when those rows are available.",
+    "hard_composite_non_learning": "Helpful exact-component interventions fail to make the composite measurable; row is a coverage exclusion.",
+    "min_direction_rate": 0.6,
+    "operation_family_transfer": "Exact separates from different-operation controls but not same-operation controls."
+  },
+  "version": "b1_v2_causal_census_v3.2"
+}

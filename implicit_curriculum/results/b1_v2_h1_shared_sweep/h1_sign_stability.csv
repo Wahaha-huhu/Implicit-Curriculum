@@ -1,0 +1,13 @@
+metric_family,threshold,stratum,predictor,n_configs_with_signal,sign_stability_rate,mean_time_spearman,min_time_spearman,max_time_spearman,per_config_values
+token_accuracy,0.7,all,frequency,6,0.0,0.2533117506364379,0.17597029593730812,0.3186246343295575,base:0.272;batch_large:0.229;batch_small:0.252;lr_high:0.319;lr_low:0.176;wd_zero:0.272
+token_accuracy,0.7,all,reference_learnability,6,1.0,0.563588497067444,0.5119696875756566,0.596591219111705,base:0.597;batch_large:0.562;batch_small:0.512;lr_high:0.557;lr_low:0.559;wd_zero:0.595
+token_accuracy,0.7,all,formal_utility,6,0.5,0.01637169254398776,-0.0753816738962207,0.1354419289066245,base:-0.031;batch_large:0.075;batch_small:0.023;lr_high:-0.075;lr_low:0.135;wd_zero:-0.030
+token_accuracy,0.7,true_tasks_atomic_composite,frequency,6,0.0,0.1046606183114797,0.06957829030707495,0.13067896190677647,base:0.130;batch_large:0.103;batch_small:0.070;lr_high:0.119;lr_low:0.076;wd_zero:0.131
+token_accuracy,0.7,true_tasks_atomic_composite,reference_learnability,6,1.0,0.42293888560442894,0.35771035299608545,0.47767537686139766,base:0.460;batch_large:0.408;batch_small:0.358;lr_high:0.478;lr_low:0.378;wd_zero:0.457
+token_accuracy,0.7,true_tasks_atomic_composite,formal_utility,6,1.0,-0.1140147343976073,-0.1831927166153661,-0.016924527471823898,base:-0.172;batch_large:-0.061;batch_small:-0.079;lr_high:-0.183;lr_low:-0.017;wd_zero:-0.171
+token_accuracy,0.7,kind=atomic,frequency,6,0.0,0.2440382037442609,0.14751814735038699,0.2748761552524923,base:0.273;batch_large:0.275;batch_small:0.148;lr_high:0.273;lr_low:0.224;wd_zero:0.273
+token_accuracy,0.7,kind=atomic,reference_learnability,6,1.0,0.8999882154899582,0.8324773153022329,0.9316949906249123,base:0.932;batch_large:0.891;batch_small:0.832;lr_high:0.931;lr_low:0.882;wd_zero:0.931
+token_accuracy,0.7,kind=atomic,formal_utility,6,0.0,0.2716097231574906,0.1789049872121714,0.33810731238268055,base:0.273;batch_large:0.289;batch_small:0.179;lr_high:0.338;lr_low:0.286;wd_zero:0.265
+token_accuracy,0.7,kind=composite,frequency,6,1.0,-0.1207421315521048,-0.2425108771140469,-0.06317076708671655,base:-0.067;batch_large:-0.196;batch_small:-0.063;lr_high:-0.090;lr_low:-0.243;wd_zero:-0.067
+token_accuracy,0.7,kind=composite,reference_learnability,0,,,,,
+token_accuracy,0.7,kind=composite,formal_utility,0,,,,,

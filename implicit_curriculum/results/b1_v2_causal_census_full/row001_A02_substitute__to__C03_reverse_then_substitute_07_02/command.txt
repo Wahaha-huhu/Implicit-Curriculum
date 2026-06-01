@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_h3_interventions.py --result-dir results/b1_v2_causal_census_full/row001_A02_substitute__to__C03_reverse_then_substitute_07_02 --metric-family token_accuracy --threshold 0.7 --patience 2 --code-version v3.2 --thesis-use candidate

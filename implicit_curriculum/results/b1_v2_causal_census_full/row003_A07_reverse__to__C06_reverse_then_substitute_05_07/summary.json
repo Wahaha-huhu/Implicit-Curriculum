@@ -1,0 +1,55 @@
+{
+  "backend": "B1_sequence_dsl",
+  "version": "v1.2",
+  "purpose": "B1 H3 pair-specific intervention training with operation-family controls.",
+  "pair": {
+    "component": "A07_reverse",
+    "composite": "C06_reverse_then_substitute_05_07",
+    "unrelated_control": "A01_reverse",
+    "fake_component_control": "K02_shortcut_for_A03_copy",
+    "surface_control": "S00_surface_rotate",
+    "same_operation_control": "A01_reverse",
+    "different_operation_control": "U01_unrelated_substitute"
+  },
+  "conditions": [
+    "baseline",
+    "upweight_component",
+    "upweight_same_operation_unrelated",
+    "upweight_different_operation_matched",
+    "upweight_fake_component",
+    "upweight_surface_control",
+    "delay_component",
+    "delay_same_operation_unrelated",
+    "delay_different_operation_matched",
+    "corrupt_component",
+    "corrupt_same_operation_unrelated",
+    "corrupt_different_operation_matched",
+    "pretrain_component",
+    "pretrain_same_operation_unrelated",
+    "pretrain_different_operation_matched",
+    "corrupt_component_strong",
+    "corrupt_same_operation_unrelated_strong",
+    "corrupt_different_operation_matched_strong",
+    "delay_component_strong",
+    "delay_same_operation_unrelated_strong",
+    "delay_different_operation_matched_strong"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "paths": {
+    "eval_curves": "results/b1_v2_causal_census_full/row003_A07_reverse__to__C06_reverse_then_substitute_05_07/eval_curves.csv",
+    "acquisition_times": "results/b1_v2_causal_census_full/row003_A07_reverse__to__C06_reverse_then_substitute_05_07/acquisition_times.csv",
+    "final_metrics": "results/b1_v2_causal_census_full/row003_A07_reverse__to__C06_reverse_then_substitute_05_07/final_metrics.csv",
+    "pair_config": "results/b1_v2_causal_census_full/row003_A07_reverse__to__C06_reverse_then_substitute_05_07/h3_pair_config.csv"
+  }
+}

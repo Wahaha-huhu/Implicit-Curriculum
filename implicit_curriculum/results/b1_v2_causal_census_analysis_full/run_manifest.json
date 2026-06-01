@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_causal_census_verdicts.py",
+    "--census-plan",
+    "results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv",
+    "--run-index",
+    "results/b1_v2_causal_census_full/b1_v2_causal_census_run_index.csv",
+    "--output-dir",
+    "results/b1_v2_causal_census_analysis_full",
+    "--bootstrap-samples",
+    "2000"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v3.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_causal_census_verdicts.py --census-plan results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv --run-index results/b1_v2_causal_census_full/b1_v2_causal_census_run_index.csv --output-dir results/b1_v2_causal_census_analysis_full --bootstrap-samples 2000",
+  "created_at_utc": "2026-06-01T22:37:36+00:00",
+  "experiment": "B1_v2_causal_census_verdict_analysis",
+  "git_sha": "456975a1fae8c4ef45b94be173dc685004d689d6",
+  "git_status_short": "?? results/b1_v2_calibration/\n?? results/b1_v2_causal_census_analysis_full/\n?? results/b1_v2_causal_census_full/\n?? results/b1_v2_causal_census_plan_full/\n?? results/b1_v2_h1_shared_sweep/\n?? results/b1_v2_h3_ready/\n?? results/b1_v2_preregistration_full/\n?? src/ic_experiments.egg-info/\n?? src/ic_experiments/__pycache__/\n?? src/ic_experiments/backends/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/",
+  "input_paths": {
+    "census_plan": "results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv",
+    "census_result_root": "",
+    "run_index": "results/b1_v2_causal_census_full/b1_v2_causal_census_run_index.csv"
+  },
+  "metric_family": "token_accuracy",
+  "output_dir": "results/b1_v2_causal_census_analysis_full",
+  "platform": "Linux-6.8.0-106-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "b1_v2_causal_census_verdict_analysis",
+  "thesis_use": "candidate",
+  "threshold": 0.7
+}

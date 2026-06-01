@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_b1_v2_preregistration.py",
+    "--output-dir",
+    "results/b1_v2_preregistration_full",
+    "--structure-table",
+    "results/b1_v2_h1_shared_sweep/structure_table.csv",
+    "--ready-pair-selection",
+    "results/b1_v2_h3_ready/h3_ready_pair_selection.csv",
+    "--census-plan",
+    "results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv",
+    "--condition-set",
+    "full"
+  ],
+  "backend": "B1_sequence_dsl",
+  "code_version": "v3.2",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_b1_v2_preregistration.py --output-dir results/b1_v2_preregistration_full --structure-table results/b1_v2_h1_shared_sweep/structure_table.csv --ready-pair-selection results/b1_v2_h3_ready/h3_ready_pair_selection.csv --census-plan results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv --condition-set full",
+  "condition_set": "full",
+  "created_at_utc": "2026-06-01T20:46:12+00:00",
+  "experiment": "B1_v2_preregistration",
+  "git_sha": "456975a1fae8c4ef45b94be173dc685004d689d6",
+  "git_status_short": "?? results/b1_v2_calibration/\n?? results/b1_v2_causal_census_plan_full/\n?? results/b1_v2_h1_shared_sweep/\n?? results/b1_v2_h3_ready/\n?? results/b1_v2_preregistration_full/\n?? src/ic_experiments.egg-info/\n?? src/ic_experiments/__pycache__/\n?? src/ic_experiments/backends/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/",
+  "input_paths": {
+    "census_plan": "results/b1_v2_causal_census_plan_full/b1_v2_causal_census_plan.csv",
+    "ready_pair_selection": "results/b1_v2_h3_ready/h3_ready_pair_selection.csv",
+    "structure_table": "results/b1_v2_h1_shared_sweep/structure_table.csv"
+  },
+  "output_dir": "results/b1_v2_preregistration_full",
+  "platform": "Linux-6.8.0-106-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "b1_v2_preregistration",
+  "thesis_use": "preregistered"
+}

@@ -1,0 +1,13 @@
+condition,model,term,coef_standardized
+base,learnability_only,reference_learnability,0.7008958744841467
+base,learnability_only,intercept,10.94410098795363
+batch_large,learnability_only,reference_learnability,0.6914230317402759
+batch_large,learnability_only,intercept,11.24323138357463
+batch_small,learnability_only,reference_learnability,0.7011241506587977
+batch_small,learnability_only,intercept,10.680443880922073
+lr_high,learnability_only,reference_learnability,0.670075259939146
+lr_high,learnability_only,intercept,10.667570520538353
+lr_low,learnability_only,reference_learnability,0.8220623227062764
+lr_low,learnability_only,intercept,11.337946708910208
+wd_zero,learnability_only,reference_learnability,0.7049303976671492
+wd_zero,learnability_only,intercept,10.947594987522267

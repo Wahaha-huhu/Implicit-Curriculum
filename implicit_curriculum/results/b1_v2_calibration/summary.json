@@ -1,0 +1,73 @@
+{
+  "config": {
+    "output_dir": "results/b1_v2_calibration",
+    "candidate_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "calibration_seeds": [
+      0,
+      1
+    ],
+    "vocab_content": 32,
+    "input_len": 6,
+    "n_atomic": 8,
+    "n_composite": 8,
+    "n_shortcut_controls": 3,
+    "n_surface_controls": 3,
+    "n_unrelated_controls": 3,
+    "max_data_seen": 120000,
+    "batch_size": 256,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.05,
+    "warmup_frac": 0.05,
+    "n_checkpoints": 50,
+    "eval_examples_per_task": 512,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "d_mlp": 512,
+    "dropout": 0.0,
+    "token_threshold": 0.7,
+    "exact_threshold": 0.3,
+    "target_min_acq": 0.3,
+    "target_max_acq": 0.85,
+    "min_composite_acq": 0.2,
+    "device": "cuda"
+  },
+  "selected": {
+    "candidate_seed": 4,
+    "passed": true,
+    "family_design_passed": true,
+    "token_acquisition_rate": 0.6,
+    "composite_token_acquisition_rate": 0.75,
+    "atomic_token_acquisition_rate": 0.75,
+    "mean_final_token_accuracy": 0.5944921998307109,
+    "mean_final_exact_match": 0.256875,
+    "time_spearman_frequency_all": 0.15989638416780794,
+    "time_spearman_learnability_all": 0.5406610401101339,
+    "time_spearman_utility_all": 0.13517377960492719,
+    "time_spearman_frequency_true_tasks": 0.052463785772451824,
+    "time_spearman_learnability_true_tasks": 0.36899368492502477,
+    "time_spearman_frequency_atomic": 0.26041869439294285,
+    "time_spearman_learnability_atomic": 0.8894991799933213,
+    "expected_frequency_sign_true_tasks": false,
+    "expected_learnability_sign_true_tasks": true,
+    "n_tasks": 25,
+    "n_composites": 8,
+    "design_condition_number": 1.718744462037869,
+    "calibration_passed": true,
+    "paths": {
+      "structure_table": "results/b1_v2_calibration/structure_table.csv",
+      "candidate_calibration_summary": "results/b1_v2_calibration/candidate_calibration_summary.csv",
+      "calibration_eval_curves": "results/b1_v2_calibration/calibration_eval_curves.csv",
+      "calibration_acquisition_times": "results/b1_v2_calibration/calibration_acquisition_times.csv",
+      "selected_eval_curves": "results/b1_v2_calibration/selected_eval_curves.csv",
+      "selected_acquisition_times": "results/b1_v2_calibration/selected_acquisition_times.csv",
+      "sequence_difficulty_table": "results/b1_v2_calibration/sequence_difficulty_table.csv"
+    }
+  }
+}
