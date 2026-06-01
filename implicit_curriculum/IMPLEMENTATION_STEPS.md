@@ -977,3 +977,31 @@ Adds `make_pythia_all_model_sweep_plan`, which creates tiered scripts for:
 - synthesis scripts that combine existing small-model runs with new tier outputs.
 
 Use this after the five-model 70M→1.4B smoke synthesis to upgrade smoke evidence and extend the observational sweep to larger Pythia checkpoints.
+
+## v3.3 — Final experiment-state consolidation
+
+After the controlled B1 evidence and the Pythia Tier-1 sweep through 1.4B, use this command to create a draft-ready experiment-state package:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_final_experiment_state \
+  --evidence-dir thesis_evidence \
+  --pythia-sweep-synthesis-dir results/pythia_all_model_sweep_plan_v32/synthesis_all_available \
+  --output-dir thesis_evidence/final_experiment_state \
+  --code-version v3.3 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Expected outputs:
+
+```text
+thesis_evidence/FINAL_EXPERIMENT_STATE.md
+thesis_evidence/THESIS_DRAFT_READINESS.md
+thesis_evidence/tables/final_experiment_state_table.csv
+thesis_evidence/tables/final_claim_boundary_matrix.csv
+thesis_evidence/tables/final_remaining_experiments.csv
+thesis_evidence/tables/final_figure_table_checklist.csv
+thesis_evidence/final_experiment_state/run_manifest.json
+```
+
+This does not run new experiments. It records the current claim boundary and marks 2.8B+ Pythia as future work until checkpoint revision loading is fixed.

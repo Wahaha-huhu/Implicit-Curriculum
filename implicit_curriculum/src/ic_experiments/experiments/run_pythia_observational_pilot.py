@@ -55,15 +55,7 @@ def _evaluate_model(model_name: str, revision: str | None, examples: list[dict[s
         raise RuntimeError("run_pythia_observational_pilot requires torch and transformers. Install them or run only slice generation/analysis.") from e
 
     tok = AutoTokenizer.from_pretrained(model_name, revision=revision, trust_remote_code=False)
-    load_kwargs = dict(
-        revision=revision,
-        trust_remote_code=False,
-        use_safetensors=False,
-        low_cpu_mem_usage=True,
-    )
-    if str(device).startswith("cuda"):
-        load_kwargs["torch_dtype"] = torch.float16
-    model = AutoModelForCausalLM.from_pretrained(model_name, **load_kwargs)
+    model = AutoModelForCausalLM.from_pretrained(model_name, revision=revision, trust_remote_code=False)
     model.to(device)
     model.eval()
 

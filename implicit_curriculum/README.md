@@ -782,3 +782,7 @@ PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_all_model_sweep_
 ```
 
 Run the generated tier scripts manually, then run the generated synthesis script.
+
+### v3.3 final experiment-state consolidation
+
+The command `make_final_experiment_state` creates a draft-ready summary of the current project state. It consolidates the controlled B1 core, cross-family synthesis, mediator diagnostics, and Pythia Tier-1 observational bridge through 1.4B. It explicitly marks larger Pythia runs as optional/future work when checkpoint revision loading is not trustworthy.
