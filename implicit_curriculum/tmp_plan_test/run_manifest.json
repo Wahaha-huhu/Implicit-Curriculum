@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/mnt/data/work_v34/src/ic_experiments/experiments/make_high_value_experiment_plan.py",
+    "--output-dir",
+    "/mnt/data/work_v34/tmp_plan_test",
+    "--code-version",
+    "v3.4",
+    "--archive-root",
+    "/mnt/data/work_v34/tmp_archive",
+    "--thesis-use",
+    "test"
+  ],
+  "backend": "meta",
+  "code_version": "v3.4",
+  "command": "/mnt/data/work_v34/src/ic_experiments/experiments/make_high_value_experiment_plan.py --output-dir /mnt/data/work_v34/tmp_plan_test --code-version v3.4 --archive-root /mnt/data/work_v34/tmp_archive --thesis-use test",
+  "created_at_utc": "2026-06-01T10:41:25+00:00",
+  "experiment": "High_value_experiment_plan",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {},
+  "output_dir": "/mnt/data/work_v34/tmp_plan_test",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "tmp_plan_test",
+  "thesis_use": "test"
+}

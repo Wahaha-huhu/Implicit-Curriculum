@@ -1005,3 +1005,22 @@ thesis_evidence/final_experiment_state/run_manifest.json
 ```
 
 This does not run new experiments. It records the current claim boundary and marks 2.8B+ Pythia as future work until checkpoint revision loading is fixed.
+
+## v3.4 high-value experiments before thesis drafting
+
+Run the high-value plan generator:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_high_value_experiment_plan \
+  --output-dir results/high_value_experiment_plan_v34 \
+  --code-version v3.4 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```
+
+Then run, in order:
+
+```bash
+bash results/high_value_experiment_plan_v34/run_b2_strengthening_v34.sh
+bash results/high_value_experiment_plan_v34/run_pythia_arithmetic_sweep_v34.sh
+```

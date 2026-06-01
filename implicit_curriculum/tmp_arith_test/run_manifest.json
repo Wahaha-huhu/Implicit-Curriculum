@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "/mnt/data/work_v34/src/ic_experiments/experiments/make_pythia_focused_arithmetic_slice_suite.py",
+    "--output-dir",
+    "/mnt/data/work_v34/tmp_arith_test",
+    "--n-per-slice",
+    "2",
+    "--code-version",
+    "v3.4",
+    "--archive-root",
+    "/mnt/data/work_v34/tmp_archive",
+    "--thesis-use",
+    "test"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.4",
+  "command": "/mnt/data/work_v34/src/ic_experiments/experiments/make_pythia_focused_arithmetic_slice_suite.py --output-dir /mnt/data/work_v34/tmp_arith_test --n-per-slice 2 --code-version v3.4 --archive-root /mnt/data/work_v34/tmp_archive --thesis-use test",
+  "created_at_utc": "2026-06-01T10:41:23+00:00",
+  "experiment": "Pythia_focused_arithmetic_slice_suite_generation",
+  "git_sha": "unknown",
+  "git_status_short": "unknown",
+  "input_paths": {},
+  "n_atomic": 12,
+  "n_composites": 10,
+  "n_controls": 2,
+  "n_examples": 48,
+  "n_slices": 24,
+  "output_dir": "/mnt/data/work_v34/tmp_arith_test",
+  "platform": "Linux-4.4.0-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "run_id": "tmp_arith_test",
+  "thesis_use": "test"
+}

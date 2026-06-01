@@ -786,3 +786,23 @@ Run the generated tier scripts manually, then run the generated synthesis script
 ### v3.3 final experiment-state consolidation
 
 The command `make_final_experiment_state` creates a draft-ready summary of the current project state. It consolidates the controlled B1 core, cross-family synthesis, mediator diagnostics, and Pythia Tier-1 observational bridge through 1.4B. It explicitly marks larger Pythia runs as optional/future work when checkpoint revision loading is not trustworthy.
+
+## v3.4 high-value experiments before writing
+
+New commands:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_high_value_experiment_plan
+PYTHONPATH=src python -m ic_experiments.experiments.make_pythia_focused_arithmetic_slice_suite
+PYTHONPATH=src python -m ic_experiments.experiments.analyze_b2_strengthening_synthesis
+```
+
+Recommended first:
+
+```bash
+PYTHONPATH=src python -m ic_experiments.experiments.make_high_value_experiment_plan \
+  --output-dir results/high_value_experiment_plan_v34 \
+  --code-version v3.4 \
+  --archive-root results/archive \
+  --thesis-use candidate
+```

@@ -1,0 +1,1 @@
+/mnt/data/work_v34/src/ic_experiments/experiments/make_pythia_focused_arithmetic_slice_suite.py --output-dir /mnt/data/work_v34/tmp_arith_test --n-per-slice 2 --code-version v3.4 --archive-root /mnt/data/work_v34/tmp_archive --thesis-use test
