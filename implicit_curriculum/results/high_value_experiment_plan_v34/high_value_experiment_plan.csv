@@ -1,0 +1,5 @@
+priority,experiment,goal,status_target,compute
+1,B2 sparse-parity strengthening,Make the frequency/quanta contrast credible,GREEN if nontrivial coverage and plausible frequency/degree signs,moderate GPU/CPU
+2,Focused Pythia arithmetic residual suite,Stress-test the strongest Pythia residual family,GREEN if arithmetic underperformance persists through 70M-1.4B,reuse Pythia sweep runner
+3,Stronger mediator diagnostics,Deepen mechanism for A02->C06 beyond global gradient cosine,GREEN if layer/parameter-block gradients separate positive from controls,moderate
+4,Third B1 H3-ready family,Test whether localized exact dependency recurs,GREEN if another exact-component H3 positive pair appears,high

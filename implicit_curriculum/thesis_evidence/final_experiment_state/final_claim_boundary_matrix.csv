@@ -1,0 +1,10 @@
+claim,status,evidence,boundary
+Acquisition order and residuals are informative diagnostics,supported,B1 H1/H2 across two families; Pythia H2-ready residual sweep,"diagnostic, not automatically causal"
+H2 residuals identify useful candidate composites,supported_with_readiness_gate,family 1 selected positive H3 pair; family 2 exposed hard/subthreshold candidates,residual magnitude alone is insufficient
+Exact-component dependency exists in the controlled setup,localized_supported,A02_substitute -> C06 intervention result plus gradient alignment,one localized pair; not broadly replicated
+Operation-family transfer is an alternative mechanism,supported_pilot,reverse-side H3 rows where exact and same-operation controls match,prevalence not fully quantified
+Hard-composite failure/readiness is a separate failure mode,supported,family 2 C00/C06 readiness and threshold diagnostics,methodological lesson rather than dependency evidence
+A universal component-before-composite law holds,not_supported,family 2 no positive exact dependency; multiple weak/negative rows,should explicitly reject/avoid this wording
+Reference learnability universally predicts acquisition order,not_supported,family 2 reverses the reference_learnability sign,treat as family-specific structural proxy
+Pythia shows stable primitive-to-composite residual signatures,supported_observational_through_1p4b,Tier-1 sweep across valid runs from 70M through 1.4B,observational only; no pretraining intervention
+Pythia causally learns composites through primitives,not_supported,Pythia experiments are checkpoint observations only,requires interventions or stronger causal/mechanistic probes not currently done

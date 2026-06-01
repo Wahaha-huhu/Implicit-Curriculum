@@ -1,0 +1,9 @@
+figure_or_table,section,source,status
+Fig 1: Method pipeline diagram,Methodology,conceptual: H1 -> H2 residuals -> H3 interventions -> mediator -> Pythia observational bridge,draft_ready
+Table 1: Controlled task design and controls,Methodology,"TASK_DESIGN_JUSTIFICATION, B1 task metadata",draft_ready
+Fig 2/Table 2: B1 family 1 H3 evidence matrix,Controlled Results,"h3_pair_evidence_matrix, mediator diagnostics",draft_ready
+Fig 3: Mediator gradient alignment contrasts,Controlled Results,b1_mediator_h3_pairs_v18 contrast summary,draft_ready
+Table 3: Cross-family controlled synthesis,Controlled Results/Discussion,cross_family_claim_matrix and cross_family_stage_summary,draft_ready
+Fig 4: Pythia residual stability by composite,Pythia Observational Bridge,pythia_sweep_residual_stability.csv from Tier-1 sweep,draft_ready_after_consolidation
+Fig 5/Table 4: Pythia residual stability by family,Pythia Observational Bridge,pythia_sweep_family_stability.csv from Tier-1 sweep,draft_ready_after_consolidation
+Table 5: Final claim-boundary matrix,Discussion,final_claim_boundary_matrix.csv,draft_ready

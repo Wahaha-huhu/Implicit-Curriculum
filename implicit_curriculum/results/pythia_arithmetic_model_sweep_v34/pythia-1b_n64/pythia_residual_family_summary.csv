@@ -1,0 +1,2 @@
+model_name,prompt_family,n_composites,mean_underperforming_metric_rate,mean_outperforming_metric_rate,n_consistent_underperforming,n_consistent_outperforming,n_mixed,top_underperforming_composites
+EleutherAI/pythia-1b,arithmetic,10,0.8,0.2,10,0,0,comp_add_then_even;comp_absdiff_then_even;comp_add_then_compare_lt;comp_sub_then_odd;comp_double_then_compare_gt

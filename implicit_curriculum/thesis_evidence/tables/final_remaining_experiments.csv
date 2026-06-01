@@ -1,0 +1,7 @@
+experiment,priority,why,expected_decision,needed_for_draft
+B2 sparse-parity strengthening,optional_high_value,improves contrast with frequency/quanta-style theories,whether frequency-dominated regime contrasts with B1 compositional regime,no
+Third B1 family with H3-readiness built into selection,optional_high_value,tests whether localized exact dependency recurs under a better replication design,replicated localized dependency vs family-specific result,"no, but useful if time permits"
+Stronger mediator diagnostics,optional_high_value,deepens mechanism beyond gradient cosine; probes/layerwise gradients/finetune transfer,whether positive H3 pair has broader mechanistic signatures,no
+Focused Pythia arithmetic residual suite,optional_high_value,arithmetic composites have the strongest stable Pythia underperformance,whether arithmetic residuals persist in richer slice family,"no, but useful for paper-quality Pythia section"
+Pythia 2.8B/6.9B/12B after checkpoint-loading fix,nice_to_have,extends model-size trend beyond 1.4B,whether Tier-1 residual pattern survives larger models,no; current issue should be reported as engineering/future work
+Denser Pythia checkpoints for 70M/160M/410M,nice_to_have,improves trajectory/acquisition timing rather than final residuals,whether residual signatures have stable temporal onset,no

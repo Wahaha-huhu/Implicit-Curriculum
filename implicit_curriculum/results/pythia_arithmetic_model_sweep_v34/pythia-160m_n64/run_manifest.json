@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py",
+    "--result-dir",
+    "results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64",
+    "--code-version",
+    "v3.4",
+    "--archive-root",
+    "results/archive",
+    "--thesis-use",
+    "diagnostic"
+  ],
+  "backend": "Pythia_observational",
+  "code_version": "v3.4",
+  "command": "/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_pythia_residual_refinement.py --result-dir results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64 --code-version v3.4 --archive-root results/archive --thesis-use diagnostic",
+  "created_at_utc": "2026-06-01T10:48:36+00:00",
+  "experiment": "Pythia_observational_residual_refinement",
+  "git_sha": "ebbc7780bf9511e2a1f6de2c8405224c71b56e5e",
+  "git_status_short": "M results/archive/results_registry.csv\n?? results/b2_sparse_parity_strengthened_v34/\n?? results/b2_strengthening_synthesis_v34/\n?? results/high_value_experiment_plan_v34/\n?? results/pythia_arithmetic_model_sweep_v34/\n?? results/pythia_arithmetic_slice_suite_v34/\n?? results/pythia_arithmetic_sweep_plan_v34/\n?? src/ic_experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/__pycache__/configs.cpython-311.pyc\n?? src/ic_experiments/__pycache__/data.cpython-311.pyc\n?? src/ic_experiments/__pycache__/design.cpython-311.pyc\n?? src/ic_experiments/__pycache__/metrics.cpython-311.pyc\n?? src/ic_experiments/__pycache__/models.cpython-311.pyc\n?? src/ic_experiments/__pycache__/neural_design.cpython-311.pyc\n?? src/ic_experiments/__pycache__/run_management.cpython-311.pyc\n?? src/ic_experiments/__pycache__/tasks.cpython-311.pyc\n?? src/ic_experiments/__pycache__/train.cpython-311.pyc\n?? src/ic_experiments/backends/__pycache__/\n?? src/ic_experiments/experiments/__pycache__/__init__.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_b2_strengthening_synthesis.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_continuous_scores.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_h2_readiness.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_pythia_residual_refinement.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/analyze_sparse_parity_pilot.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_final_experiment_state.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_high_value_experiment_plan.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_pythia_focused_arithmetic_slice_suite.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/make_pythia_sweep_plan.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_pythia_observational_pilot.cpython-311.pyc\n?? src/ic_experiments/experiments/__pycache__/run_sparse_parity_pilot.cpython-311.pyc\n?? thesis_evidence/FINAL_EXPERIMENT_STATE.md\n?? thesis_evidence/PYTHIA_TIER1_SWEEP_SYNTHESIS.md\n?? thesis_evidence/THESIS_DRAFT_READINESS.md\n?? thesis_evidence/final_experiment_state/\n?? thesis_evidence/results_summaries/v32_tier1_PYTHIA_SWEEP_SYNTHESIS.md\n?? thesis_evidence/results_summaries/v32_tier1_pythia_sweep_family_stability.csv\n?? thesis_evidence/results_summaries/v32_tier1_pythia_sweep_residual_stability.csv\n?? thesis_evidence/results_summaries/v32_tier1_pythia_sweep_run_summary.csv\n?? thesis_evidence/tables/final_claim_boundary_matrix.csv\n?? thesis_evidence/tables/final_experiment_state_table.csv\n?? thesis_evidence/tables/final_figure_table_checklist.csv\n?? thesis_evidence/tables/final_remaining_experiments.csv\n?? thesis_evidence/tables/pythia_tier1_sweep_family_stability.csv\n?? thesis_evidence/tables/pythia_tier1_sweep_residual_stability.csv\n?? thesis_evidence/tables/pythia_tier1_sweep_run_summary.csv",
+  "input_paths": {
+    "result_dir": "results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64"
+  },
+  "metrics": [
+    "accuracy",
+    "mean_correct_margin",
+    "mean_correct_mrr",
+    "mean_logprob_correct",
+    "mean_logprob_margin"
+  ],
+  "output_dir": "results/pythia_arithmetic_model_sweep_v34/pythia-160m_n64",
+  "platform": "Linux-6.8.0-59-generic-x86_64-with-glibc2.35",
+  "python": "3.11.10",
+  "run_id": "pythia-160m_n64",
+  "thesis_use": "diagnostic"
+}

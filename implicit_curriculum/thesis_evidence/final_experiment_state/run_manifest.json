@@ -1,0 +1,27 @@
+{
+  "experiment": "final_experiment_state_consolidation",
+  "created_at_utc": "2026-06-01T10:35:04.200217+00:00",
+  "code_version": "v3.3",
+  "thesis_use": "candidate",
+  "evidence_dir": "thesis_evidence",
+  "output_dir": "thesis_evidence/final_experiment_state",
+  "pythia_sweep_synthesis_dir": "results/pythia_all_model_sweep_plan_v32/synthesis_all_available",
+  "pythia_sweep_info": {
+    "provided": true,
+    "exists": true,
+    "runs_included": 10,
+    "valid_runs": 10,
+    "models": "EleutherAI/pythia-1.4b;EleutherAI/pythia-160m;EleutherAI/pythia-1b;EleutherAI/pythia-410m;EleutherAI/pythia-70m;pythia-12b_n16;pythia-2p8b_n16;pythia-6p9b_n16",
+    "arithmetic_mean_under_rate": null,
+    "string_mean_under_rate": null,
+    "retrieval_mean_under_rate": null
+  },
+  "outputs": [
+    "thesis_evidence/FINAL_EXPERIMENT_STATE.md",
+    "thesis_evidence/THESIS_DRAFT_READINESS.md",
+    "thesis_evidence/tables/final_experiment_state_table.csv",
+    "thesis_evidence/tables/final_claim_boundary_matrix.csv",
+    "thesis_evidence/tables/final_remaining_experiments.csv",
+    "thesis_evidence/tables/final_figure_table_checklist.csv"
+  ]
+}

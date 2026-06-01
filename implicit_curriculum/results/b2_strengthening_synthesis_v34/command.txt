@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b2_strengthening_synthesis.py --run-dirs results/b2_sparse_parity_strengthened_v34 --output-dir results/b2_strengthening_synthesis_v34 --code-version v3.4 --archive-root results/archive --thesis-use candidate

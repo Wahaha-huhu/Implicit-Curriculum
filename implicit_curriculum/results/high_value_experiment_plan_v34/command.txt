@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_high_value_experiment_plan.py --output-dir results/high_value_experiment_plan_v34 --code-version v3.4 --archive-root results/archive --thesis-use candidate
