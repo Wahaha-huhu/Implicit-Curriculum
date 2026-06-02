@@ -1,0 +1,19 @@
+{
+  "pair_id": "P004_A00_copy__to__A06_copy",
+  "pair_index": 4,
+  "pair_type": "same_operation_reverse",
+  "source_task": "A00_copy",
+  "target_task": "A06_copy",
+  "filler_task": "U01_unrelated_substitute",
+  "source_multiplier": 2.0,
+  "condition": "source_x2",
+  "seed": 0,
+  "target_final_token_accuracy": 0.779296875,
+  "target_final_exact_match": 0.08984375,
+  "target_final_loss": 0.656918466091156,
+  "target_auc_token_accuracy": 0.39707573751674724,
+  "target_auc_exact_match": 0.010494402985074628,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

@@ -1,0 +1,19 @@
+{
+  "pair_id": "P008_S00_surface_rotate__to__A04_reverse",
+  "pair_index": 8,
+  "pair_type": "control_or_surface",
+  "source_task": "S00_surface_rotate",
+  "target_task": "A04_reverse",
+  "filler_task": "U02_unrelated_substitute",
+  "source_multiplier": 0.5,
+  "condition": "source_x0.5",
+  "seed": 1,
+  "target_final_token_accuracy": 0.5514323115348816,
+  "target_final_exact_match": 0.015625,
+  "target_final_loss": 1.3085230588912964,
+  "target_auc_token_accuracy": 0.21993687301318146,
+  "target_auc_exact_match": 0.0008662046908315565,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

@@ -1,0 +1,19 @@
+{
+  "pair_id": "P001_C03_reverse_then_substitute_01_06__to__A06_copy",
+  "pair_index": 1,
+  "pair_type": "composite_to_component_reverse",
+  "source_task": "C03_reverse_then_substitute_01_06",
+  "target_task": "A06_copy",
+  "filler_task": "S00_surface_rotate",
+  "source_multiplier": 0.5,
+  "condition": "source_x0.5",
+  "seed": 1,
+  "target_final_token_accuracy": 0.7864583730697632,
+  "target_final_exact_match": 0.08203125,
+  "target_final_loss": 0.5870352387428284,
+  "target_auc_token_accuracy": 0.4357773240155248,
+  "target_auc_exact_match": 0.020285014658848615,
+  "target_acquired_at": 94976.0,
+  "target_acquired_by_end": true,
+  "max_data_seen": 120000
+}

@@ -1,0 +1,27 @@
+{
+  "experiment": "N1_B1_cross_task_coupling_pilot_analysis",
+  "result_dir": "results/n1_b1_coupling_pilot",
+  "n_pairs": 12,
+  "n_outcome_rows": 144,
+  "n_predictor_rows": 288,
+  "pilot_gate": {
+    "primary_effect_column": "mean_slope_target_auc_token_accuracy",
+    "n_pairs": 12,
+    "effect_std": 0.03830718184204614,
+    "nonzero_effect_rate_abs_gt_1e_minus_4": 1.0,
+    "best_abs_correlation": {
+      "predictor": "mean_gradient_cosine",
+      "outcome": "mean_slope_target_auc_token_accuracy",
+      "n_pairs": 12,
+      "pearson_r": 0.5783445623247255,
+      "sign_accuracy": 0.6666666666666666
+    },
+    "pilot_interpretation": "proceed_if_effects_have_variance_and_predictors_are_not_degenerate"
+  },
+  "paths": {
+    "seed_interaction_effects": "results/n1_b1_coupling_pilot_analysis/b1_coupling_seed_interaction_effects.csv",
+    "pair_interaction_summary": "results/n1_b1_coupling_pilot_analysis/b1_coupling_pair_interaction_summary.csv",
+    "predictor_vs_interaction": "results/n1_b1_coupling_pilot_analysis/b1_coupling_predictor_vs_interaction.csv",
+    "predictor_correlations": "results/n1_b1_coupling_pilot_analysis/b1_coupling_predictor_correlations.csv"
+  }
+}

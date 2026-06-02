@@ -1,0 +1,19 @@
+{
+  "pair_id": "P007_C00_reverse_then_substitute_01_06__to__A01_reverse",
+  "pair_index": 7,
+  "pair_type": "composite_to_component_reverse",
+  "source_task": "C00_reverse_then_substitute_01_06",
+  "target_task": "A01_reverse",
+  "filler_task": "U01_unrelated_substitute",
+  "source_multiplier": 0.0,
+  "condition": "source_x0",
+  "seed": 2,
+  "target_final_token_accuracy": 0.4010416865348816,
+  "target_final_exact_match": 0.0,
+  "target_final_loss": 1.631093978881836,
+  "target_auc_token_accuracy": 0.21740350311697482,
+  "target_auc_exact_match": 0.0,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

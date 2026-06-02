@@ -1,0 +1,19 @@
+{
+  "pair_id": "P002_U00_unrelated_substitute__to__A02_substitute",
+  "pair_index": 2,
+  "pair_type": "control_or_surface",
+  "source_task": "U00_unrelated_substitute",
+  "target_task": "A02_substitute",
+  "filler_task": "K01_shortcut_for_A06_copy",
+  "source_multiplier": 0.5,
+  "condition": "source_x0.5",
+  "seed": 0,
+  "target_final_token_accuracy": 0.6438802480697632,
+  "target_final_exact_match": 0.0390625,
+  "target_final_loss": 1.1359062194824219,
+  "target_auc_token_accuracy": 0.22830880166633105,
+  "target_auc_exact_match": 0.0033898587420042644,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

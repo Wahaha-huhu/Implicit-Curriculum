@@ -1,0 +1,22 @@
+{
+  "experiment": "N1_B1_cross_task_coupling_pilot_plan",
+  "source_structure_table": "results/n1_b1_coupling_pilot_plan/structure_table.csv",
+  "n_pairs": 12,
+  "n_run_rows": 144,
+  "dose_multipliers": [
+    0.0,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "paths": {
+    "structure_table": "results/n1_b1_coupling_pilot_plan/structure_table.csv",
+    "pair_plan": "results/n1_b1_coupling_pilot_plan/b1_coupling_pair_plan.csv",
+    "run_plan": "results/n1_b1_coupling_pilot_plan/b1_coupling_run_plan.csv"
+  }
+}

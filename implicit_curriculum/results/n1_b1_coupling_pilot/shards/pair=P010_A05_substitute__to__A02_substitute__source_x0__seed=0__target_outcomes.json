@@ -1,0 +1,19 @@
+{
+  "pair_id": "P010_A05_substitute__to__A02_substitute",
+  "pair_index": 10,
+  "pair_type": "same_operation_reverse",
+  "source_task": "A05_substitute",
+  "target_task": "A02_substitute",
+  "filler_task": "K00_shortcut_for_A00_copy",
+  "source_multiplier": 0.0,
+  "condition": "source_x0",
+  "seed": 0,
+  "target_final_token_accuracy": 0.65234375,
+  "target_final_exact_match": 0.04296875,
+  "target_final_loss": 1.039582371711731,
+  "target_auc_token_accuracy": 0.23120100554952552,
+  "target_auc_exact_match": 0.0035189565565031983,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

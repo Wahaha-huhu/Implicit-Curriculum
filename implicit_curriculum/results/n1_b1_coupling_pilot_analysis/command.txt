@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_coupling_pilot.py --result-dir results/n1_b1_coupling_pilot --output-dir results/n1_b1_coupling_pilot_analysis

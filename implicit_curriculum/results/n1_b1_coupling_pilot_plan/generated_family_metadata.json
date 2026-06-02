@@ -1,0 +1,42 @@
+{
+  "backend": "B1_sequence_dsl",
+  "config": {
+    "vocab_content": 32,
+    "input_len": 6,
+    "n_atomic": 8,
+    "n_composite": 6,
+    "n_shortcut_controls": 2,
+    "n_surface_controls": 2,
+    "n_unrelated_controls": 4,
+    "frequency_mode": "zipf",
+    "zipf_alpha": 1.05,
+    "seed": 0,
+    "criteria": {
+      "max_vif": 5.0,
+      "max_abs_pearson": 0.75,
+      "max_abs_spearman": 0.8,
+      "max_condition_number": 50.0,
+      "min_rows": 12
+    },
+    "vocab_size": 36
+  },
+  "diagnostics": {
+    "n_rows": 22.0,
+    "design_condition_number": 1.576880685438377,
+    "vif_frequency": 1.106049517745542,
+    "vif_reference_learnability": 1.2221123622150056,
+    "vif_formal_utility": 1.113255365684061,
+    "pearson_frequency__reference_learnability": -0.2987871239565042,
+    "spearman_frequency__reference_learnability": -0.4425350554560328,
+    "binned_mi_frequency__reference_learnability": 0.2585210992587247,
+    "pearson_frequency__formal_utility": 0.014851619175435418,
+    "spearman_frequency__formal_utility": 0.22601988083307312,
+    "binned_mi_frequency__formal_utility": 0.022792494862463354,
+    "pearson_reference_learnability__formal_utility": -0.3084941955066593,
+    "spearman_reference_learnability__formal_utility": -0.24043489106770358,
+    "binned_mi_reference_learnability__formal_utility": 0.14001911210421716,
+    "passed": true,
+    "n_tasks": 22.0
+  },
+  "passed": true
+}

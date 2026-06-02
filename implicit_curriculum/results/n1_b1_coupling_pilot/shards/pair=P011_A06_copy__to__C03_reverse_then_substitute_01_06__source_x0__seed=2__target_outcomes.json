@@ -1,0 +1,19 @@
+{
+  "pair_id": "P011_A06_copy__to__C03_reverse_then_substitute_01_06",
+  "pair_index": 11,
+  "pair_type": "component_to_composite",
+  "source_task": "A06_copy",
+  "target_task": "C03_reverse_then_substitute_01_06",
+  "filler_task": "U03_unrelated_substitute",
+  "source_multiplier": 0.0,
+  "condition": "source_x0",
+  "seed": 2,
+  "target_final_token_accuracy": 0.4466145932674408,
+  "target_final_exact_match": 0.00390625,
+  "target_final_loss": 1.5054906606674194,
+  "target_auc_token_accuracy": 0.2333491654979236,
+  "target_auc_exact_match": 0.00021655117270788914,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

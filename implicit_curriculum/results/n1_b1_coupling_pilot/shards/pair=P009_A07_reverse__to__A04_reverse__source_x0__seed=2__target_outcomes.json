@@ -1,0 +1,19 @@
+{
+  "pair_id": "P009_A07_reverse__to__A04_reverse",
+  "pair_index": 9,
+  "pair_type": "same_operation",
+  "source_task": "A07_reverse",
+  "target_task": "A04_reverse",
+  "filler_task": "S01_surface_rotate",
+  "source_multiplier": 0.0,
+  "condition": "source_x0",
+  "seed": 2,
+  "target_final_token_accuracy": 0.412109375,
+  "target_final_exact_match": 0.0,
+  "target_final_loss": 1.5862582921981812,
+  "target_auc_token_accuracy": 0.21402058423931664,
+  "target_auc_exact_match": 0.0,
+  "target_acquired_at": NaN,
+  "target_acquired_by_end": false,
+  "max_data_seen": 120000
+}

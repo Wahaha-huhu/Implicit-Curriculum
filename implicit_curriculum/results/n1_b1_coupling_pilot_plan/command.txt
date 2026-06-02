@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/make_b1_coupling_pilot_plan.py --output-dir results/n1_b1_coupling_pilot_plan --family-seed 0 --max-pairs 12 --seeds 0 1 2 --dose-multipliers 0 0.5 1 2 --write-run-script --device cuda --max-data-seen 120000 --batch-size 256 --n-checkpoints 60 --eval-examples-per-task 256

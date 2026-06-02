@@ -1,0 +1,23 @@
+{
+  "backend": "B1_sequence_dsl",
+  "experiment": "N1_B1_cross_task_coupling_pilot",
+  "n_pairs": 12,
+  "dose_multipliers": [
+    0.0,
+    0.5,
+    1.0,
+    2.0
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "early_probe_fraction": 0.05,
+  "paths": {
+    "pair_plan": "results/n1_b1_coupling_pilot/b1_coupling_pair_plan.csv",
+    "target_outcomes": "results/n1_b1_coupling_pilot/target_outcomes.csv",
+    "early_coupling_predictors": "results/n1_b1_coupling_pilot/early_coupling_predictors.csv",
+    "eval_curves": "results/n1_b1_coupling_pilot/eval_curves.csv"
+  }
+}
