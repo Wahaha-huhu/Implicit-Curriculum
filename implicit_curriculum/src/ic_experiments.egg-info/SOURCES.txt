@@ -2,6 +2,7 @@ README.md
 pyproject.toml
 src/ic_experiments/__init__.py
 src/ic_experiments/calibration.py
+src/ic_experiments/census.py
 src/ic_experiments/configs.py
 src/ic_experiments/data.py
 src/ic_experiments/design.py
@@ -23,6 +24,8 @@ src/ic_experiments/backends/base.py
 src/ic_experiments/backends/sequence_dsl.py
 src/ic_experiments/backends/sparse_parity.py
 src/ic_experiments/experiments/__init__.py
+src/ic_experiments/experiments/analyze_b1_alignment_predicts_census_verdict.py
+src/ic_experiments/experiments/analyze_b1_causal_census_verdicts.py
 src/ic_experiments/experiments/analyze_b1_cross_family_claims.py
 src/ic_experiments/experiments/analyze_b1_cross_family_synthesis.py
 src/ic_experiments/experiments/analyze_b1_h1_shared_sweep.py
@@ -48,10 +51,12 @@ src/ic_experiments/experiments/archive_result.py
 src/ic_experiments/experiments/audit_b1_learnability_proxy.py
 src/ic_experiments/experiments/consolidate_high_value_experiment_evidence.py
 src/ic_experiments/experiments/consolidate_pythia_sweep_evidence.py
+src/ic_experiments/experiments/make_b1_causal_census_plan.py
 src/ic_experiments/experiments/make_b1_comprehensive_experiment_plan.py
 src/ic_experiments/experiments/make_b1_h3_operation_family_plan.py
 src/ic_experiments/experiments/make_b1_h3_readiness_aware_plan.py
 src/ic_experiments/experiments/make_b1_replication_plan.py
+src/ic_experiments/experiments/make_b1_v2_preregistration.py
 src/ic_experiments/experiments/make_final_experiment_state.py
 src/ic_experiments/experiments/make_final_thesis_evidence_package.py
 src/ic_experiments/experiments/make_first_stage_experiment_summary.py
@@ -63,6 +68,7 @@ src/ic_experiments/experiments/make_pythia_h2_ready_slice_suite.py
 src/ic_experiments/experiments/make_pythia_observational_slice_suite.py
 src/ic_experiments/experiments/make_pythia_sweep_plan.py
 src/ic_experiments/experiments/make_thesis_design_dossier.py
+src/ic_experiments/experiments/run_b1_causal_census.py
 src/ic_experiments/experiments/run_b1_h1_shared_sweep.py
 src/ic_experiments/experiments/run_b1_h3_interventions.py
 src/ic_experiments/experiments/run_b1_mediator_diagnostics.py

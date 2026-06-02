@@ -1,0 +1,7 @@
+score,n_rows,auc
+exact_gradient_cosine,4,
+exact_minus_same_operation_gradient_cosine,4,
+exact_minus_different_operation_gradient_cosine,4,
+min_exact_minus_control_gradient_cosine,4,
+exact_linear_cka,4,
+min_exact_minus_control_linear_cka,4,

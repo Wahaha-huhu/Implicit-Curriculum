@@ -1,0 +1,1 @@
+/workspace/Implicit-Curriculum/implicit_curriculum/src/ic_experiments/experiments/analyze_b1_mediator_diagnostics.py --result-dir results/b1_v2_mediator_diagnostics

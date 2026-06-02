@@ -1,0 +1,63 @@
+{
+  "backend": "B1_sequence_dsl",
+  "experiment": "B1_mediator_diagnostics",
+  "pairs": [
+    {
+      "component": "A07_reverse",
+      "composite": "C03_reverse_then_substitute_07_02",
+      "same_operation_control": "A01_reverse",
+      "different_operation_control": "U01_unrelated_substitute",
+      "fake_component_control": "K02_shortcut_for_A03_copy",
+      "surface_control": "S00_surface_rotate",
+      "unrelated_control": "A01_reverse"
+    },
+    {
+      "component": "A02_substitute",
+      "composite": "C03_reverse_then_substitute_07_02",
+      "same_operation_control": "U00_unrelated_substitute",
+      "different_operation_control": "A03_copy",
+      "fake_component_control": "K01_shortcut_for_A05_substitute",
+      "surface_control": "S01_surface_rotate",
+      "unrelated_control": "U00_unrelated_substitute"
+    },
+    {
+      "component": "A05_substitute",
+      "composite": "C06_reverse_then_substitute_05_07",
+      "same_operation_control": "U01_unrelated_substitute",
+      "different_operation_control": "A04_reverse",
+      "fake_component_control": "K00_shortcut_for_A02_substitute",
+      "surface_control": "S02_surface_rotate",
+      "unrelated_control": "U01_unrelated_substitute"
+    },
+    {
+      "component": "A07_reverse",
+      "composite": "C06_reverse_then_substitute_05_07",
+      "same_operation_control": "A01_reverse",
+      "different_operation_control": "U01_unrelated_substitute",
+      "fake_component_control": "K02_shortcut_for_A03_copy",
+      "surface_control": "S00_surface_rotate",
+      "unrelated_control": "A01_reverse"
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "probe_fractions": [
+    0.0,
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    1.0
+  ],
+  "param_subset": "last_block_ln_head",
+  "paths": {
+    "task_stats": "results/b1_v2_mediator_diagnostics/mediator_task_stats.csv",
+    "pair_stats": "results/b1_v2_mediator_diagnostics/mediator_pair_stats.csv",
+    "eval_curves": "results/b1_v2_mediator_diagnostics/mediator_eval_curves.csv"
+  }
+}
