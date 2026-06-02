@@ -18,6 +18,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--structure-table", type=Path, default=None, help="Existing B1 structure_table.csv. If omitted, a fresh family is generated.")
     p.add_argument("--max-pairs", type=int, default=12)
     p.add_argument("--pair-seed", type=int, default=0)
+    p.add_argument("--balanced-sampling", action="store_true", help="Spread selected pairs across pair type and frequency/learnability bins for baseline-controlled validation runs.")
+    p.add_argument("--balance-bins", type=int, default=3)
     p.add_argument("--dose-multipliers", type=float, nargs="+", default=list(DEFAULT_DOSE_MULTIPLIERS))
     p.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     p.add_argument("--no-reverse-composition", action="store_true")
@@ -75,6 +77,8 @@ def main() -> None:
         max_pairs=args.max_pairs,
         seed=args.pair_seed,
         include_reverse_composition=not args.no_reverse_composition,
+        balanced=args.balanced_sampling,
+        balance_bins=args.balance_bins,
     )
     pair_plan.to_csv(out / "b1_coupling_pair_plan.csv", index=False)
 
@@ -107,6 +111,8 @@ def main() -> None:
         "n_run_rows": int(len(run_plan)),
         "dose_multipliers": [float(x) for x in args.dose_multipliers],
         "seeds": [int(s) for s in args.seeds],
+        "balanced_sampling": bool(args.balanced_sampling),
+        "balance_bins": int(args.balance_bins),
         "paths": {
             "structure_table": str(out / "structure_table.csv"),
             "pair_plan": str(out / "b1_coupling_pair_plan.csv"),
@@ -129,7 +135,7 @@ def main() -> None:
         run_id="b1_coupling_pilot_plan",
         command=sys.argv,
         input_paths={"structure_table": source_path},
-        extra={"max_pairs": args.max_pairs, "dose_multipliers": [float(x) for x in args.dose_multipliers], "seeds": args.seeds},
+        extra={"max_pairs": args.max_pairs, "balanced_sampling": bool(args.balanced_sampling), "balance_bins": int(args.balance_bins), "dose_multipliers": [float(x) for x in args.dose_multipliers], "seeds": args.seeds},
     )
 
     print("Saved B1 coupling pilot plan outputs:")
@@ -149,11 +155,18 @@ def render_report(args: argparse.Namespace, pair_plan: pd.DataFrame, run_plan: p
         f"- run rows: `{len(run_plan)}`",
         f"- dose multipliers: `{', '.join(map(str, args.dose_multipliers))}`",
         f"- seeds: `{', '.join(map(str, args.seeds))}`",
+        f"- balanced sampling: `{bool(args.balanced_sampling)}`",
+        f"- balance bins: `{args.balance_bins}`",
         "",
         "## Pair-type coverage",
     ]
     for pair_type, n in pair_plan["pair_type"].value_counts().sort_index().items():
         lines.append(f"- `{pair_type}`: `{int(n)}`")
+    lines.extend(["", "## Pair frequency/learnability coverage"])
+    for col in ["source_frequency", "target_frequency", "source_reference_learnability", "target_reference_learnability", "surface_overlap_proxy"]:
+        if col in pair_plan.columns:
+            vals = pd.to_numeric(pair_plan[col], errors="coerce")
+            lines.append(f"- `{col}`: min=`{vals.min()}`, median=`{vals.median()}`, max=`{vals.max()}`")
     lines.extend(["", "## Planned pairs"])
     for _, r in pair_plan.iterrows():
         lines.append(f"- `{r['pair_id']}`: `{r['source_task']}` → `{r['target_task']}` ({r['pair_type']}), filler=`{r['filler_task']}`")

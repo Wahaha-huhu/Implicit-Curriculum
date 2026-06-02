@@ -24,3 +24,11 @@ def test_make_dose_weights_preserves_sum_and_target_weight():
 
 def test_linear_slope_basic():
     assert abs(linear_slope([0, 1, 2], [1, 3, 5]) - 2.0) < 1e-6
+
+
+def test_balanced_pair_plan_runs_and_preserves_pair_count_limit():
+    family = generate_sequence_dsl_family(SequenceDSLConfig(vocab_content=16, input_len=4, n_atomic=8, n_composite=6, n_unrelated_controls=4, seed=4))
+    plan = make_coupling_pair_plan(family.structure_table(), max_pairs=10, seed=1, balanced=True, balance_bins=3)
+    assert 0 < len(plan) <= 10
+    assert plan["pair_type"].nunique() >= 2
+    assert (plan["source_task"] != plan["target_task"]).all()

@@ -73,6 +73,8 @@ def make_coupling_pair_plan(
     max_pairs: int = 12,
     seed: int = 0,
     include_reverse_composition: bool = True,
+    balanced: bool = False,
+    balance_bins: int = 3,
 ) -> pd.DataFrame:
     """Construct a designed, heterogeneous ordered-pair sample for the N1 pilot.
 
@@ -150,7 +152,10 @@ def make_coupling_pair_plan(
     plan = pd.DataFrame([r.to_row() for r in dedup.values()])
     if plan.empty:
         raise ValueError("No valid coupling pairs could be built from the structure table.")
-    plan = stratified_limit(plan, max_pairs=max_pairs, seed=seed)
+    if balanced:
+        plan = balanced_stratified_limit(plan, max_pairs=max_pairs, seed=seed, balance_bins=balance_bins)
+    else:
+        plan = stratified_limit(plan, max_pairs=max_pairs, seed=seed)
     plan = plan.reset_index(drop=True)
     plan["pair_index"] = np.arange(len(plan), dtype=int)
     plan["pair_id"] = [f"P{i:03d}_{sanitize(a)}__to__{sanitize(b)}" for i, (a, b) in enumerate(zip(plan["source_task"], plan["target_task"]))]
@@ -250,6 +255,69 @@ def stratified_limit(plan: pd.DataFrame, max_pairs: int, seed: int) -> pd.DataFr
             if len(selected) >= max_pairs:
                 break
     return pd.DataFrame(selected)
+
+
+def balanced_stratified_limit(plan: pd.DataFrame, max_pairs: int, seed: int, balance_bins: int = 3) -> pd.DataFrame:
+    """Downsample a pair plan while spreading coverage over pair type and frequencies.
+
+    The basic pilot sampler preserved pair-type heterogeneity but could still pick a
+    narrow frequency/difficulty region. This helper keeps the same scientific posture
+    but gives the medium validation run a better chance of testing whether gradient
+    coupling predicts interactions *beyond* frequency/difficulty baselines.
+    """
+
+    if len(plan) <= max_pairs:
+        return plan.copy()
+    rng = np.random.default_rng(seed)
+    work = plan.copy()
+    for col in ["source_frequency", "target_frequency", "source_reference_learnability", "target_reference_learnability"]:
+        if col not in work.columns:
+            work[col] = np.nan
+    work["_source_freq_bin"] = quantile_bins(work["source_frequency"], balance_bins)
+    work["_target_freq_bin"] = quantile_bins(work["target_frequency"], balance_bins)
+    work["_source_learn_bin"] = quantile_bins(work["source_reference_learnability"], balance_bins)
+    work["_target_learn_bin"] = quantile_bins(work["target_reference_learnability"], balance_bins)
+    work["_balance_cell"] = (
+        work["pair_type"].astype(str)
+        + "|sf=" + work["_source_freq_bin"].astype(str)
+        + "|tf=" + work["_target_freq_bin"].astype(str)
+        + "|sl=" + work["_source_learn_bin"].astype(str)
+        + "|tl=" + work["_target_learn_bin"].astype(str)
+    )
+
+    selected_idx: list[int] = []
+    remaining = work.copy()
+    # First, round-robin pair types to guarantee semantic diversity. Within each
+    # type, choose from the least represented balance cells.
+    while len(selected_idx) < max_pairs and not remaining.empty:
+        for pair_type in sorted(remaining["pair_type"].astype(str).unique().tolist()):
+            subset = remaining[remaining["pair_type"].astype(str).eq(pair_type)].copy()
+            if subset.empty:
+                continue
+            selected_cells = work.loc[selected_idx, "_balance_cell"].value_counts().to_dict() if selected_idx else {}
+            subset["_cell_count"] = subset["_balance_cell"].map(selected_cells).fillna(0).astype(int)
+            subset = subset.sort_values(["_cell_count", "_balance_cell", "source_task", "target_task"])
+            best_count = int(subset["_cell_count"].min())
+            candidates = subset[subset["_cell_count"].eq(best_count)]
+            pick_pos = int(rng.integers(0, len(candidates)))
+            pick_idx = int(candidates.index[pick_pos])
+            selected_idx.append(pick_idx)
+            remaining = remaining.drop(index=pick_idx)
+            if len(selected_idx) >= max_pairs:
+                break
+    out = work.loc[selected_idx].drop(columns=[c for c in work.columns if c.startswith("_")]).copy()
+    return out.reset_index(drop=True)
+
+
+def quantile_bins(values: pd.Series, bins: int) -> pd.Series:
+    vals = pd.to_numeric(values, errors="coerce")
+    if vals.notna().sum() < 2 or vals.nunique(dropna=True) <= 1:
+        return pd.Series(["all"] * len(vals), index=values.index)
+    try:
+        q = pd.qcut(vals.rank(method="first"), q=max(1, int(bins)), labels=False, duplicates="drop")
+        return q.astype("Int64").astype(str).fillna("nan")
+    except Exception:
+        return pd.Series(["all"] * len(vals), index=values.index)
 
 
 def token_overlap_proxy(a: str, b: str) -> float:
